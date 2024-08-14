@@ -19,33 +19,35 @@ Team:
 - [TheNetherPug](https://github.com/TheNetherPug)
 - [ZAFT](https://github.com/zaftnotameni)
 
-## Running the Project
+## Godot Editor for the Project
 
-If you are on windows and have the correct Godot version with the default name in a folder on your path, you can just run:
+You must have `Godot_v4.3-rc3_win64_console.exe` in your `PATH`.
 
 ```ps
 bat\editor-rc.bat
 ```
 
-That line will automatically start Godot 4.3-rc3 in verbose mode, skipping the project selection screen.
-
 ## Deploying the project
 
-The project should be exported to (those folders already have a `.gdignore` so the editor won't load them):
+You must have `Godot_v4.3-rc3_win64_console.exe` and `butler.exe` in your `PATH`.
 
-- `res://exports/web`: web version
-- `res://exports/win`: windows version
-- `res://exports/lin`: linux version
+```ps
+bat\export-and-itch-all.bat
+```
 
-After exporting, the following commands (assuming you have butler setup) will deploy each version:
+This will export the project for web, windows and linux and deploy it to itch.
 
-- `bat\itch-web.bat`: web version
-- `bat\itch-win.bat`: windows version
-- `bat\itch-lin.bat`: linux version
+The command above is made of a few smaller commands. There are also individual commands for each part:
+
+- `bat\export-web.bat`: export for web
+- `bat\export-win.bat`: export for linux
+- `bat\export-lin.bat`: export for windows
+- `bat\itch-web.bat`: deploy for web on itch using butler (requires export first)
+- `bat\itch-win.bat`: deploy for linux on itch using butler (requires export first)
+- `bat\itch-lin.bat`: deploy for windows on itch using butler (requires export first)
 
 ## Automatic builds on Github
 
 Pushing a tag in the format `v0.0.1` (the `v` is important) triggers an automatic build on github for all platforms.
 
 This might not be fully functional though because it can be missing secrets (like leaderboard api keys).
-
