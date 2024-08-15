@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://cujqio8otjd1h"]
+
+[ext_resource type="Script" path="res://game/scripts/menu/grabs_focus.gd" id="1_keve5"]
+[ext_resource type="Script" path="res://addons/game_manager/pause/pauses.gd" id="1_xu8id"]
+[ext_resource type="Script" path="res://addons/audio_manager/blips/focus_blip.gd" id="2_ajt5t"]
+[ext_resource type="Script" path="res://addons/game_manager/in/paused.gd" id="2_cnnwa"]
+[ext_resource type="Script" path="res://addons/audio_manager/blips/press_blip.gd" id="3_jef82"]
+[ext_resource type="Script" path="res://game/scripts/menu/closes_menu.gd" id="4_iubro"]
+[ext_resource type="Script" path="res://game/scripts/menu/quits_to_title.gd" id="5_pq37g"]
+[ext_resource type="Script" path="res://game/scripts/menu/unpause_presses.gd" id="7_gt1gm"]
+
+[node name="PauseScreen" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pauses" type="Node" parent="."]
+script = ExtResource("1_xu8id")
+unpauses_on_exit = true
+
+[node name="StatePaused" type="Node" parent="."]
+script = ExtResource("2_cnnwa")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Unpause" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Unpause"
+
+[node name="GrabsFocus" type="Node" parent="MarginContainer/VBoxContainer/Unpause"]
+script = ExtResource("1_keve5")
+
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/Unpause"]
+script = ExtResource("2_ajt5t")
+
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/Unpause"]
+script = ExtResource("3_jef82")
+
+[node name="ClosesMenu" type="Node" parent="MarginContainer/VBoxContainer/Unpause"]
+script = ExtResource("4_iubro")
+
+[node name="UnpausePresses" type="Node" parent="MarginContainer/VBoxContainer/Unpause"]
+script = ExtResource("7_gt1gm")
+
+[node name="QuitToTitle" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back to Main Menu"
+
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/QuitToTitle"]
+script = ExtResource("2_ajt5t")
+
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/QuitToTitle"]
+script = ExtResource("3_jef82")
+
+[node name="QuitsToTitle" type="Node" parent="MarginContainer/VBoxContainer/QuitToTitle"]
+script = ExtResource("5_pq37g")

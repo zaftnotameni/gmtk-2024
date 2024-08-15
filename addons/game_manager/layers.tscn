@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3vlb47qout7s"]
+
+[ext_resource type="Script" path="res://addons/game_manager/layers.gd" id="1_40yw8"]
+
+[node name="Layers" type="Node2D"]
+script = ExtResource("1_40yw8")
+
+[node name="Background" type="CanvasLayer" parent="." groups=["background_layer"]]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="Game" type="CanvasLayer" parent="." groups=["game_layer"]]
+layer = 0
+follow_viewport_enabled = true
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["hud_layer"]]
+
+[node name="Menu" type="CanvasLayer" parent="." groups=["menu_layer"]]

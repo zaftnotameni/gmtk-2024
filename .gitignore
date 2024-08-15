@@ -2,11 +2,11 @@
 /exports/win/
 /exports/lin/
 
-*.env
-
 # sensitive files
 *__secrets.tres
+*__secrets.cfg
 *__secrets.gd
+*.env
 
 # Godot 4+ specific ignores
 *.tmp*

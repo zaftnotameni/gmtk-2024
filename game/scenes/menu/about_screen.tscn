@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqgqieg5qdlcs"]
+
+[ext_resource type="Script" path="res://game/scripts/menu/closes_menu.gd" id="1_7l5a7"]
+[ext_resource type="Script" path="res://addons/audio_manager/blips/focus_blip.gd" id="2_od6r8"]
+[ext_resource type="Script" path="res://addons/audio_manager/blips/press_blip.gd" id="3_yjy3a"]
+[ext_resource type="Script" path="res://game/scripts/menu/grabs_focus.gd" id="4_8xkfp"]
+
+[node name="AboutScreen" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[b]GMTK 2024[/b]
+
+All sprites, textures, effects created during the jam.
+
+[u]Team members:[/u]
+
+- ZAFT - Programming - [code]https://zafteer.itch.io/[/code]
+- HotNoggin - Art/Programming  - [code]https://www.hotnogginstudios.com/[/code]
+- TheNetherPug - Music/VFX/SFX - [code]https://github.com/TheNetherPug[/code]
+
+[u]Using:[/u]
+
+- Godot 4.3-rc3 - [code]https://github.com/godotengine[/code]
+- neovim - [code]https://neovim.io[/code]
+- butler - [code]https://itch.io/docs/butler/pushing.html[/code]
+- bfxr - [code]https://www.bfxr.net[/code]
+
+[u]Credits:[/u]
+
+- Kenney Input Prompts - [code]https://kenney.nl/assets/input-prompts[/code]
+- ? Kenney UI Audio - [code]https://kenney.nl/assets/ui-audio[/code]"
+tab_size = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="ClosesMenu" type="Node" parent="MarginContainer/VBoxContainer/Back"]
+script = ExtResource("1_7l5a7")
+
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/Back"]
+script = ExtResource("2_od6r8")
+
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/Back"]
+script = ExtResource("3_yjy3a")
+
+[node name="GrabsFocus" type="Node" parent="MarginContainer/VBoxContainer/Back"]
+script = ExtResource("4_8xkfp")

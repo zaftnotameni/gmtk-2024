@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba1d40dbrw0bt"]
+
+[ext_resource type="Script" path="res://addons/audio_manager/audio_manager_scene.gd" id="1_1vslr"]
+[ext_resource type="AudioStream" uid="uid://chh8ada3dsfd5" path="res://addons/audio_manager/sounds/bfxr_blip.wav" id="1_re8og"]
+[ext_resource type="AudioStream" uid="uid://b62wcavmn48tc" path="res://addons/audio_manager/sounds/bfxr_focus.wav" id="2_fnp5g"]
+[ext_resource type="AudioStream" uid="uid://c27lc4o3m1y67" path="res://addons/audio_manager/sounds/bfxr_press.wav" id="4_youm6"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_1vslr")
+
+[node name="Master" type="Node" parent="."]
+
+[node name="TestSound" type="AudioStreamPlayer" parent="Master"]
+stream = ExtResource("1_re8og")
+
+[node name="BGM" type="Node" parent="."]
+
+[node name="TestSound" type="AudioStreamPlayer" parent="BGM"]
+stream = ExtResource("1_re8og")
+bus = &"BGM"
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="TestSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("1_re8og")
+bus = &"SFX"
+
+[node name="UI" type="Node" parent="."]
+
+[node name="TestSound" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("1_re8og")
+bus = &"UI"
+
+[node name="Focus" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("2_fnp5g")
+bus = &"UI"
+
+[node name="Press" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("4_youm6")
+bus = &"UI"

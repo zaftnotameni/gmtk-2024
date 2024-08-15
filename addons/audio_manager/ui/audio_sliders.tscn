@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://cole37hlcpony"]
+
+[ext_resource type="Script" path="res://addons/audio_manager/ui/audio_sliders_controller.gd" id="1_kwc3o"]
+[ext_resource type="Theme" uid="uid://iw41c5meb6py" path="res://addons/audio_manager/theme/audio_manager_theme.tres" id="2_lrsli"]
+[ext_resource type="Script" path="res://addons/audio_manager/blips/focus_blip.gd" id="3_00qm1"]
+
+[node name="AudioSliders" type="GridContainer"]
+offset_right = 226.0
+offset_bottom = 150.0
+columns = 3
+
+[node name="Controller" type="Node" parent="."]
+script = ExtResource("1_kwc3o")
+
+[node name="Master" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_lrsli")
+text = "Master"
+horizontal_alignment = 2
+
+[node name="MasterSlider" type="HSlider" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("2_lrsli")
+value = 50.0
+
+[node name="FocusBlip" type="Node" parent="MasterSlider"]
+script = ExtResource("3_00qm1")
+
+[node name="MasterValue" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_lrsli")
+text = "50"
+
+[node name="Music" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_lrsli")
+text = "Music"
+horizontal_alignment = 2
+
+[node name="BGMSlider" type="HSlider" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("2_lrsli")
+value = 50.0
+
+[node name="FocusBlip" type="Node" parent="BGMSlider"]
+script = ExtResource("3_00qm1")
+
+[node name="BGMValue" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_lrsli")
+text = "50"
+
+[node name="Sound Effects" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_lrsli")
+text = "Sound Effects"
+horizontal_alignment = 2
+
+[node name="SFXSlider" type="HSlider" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("2_lrsli")
+value = 50.0
+
+[node name="FocusBlip" type="Node" parent="SFXSlider"]
+script = ExtResource("3_00qm1")
+
+[node name="SFXValue" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_lrsli")
+text = "50"
+
+[node name="User Interface" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_lrsli")
+text = "User Interface"
+horizontal_alignment = 2
+
+[node name="UISlider" type="HSlider" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("2_lrsli")
+value = 50.0
+
+[node name="FocusBlip" type="Node" parent="UISlider"]
+script = ExtResource("3_00qm1")
+
+[node name="UIValue" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_lrsli")
+text = "50"

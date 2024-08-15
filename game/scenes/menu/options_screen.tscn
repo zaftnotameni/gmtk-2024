@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3hnf4vc8jvwx"]
+
+[ext_resource type="PackedScene" uid="uid://cole37hlcpony" path="res://addons/audio_manager/ui/audio_sliders.tscn" id="1_6kke5"]
+[ext_resource type="Script" path="res://addons/game_manager/in/menu.gd" id="1_jhsia"]
+[ext_resource type="Script" path="res://game/scripts/menu/closes_menu.gd" id="2_vhgyn"]
+[ext_resource type="Script" path="res://addons/audio_manager/blips/focus_blip.gd" id="3_e4wry"]
+[ext_resource type="Script" path="res://addons/audio_manager/blips/press_blip.gd" id="4_pom05"]
+
+[node name="OptionsScreen" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StateMenu" type="Node" parent="."]
+script = ExtResource("1_jhsia")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="AudioSliders" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_6kke5")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="ClosesMenu" type="Node" parent="MarginContainer/VBoxContainer/Back"]
+script = ExtResource("2_vhgyn")
+
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/Back"]
+script = ExtResource("3_e4wry")
+
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/Back"]
+script = ExtResource("4_pom05")
