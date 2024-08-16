@@ -125,6 +125,7 @@ func movement_physics(delta:float) -> void:
 		PlayerState.HOOK_IMPULSE: hook_impulse_physics(delta)
 
 func _physics_process(delta: float) -> void:
+	if State.game_state != GameManagerState.GameState.GAME: return
 	var input := PlayerInput.xy_normalized()
 	if input.x > 0.1:
 		sprite.flip_h = false

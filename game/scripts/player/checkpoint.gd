@@ -9,6 +9,7 @@ const GROUP := 'checkpoints'
 @export var scene : PackedScene
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not active: return
 	if PlayerInput.is_respawn(event): await spawn()
 
 func _enter_tree() -> void:
@@ -17,6 +18,11 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	if spawn_on_ready: spawn.call_deferred()
+	body_entered.connect(on_body_entered)
+	if active: activate()
+
+func on_body_entered(body:Node2D):
+	if body is Player: activate()
 
 func activate():
 	for cp:Checkpoint in all():

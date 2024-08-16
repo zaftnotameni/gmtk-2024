@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2w4hrolcacf"]
+[gd_scene load_steps=19 format=3 uid="uid://d2w4hrolcacf"]
 
 [ext_resource type="Texture2D" uid="uid://n6ffhdeohh4" path="res://game/assets/textures/grappler/grappler_idle.png" id="1_4dmup"]
 [ext_resource type="Texture2D" uid="uid://df7451l8rb2cc" path="res://game/assets/textures/grappler/grappler_hook.png" id="1_qef4r"]
+[ext_resource type="Script" path="res://game/scripts/player/player.gd" id="1_wdwkb"]
 [ext_resource type="Script" path="res://game/scripts/player/snappy_controller.gd" id="2_5nukf"]
 [ext_resource type="Texture2D" uid="uid://bq1xf2vs8c72f" path="res://game/assets/textures/grappler/grappler_run.png" id="2_34dff"]
 
@@ -104,6 +105,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_wdwkb")
 
 [node name="Cast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
