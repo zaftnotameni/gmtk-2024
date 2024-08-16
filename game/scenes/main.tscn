@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://be7tyglgcy5eo" path="res://game/scenes/menu/screen/title_screen.tscn" id="2_5j4nl"]
 
 [node name="Main" type="Node2D"]
+modulate = Color(1, 0.972549, 0.890196, 1)
 
 [node name="AtMenu" type="Node" parent="."]
 script = ExtResource("1_phxhh")

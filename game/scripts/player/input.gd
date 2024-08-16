@@ -5,3 +5,6 @@ static func xy_normalized() -> Vector2:
 
 static func is_grapple(event:InputEvent) -> bool:
 	return event and event.is_action_pressed('grapple')
+
+static func is_respawn(event:InputEvent) -> bool:
+	return event and event.is_action_pressed('respawn')
