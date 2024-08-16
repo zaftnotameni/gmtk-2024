@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2w4hrolcacf"]
 
-[ext_resource type="Script" path="res://game/scripts/player/controller.gd" id="1_velng"]
+[ext_resource type="Script" path="res://game/scripts/player/snappy_controller.gd" id="2_5nukf"]
 [ext_resource type="Script" path="res://game/scenes/player/hook.gd" id="2_jdowx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bh1qo"]
@@ -11,8 +11,11 @@ radius = 4.0
 
 [node name="Player" type="CharacterBody2D"]
 
-[node name="PlayerController" type="Node" parent="."]
-script = ExtResource("1_velng")
+[node name="Cast" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(0, -64)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="PhysicsBodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bh1qo")
@@ -43,3 +46,6 @@ script = ExtResource("2_jdowx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grapple/Hook"]
 shape = SubResource("CircleShape2D_g3vvu")
+
+[node name="PlayerControllerSnappy" type="Node" parent="."]
+script = ExtResource("2_5nukf")
