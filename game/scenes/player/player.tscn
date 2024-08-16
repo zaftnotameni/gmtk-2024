@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://game/scripts/player/player.gd" id="1_wdwkb"]
 [ext_resource type="Script" path="res://game/scripts/player/snappy_controller.gd" id="2_5nukf"]
 [ext_resource type="Texture2D" uid="uid://bq1xf2vs8c72f" path="res://game/assets/textures/grappler/grappler_run.png" id="2_34dff"]
+[ext_resource type="Texture2D" uid="uid://dlfm4ljs8m0dt" path="res://game/assets/textures/grappler/grappler_wire.png" id="4_o4j1t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bh1qo"]
 size = Vector2(16, 16)
@@ -135,9 +136,8 @@ animation = &"run"
 unique_name_in_owner = true
 points = PackedVector2Array(0, 0, 0, 0)
 width = 2.0
-
-[node name="Target" type="Marker2D" parent="Grapple"]
-position = Vector2(0, -102)
+texture = ExtResource("4_o4j1t")
+texture_mode = 1
 
 [node name="PlayerControllerSnappy" type="Node" parent="."]
 script = ExtResource("2_5nukf")
