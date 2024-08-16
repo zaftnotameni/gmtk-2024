@@ -150,6 +150,6 @@ environment/ssao/quality=0
 environment/ssil/quality=0
 environment/glow/upscale_mode=0
 environment/volumetric_fog/use_filter=0
-environment/defaults/default_clear_color=Color(0.12, 0.12, 0.1, 1)
+environment/defaults/default_clear_color=Color(0.027451, 0, 0.172549, 1)
 viewport/hdr_2d=true
 environment/defaults/default_environment="res://game/resources/world/default_world_environment.tres"
