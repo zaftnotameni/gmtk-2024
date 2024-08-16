@@ -1,6 +1,6 @@
 class_name ShowsLeaderboardsScreen extends Node
 
-const LEADERBOARDS_SCREEN := preload('res://game/scenes/menu/leaderboards_screen.tscn')
+const LEADERBOARDS_SCREEN := preload('res://game/scenes/menu/screen/leaderboards_screen.tscn')
 
 @export_group('optional')
 @export var menu : Control
@@ -8,6 +8,7 @@ const LEADERBOARDS_SCREEN := preload('res://game/scenes/menu/leaderboards_screen
 @export var button : BaseButton
 
 func on_pressed():
+	get_viewport().set_input_as_handled()
 	var instance : Control = scene.instantiate()
 	menu.add_sibling(instance)
 	var tween := create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cujqio8otjd1h"]
+[gd_scene load_steps=10 format=3 uid="uid://cujqio8otjd1h"]
 
 [ext_resource type="Script" path="res://game/scripts/menu/grabs_focus.gd" id="1_keve5"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/pauses.gd" id="1_xu8id"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://game/scripts/menu/closes_menu.gd" id="4_iubro"]
 [ext_resource type="Script" path="res://game/scripts/menu/quits_to_title.gd" id="5_pq37g"]
 [ext_resource type="Script" path="res://game/scripts/menu/unpause_presses.gd" id="7_gt1gm"]
+[ext_resource type="PackedScene" uid="uid://cole37hlcpony" path="res://addons/audio_manager/ui/audio_sliders.tscn" id="9_nj0l5"]
 
 [node name="PauseScreen" type="PanelContainer"]
 anchors_preset = 15
@@ -65,3 +66,8 @@ script = ExtResource("3_jef82")
 
 [node name="QuitsToTitle" type="Node" parent="MarginContainer/VBoxContainer/QuitToTitle"]
 script = ExtResource("5_pq37g")
+
+[node name="AudioSliders" parent="MarginContainer/VBoxContainer" instance=ExtResource("9_nj0l5")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6

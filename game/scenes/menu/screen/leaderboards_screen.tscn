@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwbkdtuddxosu"]
+[gd_scene load_steps=8 format=3 uid="uid://bwbkdtuddxosu"]
 
 [ext_resource type="Script" path="res://addons/smart_quiver/leaderboards/leaderboard_ui.gd" id="1_fgtgs"]
 [ext_resource type="Script" path="res://addons/game_manager/in/menu.gd" id="1_kj8y7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://addons/audio_manager/blips/focus_blip.gd" id="3_6x31n"]
 [ext_resource type="Script" path="res://addons/audio_manager/blips/press_blip.gd" id="4_2yx12"]
 [ext_resource type="Script" path="res://game/scripts/menu/grabs_focus.gd" id="6_esa22"]
+[ext_resource type="PackedScene" uid="uid://cftp5p1mapgu7" path="res://game/scenes/menu/popup/submit_score_popup.tscn" id="7_lxpdo"]
 
 [node name="LeaderboardsScreen" type="PanelContainer"]
 anchors_preset = 15
@@ -33,7 +34,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "Leaderboards"
+text = "Best Times"
 horizontal_alignment = 1
 
 [node name="Nav" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -50,7 +51,7 @@ text = " < "
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
-text = "Scores"
+text = "Pages"
 horizontal_alignment = 1
 
 [node name="NextButton" type="Button" parent="MarginContainer/VBoxContainer/Nav"]
@@ -85,3 +86,8 @@ script = ExtResource("4_2yx12")
 
 [node name="GrabsFocus" type="Node" parent="MarginContainer/VBoxContainer/Back"]
 script = ExtResource("6_esa22")
+
+[node name="SubmitScorePopup" parent="." instance=ExtResource("7_lxpdo")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4

@@ -4,11 +4,11 @@ static func is_on_web() -> bool: return OS.has_feature('web')
 
 static func local_storage_set_item(key:String, value:String) -> void:
 	if not is_on_web(): return
-	JavaScriptBridge.eval('localStorage.setItem("%s", "%s")' % [key, value])
+	JavaScriptBridge.eval('localStorage.setItem(`%s`, `%s`)' % [key, value])
 
 static func local_storage_get_item(key:String) -> String:
 	if not is_on_web(): return ""
-	var existing := JavaScriptBridge.eval('localStorage.getItem("%s")' % [key]) as String
+	var existing := JavaScriptBridge.eval('localStorage.getItem(`%s`) || ""' % [key]) as String
 	if existing: return existing
 	else: return ""
 

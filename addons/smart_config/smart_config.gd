@@ -33,6 +33,7 @@ static func load_config(cfg:ConfigFile=ConfigFile.new()) -> ConfigFile:
 		return load_config_from_file(cfg)
 
 static func save_config(cfg:ConfigFile=ConfigFile.new()) -> ConfigFile:
+	print_verbose(cfg.encode_to_text())
 	if OS.has_feature('web'):
 		return save_config_to_local_storage(cfg)
 	else:

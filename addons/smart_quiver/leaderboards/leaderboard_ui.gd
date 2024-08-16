@@ -37,7 +37,7 @@ extends Control
 
 func _ready() -> void:
 	score_list.set_column_expand_ratio(1, 3)
-	var column_names := ["Rank", "Name", "Score"]
+	var column_names := ["Rank", "Name", "Time"]
 	for column_index in range(column_names.size()):
 		var cname: String = column_names[column_index]
 		score_list.set_column_title(column_index, cname)
@@ -45,8 +45,15 @@ func _ready() -> void:
 		column_index += 1
 	if leaderboard_id:
 		refresh_scores()
+	Leaderboards.sig_score_posted.connect(eventually_refresh_scores)
+
+func eventually_refresh_scores():
+	await get_tree().create_timer(1).timeout
+	refresh_scores()
 
 func refresh_scores():
+	print_verbose('refreshing scores')
+
 	if not leaderboard_id:
 		printerr("[Quiver Leaderboards] Scores couldn't be fetched since leaderboard ID not set in Leaderboard UI.")
 		return
@@ -68,7 +75,7 @@ func refresh_scores():
 			var row: TreeItem = score_list.create_item(root)
 			row.set_text(0, str(score["rank"]))
 			row.set_text(1, str(score["name"]))
-			row.set_text(2, str(score["score"]))
+			row.set_text(2, string_format_time(score["score"]))
 			if score["is_current_player"]:
 				for i in range(3):
 					row.set_custom_bg_color(i, current_player_highlight_color)
@@ -89,3 +96,18 @@ func _on_prev_button_pressed() -> void:
 func _on_next_button_pressed() -> void:
 	score_offset = score_offset + score_limit
 	refresh_scores()
+
+static func string_format_time(time_seconds: float) -> String:
+	if time_seconds <= 0: return '--:--:--.---'
+	var total_seconds = int(time_seconds)
+	var milliseconds = int((time_seconds - total_seconds) * 1000)
+	
+	var seconds = total_seconds % 60
+	@warning_ignore('integer_division')
+	var minutes = (total_seconds / 60) % 60
+	@warning_ignore('integer_division')
+	var hours = total_seconds / 3600
+
+	var formatted_time = "%02d:%02d:%02d.%03d" % [hours, minutes, seconds, milliseconds]
+	
+	return formatted_time

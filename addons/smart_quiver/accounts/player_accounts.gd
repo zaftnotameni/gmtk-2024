@@ -79,14 +79,12 @@ func _load_config() -> void:
 			player_token = config.get_value("general", "player_token")
 	if OS.has_feature('web'):
 		var token_from_local_storage := LocalStorageBridge.local_storage_get_or_set_item('smart_quiver_player_token', '')
-		print('ls', token_from_local_storage)
 		if token_from_local_storage and not token_from_local_storage.is_empty():
 			player_token = token_from_local_storage
 			config.set_value('general', 'player_token', player_token)
 
 func _save_config() -> void:
 	if OS.has_feature('web'):
-		print('s', player_token)
 		LocalStorageBridge.local_storage_set_item('smart_quiver_player_token', player_token)
 	config.set_value("general", "player_token", player_token)
 	config.save(config_file_path)

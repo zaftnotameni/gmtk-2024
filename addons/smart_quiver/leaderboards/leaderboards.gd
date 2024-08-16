@@ -1,4 +1,7 @@
 extends Node
+
+signal sig_score_posted()
+
 ## Handles sending scores to Quiver Leaderboards (https://quiver.dev/leaderboards/).
 ## Requires installation of the Quiver Player Accounts plugin.
 ##
@@ -138,6 +141,9 @@ func post_guest_score(leaderboard_id: String, score: float, nickname := "", meta
 
 	if not success and retry:
 		_handle_failed_post("guest", leaderboard_id, float(score), nickname, metadata, timestamp)
+
+	if success:
+		sig_score_posted.emit()
 
 	return success
 

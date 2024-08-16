@@ -1,6 +1,6 @@
 class_name QuitsToTitle extends Node
 
-var TITLE_SCREEN := load('res://game/scenes/menu/title_screen.tscn')
+var TITLE_SCREEN := load('res://game/scenes/menu/screen/title_screen.tscn')
 
 @export_group('optional')
 @export var scene : PackedScene
@@ -36,7 +36,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
-	if not scene: scene = load('res://game/menu/title/title_screen.tscn')
+	if not scene: scene = TITLE_SCREEN
 	if not scene: push_error('missing scene on %s' % get_path())
 	if not button: push_error('missing button on %s' % get_path())
 	button.pressed.connect(on_pressed)

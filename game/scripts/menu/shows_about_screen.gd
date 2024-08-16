@@ -1,6 +1,6 @@
 class_name ShowsAboutScreen extends Node
 
-const ABOUT_SCREEN := preload('res://game/scenes/menu/about_screen.tscn')
+const ABOUT_SCREEN := preload('res://game/scenes/menu/screen/about_screen.tscn')
 
 @export_group('optional')
 @export var menu : Control

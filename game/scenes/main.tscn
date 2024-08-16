@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://f8mgi1yld3t2"]
 
 [ext_resource type="Script" path="res://addons/game_manager/at/menu.gd" id="1_phxhh"]
-[ext_resource type="PackedScene" uid="uid://be7tyglgcy5eo" path="res://game/scenes/menu/title_screen.tscn" id="2_5j4nl"]
+[ext_resource type="PackedScene" uid="uid://be7tyglgcy5eo" path="res://game/scenes/menu/screen/title_screen.tscn" id="2_5j4nl"]
 
 [node name="Main" type="Node2D"]
 

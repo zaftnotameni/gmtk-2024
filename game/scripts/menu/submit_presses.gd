@@ -1,10 +1,15 @@
-class_name UnpausePresses extends Node
+class_name SubmitPresses extends Node
 
 @export_group('optional')
 @export var button : BaseButton
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed('unpause'):
+	var key_event := event as InputEventKey
+	if not button: return
+	if not key_event: return
+	if not get_viewport().gui_get_focus_owner(): return
+	if not get_viewport().gui_get_focus_owner() is LineEdit: return
+	if key_event.is_action('submit'):
 		get_viewport().set_input_as_handled()
 		button.pressed.emit()
 
@@ -17,4 +22,4 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	if button:
-		get_tree().create_timer(0.064).timeout.connect(set_process_unhandled_input.bind(true), CONNECT_ONE_SHOT)
+		get_tree().create_timer(0.3).timeout.connect(set_process_unhandled_input.bind(true), CONNECT_ONE_SHOT)

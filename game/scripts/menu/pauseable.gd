@@ -1,6 +1,6 @@
 class_name Pauseable extends Node
 
-const PAUSE_SCREEN := preload('res://game/scenes/menu/pause_screen.tscn')
+const PAUSE_SCREEN := preload('res://game/scenes/menu/screen/pause_screen.tscn')
 
 @export_category('optional')
 @export var target : Node

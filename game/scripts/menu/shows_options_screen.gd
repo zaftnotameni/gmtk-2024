@@ -1,6 +1,6 @@
 class_name ShowsOptionsScreen extends Node
 
-const OPTIONS_SCREEN := preload('res://game/scenes/menu/options_screen.tscn')
+const OPTIONS_SCREEN := preload('res://game/scenes/menu/screen/options_screen.tscn')
 
 @export_group('optional')
 @export var menu : Control

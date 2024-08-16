@@ -5,6 +5,7 @@ signal sig_game_state_changed(new_state:GameState, prev_state:GameState)
 
 enum GameState { INITIAL = 0, LOADING, TITLE, MENU, CUTSCENE, GAME, PAUSED, VICTORY, DEFEAT }
 
+static var current_time : float = 0.0
 static var game_state : GameState = GameState.INITIAL
 static var game_state_stack : Array[GameState] = [GameState.INITIAL]
 
@@ -47,16 +48,14 @@ func pop_as(expected_current_state:GameState):
 	game_state_stack.pop_back()
 	if game_state_stack.is_empty(): game_state_stack.push_back(GameState.INITIAL)
 	game_state = game_state_stack[-1]
-	print_verbose('game_state = %s' % GameState.find_key(game_state))
-	print_verbose('game_state_stack = %s' % str(game_state_stack.map(name_of)))
+	print_verbose('game_state: %s' % str(game_state_stack.map(name_of)))
 	sig_game_state_changed.emit(game_state)
 
 func push_as(new_state:GameState):
 	if new_state == game_state: return
 	game_state = new_state
 	game_state_stack.push_back(new_state)
-	print_verbose('game_state = %s' % GameState.find_key(game_state))
-	print_verbose('game_state_stack = %s' % str(game_state_stack.map(name_of)))
+	print_verbose('game_state: %s' % str(game_state_stack.map(name_of)))
 	sig_game_state_changed.emit(game_state)
 
 func mark_as(new_state:GameState):
@@ -64,8 +63,7 @@ func mark_as(new_state:GameState):
 	var prev_state := game_state
 	game_state = new_state
 	game_state_stack = [new_state]
-	print_verbose('game_state = %s' % GameState.find_key(game_state))
-	print_verbose('game_state_stack = %s' % str(game_state_stack.map(name_of)))
+	print_verbose('game_state: %s' % str(game_state_stack.map(name_of)))
 	sig_game_state_changed.emit(game_state, prev_state)
 
 func name_of(state_id:GameState) -> String:
@@ -74,3 +72,8 @@ func name_of(state_id:GameState) -> String:
 func _enter_tree() -> void:
 	process_mode = ProcessMode.PROCESS_MODE_INHERIT if Engine.is_editor_hint() else ProcessMode.PROCESS_MODE_ALWAYS
 
+func _process(delta: float) -> void:
+	if game_state == GameState.GAME: current_time += delta
+
+static func reset_time():
+	current_time = 0.0
