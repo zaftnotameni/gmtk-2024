@@ -10,7 +10,7 @@ enum GrappleState { READY, FIRING, HIT }
 @export var gravity_down : float = 800
 @export var max_speed_down : float = 600
 @export var rope_max_length : float = 64
-@export var rope_impulse : float = 1600
+@export var rope_impulse : float = 1600 / 8.0
 @export var grapple_impulse : float = 400
 @export var hook_impulse_time : float = 0.01
 @export var hook_impulse_elapsed : float = 0.0
@@ -82,7 +82,7 @@ func initiate_grapple() -> void:
 	grapple_state = GrappleState.FIRING
 	player_state = PlayerState.HOOKING
 	rope.points[-1] = Vector2.ZERO
-	hook.position = rope.points[-1]
+	hook.global_position = rope.to_global(rope.points[-1])
 	hook.show()
 
 func grapple_ready_physics(_delta:float) -> void:
@@ -93,11 +93,11 @@ func grapple_ready_physics(_delta:float) -> void:
 func grapple_firing_physics(delta:float) -> void:
 	sprite.play('hook')
 	rope.points[-1].y -= rope_impulse * delta
-	hook.position = rope.points[-1]
+	hook.global_position = rope.to_global(rope.points[-1])
 	hook.show()
 	if abs(rope.points[-1].y) > rope_max_length:
 		rope.points[-1].y = -rope_max_length
-		hook.position = rope.points[-1]
+		hook.global_position = rope.to_global(rope.points[-1])
 		grapple_state = GrappleState.READY
 		hook.hide()
 		if character.is_on_floor():
