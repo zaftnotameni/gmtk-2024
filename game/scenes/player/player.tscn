@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2w4hrolcacf"]
+
+[ext_resource type="Script" path="res://game/scripts/player/controller.gd" id="1_velng"]
+[ext_resource type="Script" path="res://game/scenes/player/hook.gd" id="2_jdowx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bh1qo"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g3vvu"]
+radius = 4.0
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource("1_velng")
+
+[node name="PhysicsBodyCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bh1qo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+process_callback = 0
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="Visual"]
+
+[node name="Grapple" type="Node2D" parent="."]
+
+[node name="Rope" type="Line2D" parent="Grapple"]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+
+[node name="Target" type="Marker2D" parent="Grapple"]
+position = Vector2(0, -102)
+
+[node name="Hook" type="Area2D" parent="Grapple"]
+unique_name_in_owner = true
+script = ExtResource("2_jdowx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grapple/Hook"]
+shape = SubResource("CircleShape2D_g3vvu")
