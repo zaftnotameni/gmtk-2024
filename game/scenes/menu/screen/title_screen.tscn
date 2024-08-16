@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=3 uid="uid://be7tyglgcy5eo"]
+
+[ext_resource type="Texture2D" uid="uid://dnx66du4lbp8t" path="res://game/assets/logos/gmtk2024-logo.png" id="1_0of8n"]
+[ext_resource type="Script" path="res://addons/game_manager/in/title.gd" id="1_3h6ar"]
+[ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="2_c1xnr"]
+[ext_resource type="Script" path="res://game/scripts/menu/shows_options_screen.gd" id="2_vkjj4"]
+[ext_resource type="Script" path="res://game/scripts/menu/grabs_focus.gd" id="2_xqwc7"]
+[ext_resource type="Script" path="res://game/scripts/menu/shows_leaderboards_screen.gd" id="3_3ctda"]
+[ext_resource type="Script" path="res://addons/audio_manager/blips/focus_blip.gd" id="3_o1bdh"]
+[ext_resource type="Script" path="res://addons/audio_manager/blips/press_blip.gd" id="4_wobmx"]
+[ext_resource type="Script" path="res://game/scripts/menu/starts_game.gd" id="6_ijc1e"]
+[ext_resource type="Script" path="res://game/scripts/menu/shows_about_screen.gd" id="7_bg0yh"]
+
+[node name="TitleScreen" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StateTitle" type="Node" parent="."]
+script = ExtResource("1_3h6ar")
+wipe_state_stack = true
+
+[node name="Unpauses" type="Node" parent="."]
+script = ExtResource("2_c1xnr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+texture = ExtResource("1_0of8n")
+expand_mode = 2
+
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="GrabsFocus" type="Node" parent="MarginContainer/VBoxContainer/Start"]
+script = ExtResource("2_xqwc7")
+
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/Start"]
+script = ExtResource("3_o1bdh")
+
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/Start"]
+script = ExtResource("4_wobmx")
+
+[node name="StartsGame" type="Node" parent="MarginContainer/VBoxContainer/Start"]
+script = ExtResource("6_ijc1e")
+
+[node name="Leaderboards" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Leaderboards"
+
+[node name="ShowsLeaderboardsScreen" type="Node" parent="MarginContainer/VBoxContainer/Leaderboards"]
+script = ExtResource("3_3ctda")
+
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/Leaderboards"]
+script = ExtResource("3_o1bdh")
+
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/Leaderboards"]
+script = ExtResource("4_wobmx")
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="ShowsOptionsScreen" type="Node" parent="MarginContainer/VBoxContainer/Options"]
+script = ExtResource("2_vkjj4")
+
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/Options"]
+script = ExtResource("3_o1bdh")
+
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/Options"]
+script = ExtResource("4_wobmx")
+
+[node name="About" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "About"
+
+[node name="ShowsAboutScreen" type="Node" parent="MarginContainer/VBoxContainer/About"]
+script = ExtResource("7_bg0yh")
+
+[node name="FocusBlip" type="Node" parent="MarginContainer/VBoxContainer/About"]
+script = ExtResource("3_o1bdh")
+
+[node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/About"]
+script = ExtResource("4_wobmx")
