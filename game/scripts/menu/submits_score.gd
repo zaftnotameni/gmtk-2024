@@ -6,8 +6,6 @@ class_name SubmitsScore extends Node
 @export var name_input : LineEdit
 @export var score_input : LineEdit
 
-var settings : ConfigFile = ConfigFile.new()
-
 func on_pressed():
 	if not button: return
 	if not name_input: return
@@ -24,8 +22,8 @@ func on_pressed():
 
 	if not success: return
 
-	settings.set_value('player', 'name', name_input.text)
-	SmartConfig.save_config(settings)
+	Config.settings.set_value('player', 'name', name_input.text)
+	Config.save_settings()
 
 	var tween := create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.set_pause_mode(Tween.TweenPauseMode.TWEEN_PAUSE_PROCESS)
@@ -53,5 +51,4 @@ func _ready() -> void:
 	if not button: push_error('missing button on %s' % get_path())
 	if not name_input: push_error('missing name_input on %s' % get_path())
 	if not score_input: push_error('missing score_input on %s' % get_path())
-	SmartConfig.load_config(settings)
 	button.pressed.connect(on_pressed)

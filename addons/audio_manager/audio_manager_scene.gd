@@ -11,7 +11,6 @@ signal sig_volume_changed(which_bus:AudioBus, volume_linear_0_100:float)
 @onready var ui_focus : AudioStreamPlayer = $UI/Focus
 @onready var ui_press : AudioStreamPlayer = $UI/Press
 
-var settings : ConfigFile = ConfigFile.new()
 var ignore = {}
 var playing = {}
 
@@ -51,19 +50,18 @@ func id_of(player:AudioStreamPlayer) -> String: return '%s__%s' % [player.bus, p
 
 func from_config_to_audio_server():
 	if Engine.is_editor_hint(): return
-	SmartConfig.load_config(settings)
-	set_volume_linear_0_100(AudioBus.Master, settings.get_value('audio', 'audio_master_volume_linear_0_100', 50.0), null, null, true)
-	set_volume_linear_0_100(AudioBus.BGM, settings.get_value('audio', 'audio_bgm_volume_linear_0_100', 50.0), null, null, true)
-	set_volume_linear_0_100(AudioBus.SFX, settings.get_value('audio', 'audio_sfx_volume_linear_0_100', 50.0), null, null, true)
-	set_volume_linear_0_100(AudioBus.UI, settings.get_value('audio', 'audio_ui_volume_linear_0_100', 50.0), null, null, true)
+	set_volume_linear_0_100(AudioBus.Master, Config.settings.get_value('audio', 'audio_master_volume_linear_0_100', 50.0), null, null, true)
+	set_volume_linear_0_100(AudioBus.BGM, Config.settings.get_value('audio', 'audio_bgm_volume_linear_0_100', 50.0), null, null, true)
+	set_volume_linear_0_100(AudioBus.SFX, Config.settings.get_value('audio', 'audio_sfx_volume_linear_0_100', 50.0), null, null, true)
+	set_volume_linear_0_100(AudioBus.UI, Config.settings.get_value('audio', 'audio_ui_volume_linear_0_100', 50.0), null, null, true)
 
 func from_audio_server_to_config():
 	if Engine.is_editor_hint(): return
-	settings.set_value('audio', 'audio_master_volume_linear_0_100', get_volume_linear_0_100(AudioBus.Master))
-	settings.set_value('audio', 'audio_bgm_volume_linear_0_100', get_volume_linear_0_100(AudioBus.BGM))
-	settings.set_value('audio', 'audio_sfx_volume_linear_0_100', get_volume_linear_0_100(AudioBus.SFX))
-	settings.set_value('audio', 'audio_ui_volume_linear_0_100', get_volume_linear_0_100(AudioBus.UI))
-	SmartConfig.save_config(settings)
+	Config.settings.set_value('audio', 'audio_master_volume_linear_0_100', get_volume_linear_0_100(AudioBus.Master))
+	Config.settings.set_value('audio', 'audio_bgm_volume_linear_0_100', get_volume_linear_0_100(AudioBus.BGM))
+	Config.settings.set_value('audio', 'audio_sfx_volume_linear_0_100', get_volume_linear_0_100(AudioBus.SFX))
+	Config.settings.set_value('audio', 'audio_ui_volume_linear_0_100', get_volume_linear_0_100(AudioBus.UI))
+	Config.save_settings()
 
 func _enter_tree() -> void:
 	from_config_to_audio_server()

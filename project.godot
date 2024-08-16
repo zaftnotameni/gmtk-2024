@@ -33,6 +33,7 @@ Leaderboards="*res://addons/smart_quiver/./leaderboards/leaderboards.tscn"
 AudioManager="*res://addons/audio_manager/./audio_manager.tscn"
 Layers="*res://addons/game_manager/./layers.tscn"
 State="*res://addons/game_manager/./state.gd"
+Config="*res://addons/smart_config/./config.gd"
 
 [debug]
 
@@ -51,16 +52,19 @@ naming/script_name_casing=3
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/audio_manager/plugin.cfg", "res://addons/game_manager/plugin.cfg", "res://addons/smart_config/plugin.cfg", "res://addons/smart_quiver/plugin.cfg")
+enabled=PackedStringArray("res://addons/smart_config/plugin.cfg", "res://addons/game_manager/plugin.cfg", "res://addons/audio_manager/plugin.cfg", "res://addons/smart_quiver/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://addons/": "gray",
 "res://game/assets/": "red",
-"res://game/resources": "orange",
-"res://game/scenes": "cyan",
-"res://game/scripts": "purple"
+"res://game/assets/logos/": "green",
+"res://game/resources/": "orange",
+"res://game/scenes/": "hotpink",
+"res://game/scenes/menu/": "teal",
+"res://game/scripts/": "purple",
+"res://game/scripts/menu/": "teal"
 }
 
 [global_group]
