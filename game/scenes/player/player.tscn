@@ -1,0 +1,141 @@
+[gd_scene load_steps=18 format=3 uid="uid://d2w4hrolcacf"]
+
+[ext_resource type="Texture2D" uid="uid://n6ffhdeohh4" path="res://game/assets/textures/grappler/grappler_idle.png" id="1_4dmup"]
+[ext_resource type="Texture2D" uid="uid://df7451l8rb2cc" path="res://game/assets/textures/grappler/grappler_hook.png" id="1_qef4r"]
+[ext_resource type="Script" path="res://game/scripts/player/snappy_controller.gd" id="2_5nukf"]
+[ext_resource type="Texture2D" uid="uid://bq1xf2vs8c72f" path="res://game/assets/textures/grappler/grappler_run.png" id="2_34dff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bh1qo"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwmh3"]
+atlas = ExtResource("1_qef4r")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05eja"]
+atlas = ExtResource("1_4dmup")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw354"]
+atlas = ExtResource("1_4dmup")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3gi2"]
+atlas = ExtResource("1_4dmup")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shnie"]
+atlas = ExtResource("1_4dmup")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl2ko"]
+atlas = ExtResource("2_34dff")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rutvt"]
+atlas = ExtResource("2_34dff")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e852d"]
+atlas = ExtResource("2_34dff")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkvde"]
+atlas = ExtResource("2_34dff")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfprd"]
+atlas = ExtResource("2_34dff")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehs0r"]
+atlas = ExtResource("2_34dff")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ad2fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwmh3")
+}],
+"loop": true,
+"name": &"hook",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05eja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw354")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3gi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shnie")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl2ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rutvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e852d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkvde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfprd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehs0r")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Cast" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(0, -64)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="PhysicsBodyCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bh1qo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+process_callback = 0
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Visual"]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_ad2fn")
+animation = &"hook"
+
+[node name="Grapple" type="Node2D" parent="."]
+
+[node name="Rope" type="Line2D" parent="Grapple"]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+
+[node name="Target" type="Marker2D" parent="Grapple"]
+position = Vector2(0, -102)
+
+[node name="PlayerControllerSnappy" type="Node" parent="."]
+script = ExtResource("2_5nukf")

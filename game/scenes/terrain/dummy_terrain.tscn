@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://cytgdyxxbtu31"]
+
+[ext_resource type="PackedScene" uid="uid://d2w4hrolcacf" path="res://game/scenes/player/player.tscn" id="1_6cy5e"]
+[ext_resource type="Script" path="res://game/scenes/terrain/grapple_target.gd" id="2_wog4o"]
+[ext_resource type="AudioStream" uid="uid://dptvev4h2w86m" path="res://game/assets/audio/bgm/aab.mp3" id="3_dhxov"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p7a8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8gw8"]
+size = Vector2(2765, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3lml"]
+size = Vector2(680, 31)
+
+[node name="DummyTerrain" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_6cy5e")]
+position = Vector2(829, 886)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(754, 972)
+script = ExtResource("2_wog4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8p7a8")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(712, 864)
+script = ExtResource("2_wog4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("RectangleShape2D_8p7a8")
+
+[node name="Area2D3" type="Area2D" parent="."]
+position = Vector2(766, 764)
+script = ExtResource("2_wog4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+shape = SubResource("RectangleShape2D_8p7a8")
+
+[node name="Area2D4" type="Area2D" parent="."]
+position = Vector2(511, 568)
+script = ExtResource("2_wog4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+shape = SubResource("RectangleShape2D_8p7a8")
+
+[node name="Area2D5" type="Area2D" parent="."]
+position = Vector2(638, 609)
+script = ExtResource("2_wog4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
+shape = SubResource("RectangleShape2D_8p7a8")
+
+[node name="Area2D6" type="Area2D" parent="."]
+position = Vector2(576, 461)
+script = ExtResource("2_wog4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D6"]
+shape = SubResource("RectangleShape2D_8p7a8")
+
+[node name="Area2D7" type="Area2D" parent="."]
+position = Vector2(713, 320)
+script = ExtResource("2_wog4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D7"]
+shape = SubResource("RectangleShape2D_8p7a8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(466.5, 1065.5)
+shape = SubResource("RectangleShape2D_r8gw8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(138, -306)
+shape = SubResource("RectangleShape2D_l3lml")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(948, -74)
+shape = SubResource("RectangleShape2D_l3lml")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-42, 55)
+shape = SubResource("RectangleShape2D_l3lml")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1206, 194)
+shape = SubResource("RectangleShape2D_l3lml")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(109, 355)
+shape = SubResource("RectangleShape2D_l3lml")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1041, 503)
+shape = SubResource("RectangleShape2D_l3lml")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(318, 746)
+shape = SubResource("RectangleShape2D_l3lml")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dhxov")
+autoplay = true
+bus = &"BGM"
+parameters/looping = true

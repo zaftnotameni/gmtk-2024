@@ -1,0 +1,1 @@
+class_name GrappleTarget extends Area2D
