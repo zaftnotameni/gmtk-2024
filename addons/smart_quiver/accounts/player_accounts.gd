@@ -11,8 +11,6 @@ const GUEST_REGISTRATION_PATH := "/player-accounts/register/"
 
 var auth_token : String
 
-var config = ConfigFile.new()
-var config_file_path := ProjectSettings.get_setting("quiver/player_accounts/config_file_path", "user://account.cfg")
 var player_token := ""
 
 @onready var http_request := $HTTPRequest
@@ -73,18 +71,8 @@ func is_logged_in() -> bool:
 	return player_token != ""
 
 func _load_config() -> void:
-	if FileAccess.file_exists(config_file_path):
-		var err = config.load(config_file_path)
-		if err == OK:
-			player_token = config.get_value("general", "player_token")
-	if OS.has_feature('web'):
-		var token_from_local_storage := LocalStorageBridge.local_storage_get_or_set_item('smart_quiver_player_token', '')
-		if token_from_local_storage and not token_from_local_storage.is_empty():
-			player_token = token_from_local_storage
-			config.set_value('general', 'player_token', player_token)
+	player_token = Config.settings.get_value('player', 'token', '')
 
 func _save_config() -> void:
-	if OS.has_feature('web'):
-		LocalStorageBridge.local_storage_set_item('smart_quiver_player_token', player_token)
-	config.set_value("general", "player_token", player_token)
-	config.save(config_file_path)
+	Config.settings.set_value('player', 'token', player_token)
+	Config.save_settings()
