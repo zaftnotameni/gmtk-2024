@@ -24,6 +24,7 @@ enum GrappleState { READY, FIRING, HIT }
 @export var character : CharacterBody2D
 @export var rope : Line2D
 @export var cast : RayCast2D
+@export var sprite : AnimatedSprite2D
 
 func _enter_tree() -> void:
 	if not character: character = owner
@@ -31,6 +32,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	if not rope: rope = %Rope
 	if not cast: cast = %Cast
+	if not sprite: sprite = %Sprite
 
 func default_physics(delta:float) -> void:
 	var input := PlayerInput.xy_normalized()
@@ -48,6 +50,11 @@ func default_physics(delta:float) -> void:
 
 	if character.is_on_floor():
 		player_state = PlayerState.GROUNDED
+		if abs(input.x) > 0.1:
+			sprite.play('run')
+		else:
+			sprite.play('idle')
+
 	if not character.is_on_floor():
 		player_state = PlayerState.AIRBORNE
 
@@ -116,6 +123,11 @@ func movement_physics(delta:float) -> void:
 		PlayerState.HOOK_IMPULSE: hook_impulse_physics(delta)
 
 func _physics_process(delta: float) -> void:
+	var input := PlayerInput.xy_normalized()
+	if input.x > 0.1:
+		sprite.flip_h = false
+	if input.x < -0.1:
+		sprite.flip_h = true
 	match grapple_state:
 		GrappleState.READY:
 			grapple_ready_physics(delta)
