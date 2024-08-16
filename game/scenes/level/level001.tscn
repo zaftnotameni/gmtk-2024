@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=4 uid="uid://cblf4vilv7j4m"]
+[gd_scene load_steps=8 format=4 uid="uid://cblf4vilv7j4m"]
 
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="1_2ssa5"]
 [ext_resource type="Script" path="res://addons/game_manager/in/game.gd" id="2_oxnje"]
 [ext_resource type="Script" path="res://game/scripts/menu/pauseable.gd" id="3_wnp8r"]
 [ext_resource type="PackedScene" uid="uid://nv1cibju11qh" path="res://game/scenes/terrain/foreground_tilemap.tscn" id="4_sstbt"]
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="5_61ced"]
+[ext_resource type="Script" path="res://game/scripts/terrain/one_way_platform.gd" id="6_bir6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pitsa"]
+size = Vector2(200, 20)
 
 [node name="Level001" type="Node2D"]
 
@@ -27,3 +31,10 @@ spawn_on_ready = true
 
 [node name="Checkpoint2" parent="." instance=ExtResource("5_61ced")]
 position = Vector2(272, 432)
+
+[node name="OneWayPlatform" type="StaticBody2D" parent="."]
+position = Vector2(184, 376)
+script = ExtResource("6_bir6j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OneWayPlatform"]
+shape = SubResource("RectangleShape2D_pitsa")
