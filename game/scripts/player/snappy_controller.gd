@@ -85,6 +85,7 @@ func grapple_ready_physics(_delta:float) -> void:
 	grapple_target = null
 
 func grapple_firing_physics(delta:float) -> void:
+	sprite.play('hook')
 	rope.points[-1].y -= rope_impulse * delta
 	if abs(rope.points[-1].y) > rope_max_length:
 		rope.points[-1].y = -rope_max_length
@@ -99,6 +100,7 @@ func grapple_firing_physics(delta:float) -> void:
 			grapple_target = cast.get_collider()
 
 func grapple_hit_physics(_delta:float) -> void:
+	sprite.play('hook')
 	character.velocity.x = 0
 	character.velocity.y = -grapple_impulse
 	if grapple_target:

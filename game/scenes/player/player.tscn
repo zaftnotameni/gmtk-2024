@@ -1,11 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://d2w4hrolcacf"]
+[gd_scene load_steps=18 format=3 uid="uid://d2w4hrolcacf"]
 
 [ext_resource type="Texture2D" uid="uid://n6ffhdeohh4" path="res://game/assets/textures/grappler/grappler_idle.png" id="1_4dmup"]
+[ext_resource type="Texture2D" uid="uid://df7451l8rb2cc" path="res://game/assets/textures/grappler/grappler_hook.png" id="1_qef4r"]
 [ext_resource type="Script" path="res://game/scripts/player/snappy_controller.gd" id="2_5nukf"]
 [ext_resource type="Texture2D" uid="uid://bq1xf2vs8c72f" path="res://game/assets/textures/grappler/grappler_run.png" id="2_34dff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bh1qo"]
 size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwmh3"]
+atlas = ExtResource("1_qef4r")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05eja"]
 atlas = ExtResource("1_4dmup")
@@ -49,6 +54,14 @@ region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ad2fn"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwmh3")
+}],
+"loop": true,
+"name": &"hook",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_05eja")
@@ -112,7 +125,7 @@ rotation_smoothing_enabled = true
 [node name="Sprite" type="AnimatedSprite2D" parent="Visual"]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_ad2fn")
-animation = &"idle"
+animation = &"hook"
 
 [node name="Grapple" type="Node2D" parent="."]
 
