@@ -77,7 +77,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -100,7 +100,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 16.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -125,7 +125,7 @@ rotation_smoothing_enabled = true
 [node name="Sprite" type="AnimatedSprite2D" parent="Visual"]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_ad2fn")
-animation = &"hook"
+animation = &"run"
 
 [node name="Grapple" type="Node2D" parent="."]
 
