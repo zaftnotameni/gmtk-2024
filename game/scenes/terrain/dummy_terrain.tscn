@@ -102,6 +102,5 @@ shape = SubResource("RectangleShape2D_l3lml")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_dhxov")
-autoplay = true
 bus = &"BGM"
 parameters/looping = true
