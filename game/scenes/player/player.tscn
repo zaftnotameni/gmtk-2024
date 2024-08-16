@@ -126,7 +126,6 @@ script = ExtResource("1_wdwkb")
 unique_name_in_owner = true
 target_position = Vector2(0, -64)
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="PhysicsBodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bh1qo")

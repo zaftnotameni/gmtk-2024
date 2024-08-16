@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cytgdyxxbtu31"]
 
 [ext_resource type="PackedScene" uid="uid://d2w4hrolcacf" path="res://game/scenes/player/player.tscn" id="1_6cy5e"]
-[ext_resource type="Script" path="res://game/scenes/terrain/grapple_target.gd" id="2_wog4o"]
+[ext_resource type="Script" path="res://game/scripts/terrain/grapple_target.gd" id="2_wog4o"]
 [ext_resource type="AudioStream" uid="uid://dptvev4h2w86m" path="res://game/assets/audio/bgm/aab.mp3" id="3_dhxov"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8p7a8"]
@@ -71,6 +71,7 @@ shape = SubResource("RectangleShape2D_8p7a8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(466.5, 1065.5)
 shape = SubResource("RectangleShape2D_r8gw8")
+one_way_collision = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(138, -306)

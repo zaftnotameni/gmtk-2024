@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://disdj2vlloaq6"]
 
 [ext_resource type="Script" path="res://game/scripts/player/checkpoint.gd" id="1_ph418"]
-[ext_resource type="Texture2D" uid="uid://dbxqno3ra1ush" path="res://game/assets/textures/grappler/grappler_spawner.png" id="2_dv5hl"]
+[ext_resource type="Texture2D" uid="uid://igt2w30du1dq" path="res://game/assets/textures/grappler/grappler_spawner.png" id="2_dv5hl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7eft6"]
 size = Vector2(32, 32)
