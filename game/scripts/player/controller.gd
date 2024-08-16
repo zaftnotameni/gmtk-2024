@@ -6,11 +6,11 @@ enum GrappleState { READY, FIRING, HIT }
 @export_category('configuration')
 @export var initial_speed_ground : float = 100
 @export var initial_speed_air : float = 100
-@export var gravity_up : float = 100
-@export var gravity_down : float = 150
+@export var gravity_up : float = 200
+@export var gravity_down : float = 250
 @export var rope_max_length : float = 100
-@export var rope_accel : float = 200
-@export var grapple_accel : float = 400
+@export var rope_accel : float = 1000
+@export var grapple_accel : float = 2000
 
 @export_category('internals')
 @export var player_state : PlayerState

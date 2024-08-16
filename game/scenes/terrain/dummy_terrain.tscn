@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cytgdyxxbtu31"]
+[gd_scene load_steps=7 format=3 uid="uid://cytgdyxxbtu31"]
 
 [ext_resource type="PackedScene" uid="uid://d2w4hrolcacf" path="res://game/scenes/player/player.tscn" id="1_6cy5e"]
 [ext_resource type="Script" path="res://game/scenes/terrain/grapple_target.gd" id="2_wog4o"]
+[ext_resource type="AudioStream" uid="uid://dptvev4h2w86m" path="res://game/assets/audio/bgm/aab.mp3" id="3_dhxov"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8p7a8"]
 
@@ -37,6 +38,34 @@ script = ExtResource("2_wog4o")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
 shape = SubResource("RectangleShape2D_8p7a8")
 
+[node name="Area2D4" type="Area2D" parent="."]
+position = Vector2(511, 568)
+script = ExtResource("2_wog4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+shape = SubResource("RectangleShape2D_8p7a8")
+
+[node name="Area2D5" type="Area2D" parent="."]
+position = Vector2(638, 609)
+script = ExtResource("2_wog4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
+shape = SubResource("RectangleShape2D_8p7a8")
+
+[node name="Area2D6" type="Area2D" parent="."]
+position = Vector2(576, 461)
+script = ExtResource("2_wog4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D6"]
+shape = SubResource("RectangleShape2D_8p7a8")
+
+[node name="Area2D7" type="Area2D" parent="."]
+position = Vector2(713, 320)
+script = ExtResource("2_wog4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D7"]
+shape = SubResource("RectangleShape2D_8p7a8")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -70,3 +99,9 @@ shape = SubResource("RectangleShape2D_l3lml")
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(318, 746)
 shape = SubResource("RectangleShape2D_l3lml")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dhxov")
+autoplay = true
+bus = &"BGM"
+parameters/looping = true
