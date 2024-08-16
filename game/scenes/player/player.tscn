@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2w4hrolcacf"]
+[gd_scene load_steps=20 format=3 uid="uid://d2w4hrolcacf"]
 
 [ext_resource type="Texture2D" uid="uid://n6ffhdeohh4" path="res://game/assets/textures/grappler/grappler_idle.png" id="1_4dmup"]
 [ext_resource type="Texture2D" uid="uid://df7451l8rb2cc" path="res://game/assets/textures/grappler/grappler_hook.png" id="1_qef4r"]
@@ -118,7 +118,7 @@ collide_with_bodies = false
 shape = SubResource("RectangleShape2D_bh1qo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
