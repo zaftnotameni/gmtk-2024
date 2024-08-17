@@ -20,36 +20,22 @@ func prepare_tween() -> Tween:
 func go_to_next_level():
 	if not next_level: return
 	if not transition_scene: return
+
+	# prepare instance for next level
 	var instance : Node2D = next_level.instantiate()
-	var transition : Node2D = transition_scene.instantiate()
-	if not instance: return
-	if not transition: return
 
-	State.transition_start()
-	instance.z_index = -1
-
-	owner.add_sibling(transition)
-
+	# remove current player
 	for p:Player in Player.all():
 		p.process_mode = Node.PROCESS_MODE_DISABLED
 		p.queue_free()
 
-	prepare_tween()
-	tween.tween_property(owner, ^'position:y', 2000, 0.3).as_relative()
-	tween.parallel().tween_property(transition, ^'position:y', 0, 0.3).from(2000)
-	tween.parallel().tween_callback(owner.hide).set_delay(0.1)
-
-	tween.tween_property(transition.get_node('Sprite2D'), ^'position:y', -2000, 0.3).as_relative()
-	tween.parallel().tween_property(transition, ^'position:y', 2000, 0.3).as_relative()
-
-	await tween.finished
+	# add next level to the tree and remove the current one
+	owner.add_sibling.call_deferred(instance)
+	owner.queue_free()
 
 	prepare_tween()
-	tween.tween_callback(owner.queue_free)
-	tween.parallel().tween_callback(owner.add_sibling.bind(instance))
+	# mark the game as in "game" mode again
 	tween.tween_callback(State.mark_as_game).set_delay(0.1)
-	tween.tween_callback(State.transition_finish).set_delay(0.1)
-	tween.tween_callback(transition.queue_free).set_delay(0.1)
 
 func on_body_entered(body:Node2D):
 	if body is Player: go_to_next_level()
