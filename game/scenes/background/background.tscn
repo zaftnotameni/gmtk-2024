@@ -1,27 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://dn0de5h2kemax"]
+[gd_scene load_steps=7 format=4 uid="uid://b1yi0feutffi"]
 
-[ext_resource type="Texture2D" uid="uid://45g5vgbw18ex" path="res://game/assets/textures/tileset/tiles.png" id="1_j47rs"]
+[ext_resource type="Texture2D" uid="uid://b8rrmdpmp8a4o" path="res://game/assets/textures/tileset/tiles.png" id="1_j47rs"]
 
 [sub_resource type="Environment" id="Environment_seqif"]
 background_mode = 3
 glow_enabled = true
 glow_bloom = 0.3
-
-[sub_resource type="GDScript" id="GDScript_x7f0l"]
-script/source = "extends Camera2D
-
-
-var velocity = Vector2.ZERO
-func _process(delta: float) -> void:
-	var input: Vector2 = Input.get_vector(\"player_left\", \"player_right\", \"player_up\", \"player_down\") * 5.0
-	velocity += input
-	position += velocity
-	velocity *= 0.8
-"
-
-[sub_resource type="Curve" id="Curve_qf47p"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0954198, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.32225, 0.0, 0, 0]
-point_count = 3
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ocwho"]
 texture = ExtResource("1_j47rs")
@@ -55,26 +39,6 @@ sources/0 = SubResource("TileSetAtlasSource_ckram")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_seqif")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-script = SubResource("GDScript_x7f0l")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Camera2D"]
-modulate = Color(1.5, 1.5, 1.5, 1)
-z_index = 4096
-amount = 512
-lifetime = 3.0
-preprocess = 120.5
-emission_shape = 3
-emission_rect_extents = Vector2(2500, 2500)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 1.79
-initial_velocity_max = 12.49
-scale_amount_min = 6.0
-scale_amount_max = 8.0
-scale_amount_curve = SubResource("Curve_qf47p")
-color = Color(0.25098, 0.305882, 0.54902, 1)
 
 [node name="Blocks2" type="Parallax2D" parent="."]
 scale = Vector2(2.3, 2.3)
