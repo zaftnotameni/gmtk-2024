@@ -3,6 +3,8 @@ class_name PlayerControllerSnappy extends Node
 enum PlayerState { INITIAL, GROUNDED, AIRBORNE, HOOK_IMPULSE, HOOKING }
 enum GrappleState { READY, FIRING, HIT }
 
+const GROUP := 'snappy'
+
 @export_category('configuration')
 @export var initial_speed_ground : float = 200
 @export var initial_speed_air : float = 200
@@ -27,8 +29,10 @@ enum GrappleState { READY, FIRING, HIT }
 @export var cast : RayCast2D
 @export var sprite : AnimatedSprite2D
 @export var hook : Sprite2D
+@export var stun : Area2D
 
 func _enter_tree() -> void:
+	add_to_group(GROUP)
 	if not character: character = owner
 
 func _ready() -> void:
@@ -36,6 +40,7 @@ func _ready() -> void:
 	if not cast: cast = %Cast
 	if not sprite: sprite = %Sprite
 	if not hook: hook = %Hook
+	if not stun: stun = %HookStunner
 
 func default_physics(delta:float) -> void:
 	var input := PlayerInput.xy_normalized()
@@ -87,9 +92,18 @@ func initiate_grapple() -> void:
 	hook.global_position = rope.to_global(rope.points[-1])
 	hook.show()
 
+func reset_grapple():
+	clear_grapple_target()
+	grapple_state = GrappleState.READY
+	if character.is_on_floor():
+		player_state = PlayerState.GROUNDED
+	if not character.is_on_floor():
+		player_state = PlayerState.AIRBORNE
+
 func clear_grapple_target():
 	hook.hide()
 	rope.points[-1] = Vector2.ZERO
+	hook.global_position = rope.to_global(rope.points[-1])
 	if grapple_target and grapple_target.get_parent() and grapple_target.get_parent().has_method('ungrapple'):
 		grapple_target.get_parent().ungrapple()
 	grapple_target = null
@@ -182,3 +196,7 @@ func _physics_process(delta: float) -> void:
 		AudioManager.play_sfx(AudioManager.sfx_metal_step, true)
 	if character.is_on_wall():
 		AudioManager.sfx_metal_step.stop()
+
+static func tree() -> SceneTree: return Engine.get_main_loop()
+static func all() -> Array: return tree().get_nodes_in_group(GROUP)
+static func first() -> Player: return tree().get_first_node_in_group(GROUP)

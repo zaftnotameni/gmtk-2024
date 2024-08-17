@@ -15,7 +15,7 @@ class_name Stunner extends Area2D
 @export var direction : float = 1
 @export var stun_elapsed : float = 0.0
 
-func grapple():
+func stun():
 	stun_elapsed = 0.0
 	stunned = true
 	get_node('Sprite2D').modulate = Color('#45ba48')

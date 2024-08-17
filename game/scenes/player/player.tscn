@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d2w4hrolcacf"]
+[gd_scene load_steps=25 format=3 uid="uid://d2w4hrolcacf"]
 
 [ext_resource type="Texture2D" uid="uid://n6ffhdeohh4" path="res://game/assets/textures/grappler/grappler_idle.png" id="1_4dmup"]
 [ext_resource type="Texture2D" uid="uid://df7451l8rb2cc" path="res://game/assets/textures/grappler/grappler_hook.png" id="1_qef4r"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://34bbfee1bkjl" path="res://game/assets/textures/grappler/grappler_fall.png" id="2_mqwrg"]
 [ext_resource type="Texture2D" uid="uid://dlfm4ljs8m0dt" path="res://game/assets/textures/grappler/grappler_wire.png" id="4_o4j1t"]
 [ext_resource type="Texture2D" uid="uid://dvj43ml301lyq" path="res://game/assets/textures/grappler/grappling_hook_tip.png" id="7_h6kno"]
+[ext_resource type="Script" path="res://game/scenes/player/hook_stunner.gd" id="8_ore8h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bh1qo"]
 size = Vector2(16, 16)
@@ -169,6 +170,7 @@ texture = ExtResource("7_h6kno")
 unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 8
+script = ExtResource("8_ore8h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grapple/Hook/HookStunner"]
 shape = SubResource("CircleShape2D_tpyyh")
