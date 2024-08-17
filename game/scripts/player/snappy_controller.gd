@@ -60,6 +60,7 @@ func default_physics(delta:float) -> void:
 
 	if not character.is_on_floor():
 		player_state = PlayerState.AIRBORNE
+		sprite.play('air')
 
 func hook_impulse_physics(delta:float) -> void:
 	var input := PlayerInput.xy_normalized()
