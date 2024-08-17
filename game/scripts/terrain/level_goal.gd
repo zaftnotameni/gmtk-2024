@@ -1,14 +1,13 @@
 class_name LevelGoal extends Area2D
 
 @export var next_level : PackedScene
-@export var transition_scene : PackedScene
+@export var animator: AnimationPlayer
 
 var tween : Tween
 
 func _enter_tree() -> void:
 	collision_mask = 2 # player_body
 	collision_layer = 128 # level_goal
-	if not transition_scene : transition_scene = load('res://game/scenes/transition/transition_screen.tscn')
 
 func prepare_tween() -> Tween:
 	if tween and tween.is_running(): tween.kill()
@@ -19,7 +18,6 @@ func prepare_tween() -> Tween:
 
 func go_to_next_level():
 	if not next_level: return
-	if not transition_scene: return
 
 	# prepare instance for next level
 	var instance : Node2D = next_level.instantiate()
@@ -37,8 +35,12 @@ func go_to_next_level():
 	# mark the game as in "game" mode again
 	tween.tween_callback(State.mark_as_game).set_delay(0.1)
 
+
 func on_body_entered(body:Node2D):
-	if body is Player: go_to_next_level()
+	if body is Player:
+		await body.ascend()
+		go_to_next_level()
+
 
 func _ready() -> void:
 	if not next_level: push_error('must have a next_level %s' % get_path())
