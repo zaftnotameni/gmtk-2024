@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5xs08u5daqko"]
+
+[ext_resource type="Script" path="res://game/scripts/terrain/hazard.gd" id="1_2ntim"]
+[ext_resource type="Texture2D" uid="uid://bj5c41hncls5n" path="res://game/assets/textures/hazards/spike.png" id="1_fwbt0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u27m1"]
+size = Vector2(8, 8)
+
+[node name="Spike" type="Area2D"]
+collision_layer = 512
+collision_mask = 2
+script = ExtResource("1_2ntim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fwbt0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_u27m1")

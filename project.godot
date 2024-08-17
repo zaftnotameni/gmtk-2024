@@ -159,6 +159,7 @@ respawn={
 2d_physics/layer_7="one_way_terrain"
 2d_physics/layer_8="level_goal"
 2d_physics/layer_9="checkpoint"
+2d_physics/layer_10="hazard"
 
 [rendering]
 
