@@ -1,6 +1,6 @@
 class_name Roamer extends Area2D
 
-enum RoamerMode { CUSTOM, HORIZONTAL, VERTICAL, CIRCULAR }
+enum RoamerMode { CUSTOM, HORIZONTAL, VERTICAL, CIRCULAR, MANUAL }
 
 @export var roaming_mode : RoamerMode
 @export var visual: Node2D
@@ -36,6 +36,9 @@ func physics_custom(_delta:float):
 	push_error('physics_custom is not implemented, pick horizontal/vertical/circular %s' % get_path())
 	set_physics_process(false)
 
+func physics_manual(_delta:float):
+	set_physics_process(false)
+
 func physics_horizontal(delta:float):
 	global_position.x += direction * delta * roaming_speed
 	if initial_position.distance_to(global_position) >= roaming_radius:
@@ -58,6 +61,7 @@ func physics_circular(delta:float):
 func _physics_process(delta: float) -> void:
 	if grappled: return
 	match roaming_mode:
+		RoamerMode.MANUAL: physics_manual(delta)
 		RoamerMode.CUSTOM: physics_custom(delta)
 		RoamerMode.HORIZONTAL: physics_horizontal(delta)
 		RoamerMode.VERTICAL: physics_vertical(delta)
