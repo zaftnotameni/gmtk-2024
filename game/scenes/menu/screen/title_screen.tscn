@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://be7tyglgcy5eo"]
+[gd_scene load_steps=13 format=3 uid="uid://be7tyglgcy5eo"]
 
 [ext_resource type="Texture2D" uid="uid://dnx66du4lbp8t" path="res://game/assets/logos/gmtk2024-logo.png" id="1_0of8n"]
 [ext_resource type="Script" path="res://addons/game_manager/in/title.gd" id="1_3h6ar"]
+[ext_resource type="Script" path="res://game/scripts/audio/player_menu_music.gd" id="1_rtw35"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="2_c1xnr"]
 [ext_resource type="Script" path="res://game/scripts/menu/shows_options_screen.gd" id="2_vkjj4"]
 [ext_resource type="Script" path="res://game/scripts/menu/grabs_focus.gd" id="2_xqwc7"]
+[ext_resource type="Script" path="res://addons/game_manager/pause/unpauseable.gd" id="2_yoi4i"]
 [ext_resource type="Script" path="res://game/scripts/menu/shows_leaderboards_screen.gd" id="3_3ctda"]
 [ext_resource type="Script" path="res://addons/audio_manager/blips/focus_blip.gd" id="3_o1bdh"]
 [ext_resource type="Script" path="res://addons/audio_manager/blips/press_blip.gd" id="4_wobmx"]
@@ -17,6 +19,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PlaysMenuMusic" type="Node" parent="."]
+script = ExtResource("1_rtw35")
+
+[node name="Unpauseable" type="Node" parent="."]
+script = ExtResource("2_yoi4i")
 
 [node name="StateTitle" type="Node" parent="."]
 script = ExtResource("1_3h6ar")
