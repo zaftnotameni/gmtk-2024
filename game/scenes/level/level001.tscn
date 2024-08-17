@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="1_2ssa5"]
 [ext_resource type="Script" path="res://addons/game_manager/in/game.gd" id="2_oxnje"]
 [ext_resource type="Script" path="res://game/scripts/menu/pauseable.gd" id="3_wnp8r"]
-
 [ext_resource type="PackedScene" uid="uid://nv1cibju11qh" path="res://game/scenes/terrain/foreground_tilemap.tscn" id="4_sstbt"]
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="5_61ced"]
 [ext_resource type="Script" path="res://game/scripts/terrain/one_way_platform.gd" id="6_bir6j"]
