@@ -16,3 +16,9 @@ func die() -> void:
 	animator.play("die")
 	await animator.animation_finished
 	Checkpoint.current().spawn()
+
+
+func ascend() -> Signal:
+	process_mode = PROCESS_MODE_DISABLED
+	animator.play("ascend")
+	return animator.animation_finished
