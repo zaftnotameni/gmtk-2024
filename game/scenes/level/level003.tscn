@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="6_6h4sw"]
 [ext_resource type="Script" path="res://game/scripts/terrain/level_goal.gd" id="7_ixbui"]
 [ext_resource type="PackedScene" uid="uid://c1m311wf6sxnl" path="res://game/scenes/terrain/roamer.tscn" id="8_reffg"]
-[ext_resource type="PackedScene" uid="uid://6ay6fsvm7w22" path="res://game/scenes/terrain/stunner.tscn" id="9_bc1uc"]
+[ext_resource type="PackedScene" uid="uid://dedsny5oiuid6" path="res://game/scenes/terrain/stunner.tscn" id="9_bc1uc"]
 
 [node name="Level003Stunners" type="Node2D"]
 
