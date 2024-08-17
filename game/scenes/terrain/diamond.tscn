@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cavuj74tj36pi"]
+
+[ext_resource type="Script" path="res://game/scripts/terrain/grapple_target.gd" id="1_jvbny"]
+[ext_resource type="Texture2D" uid="uid://b8rrmdpmp8a4o" path="res://game/assets/textures/tileset/tiles.png" id="2_mvrfb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t5kv8"]
+radius = 16.0
+
+[node name="Diamond" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_jvbny")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t5kv8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mvrfb")
+hframes = 4
+vframes = 4
+frame = 4
