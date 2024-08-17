@@ -1,4 +1,4 @@
-extends Area2D
+class_name Hazard extends Area2D
 
 
 func _ready() -> void:
