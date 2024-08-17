@@ -211,9 +211,9 @@ func _physics_process(delta: float) -> void:
 			grapple_hit_physics(delta)
 
 	if character.is_on_floor() and was_on_floor and abs(character.velocity.x) > 0.2:
-		AudioManager.play_sfx(AudioManager.sfx_metal_land, true)
-	if character.is_on_floor() and not was_on_floor:
 		AudioManager.play_sfx(AudioManager.sfx_metal_step, true)
+	if character.is_on_floor() and not was_on_floor:
+		AudioManager.play_sfx(AudioManager.sfx_metal_land, true)
 	if character.is_on_wall():
 		AudioManager.sfx_metal_step.stop()
 
