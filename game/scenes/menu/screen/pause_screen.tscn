@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cujqio8otjd1h"]
+[gd_scene load_steps=12 format=3 uid="uid://cujqio8otjd1h"]
 
 [ext_resource type="Script" path="res://game/scripts/menu/grabs_focus.gd" id="1_keve5"]
+[ext_resource type="Script" path="res://addons/game_manager/pause/unpauseable.gd" id="1_mduom"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/pauses.gd" id="1_xu8id"]
 [ext_resource type="Script" path="res://addons/audio_manager/blips/focus_blip.gd" id="2_ajt5t"]
 [ext_resource type="Script" path="res://addons/game_manager/in/paused.gd" id="2_cnnwa"]
@@ -9,6 +10,7 @@
 [ext_resource type="Script" path="res://game/scripts/menu/quits_to_title.gd" id="5_pq37g"]
 [ext_resource type="Script" path="res://game/scripts/menu/unpause_presses.gd" id="7_gt1gm"]
 [ext_resource type="PackedScene" uid="uid://cole37hlcpony" path="res://addons/audio_manager/ui/audio_sliders.tscn" id="9_nj0l5"]
+[ext_resource type="PackedScene" uid="uid://d3msx3o7feb0j" path="res://game/scenes/menu/section/controls_section.tscn" id="10_d71i1"]
 
 [node name="PauseScreen" type="PanelContainer"]
 anchors_preset = 15
@@ -16,6 +18,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Unpauseable" type="Node" parent="."]
+script = ExtResource("1_mduom")
 
 [node name="Pauses" type="Node" parent="."]
 script = ExtResource("1_xu8id")
@@ -32,8 +37,12 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.305882, 0.54902, 1)
 text = "Paused"
 horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="Unpause" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -67,7 +76,18 @@ script = ExtResource("3_jef82")
 [node name="QuitsToTitle" type="Node" parent="MarginContainer/VBoxContainer/QuitToTitle"]
 script = ExtResource("5_pq37g")
 
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="AudioSliders" parent="MarginContainer/VBoxContainer" instance=ExtResource("9_nj0l5")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ControlsSection" parent="MarginContainer/VBoxContainer" instance=ExtResource("10_d71i1")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6

@@ -28,6 +28,7 @@ extends Control
 @export var nearby_anchor := Leaderboards.NearbyAnchor.BEST
 ## The color to highlight the current player's scores.
 @export var current_player_highlight_color := Color("#005216")
+@export var current_player_font_color := Color("#005216")
 
 @onready var next_button :=  %NextButton
 @onready var prev_button := %PrevButton
@@ -79,6 +80,7 @@ func refresh_scores():
 			if score["is_current_player"]:
 				for i in range(3):
 					row.set_custom_bg_color(i, current_player_highlight_color)
+					row.set_custom_color(i, current_player_font_color)
 	else:
 		var row: TreeItem = score_list.create_item(root)
 		if score_data["error"]:
