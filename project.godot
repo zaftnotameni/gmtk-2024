@@ -164,6 +164,10 @@ respawn={
 2d_physics/layer_9="checkpoint"
 2d_physics/layer_10="hazard"
 
+[physics]
+
+common/physics_interpolation=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
