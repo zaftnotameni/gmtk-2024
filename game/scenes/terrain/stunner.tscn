@@ -1,25 +1,58 @@
-[gd_scene load_steps=5 format=3 uid="uid://6ay6fsvm7w22"]
+[gd_scene load_steps=9 format=3 uid="uid://dedsny5oiuid6"]
 
 [ext_resource type="Script" path="res://game/scripts/terrain/stunner.gd" id="1_6n605"]
+[ext_resource type="Texture2D" uid="uid://bout11l2h3108" path="res://game/assets/textures/grapple_points/drone.png" id="2_w1j80"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ui20o"]
-size = Vector2(16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_10ssg"]
+radius = 16.0312
 
-[sub_resource type="Gradient" id="Gradient_qqhwi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfl7b"]
+atlas = ExtResource("2_w1j80")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_i015b"]
-gradient = SubResource("Gradient_qqhwi")
-width = 16
-height = 16
+[sub_resource type="AtlasTexture" id="AtlasTexture_75cd7"]
+atlas = ExtResource("2_w1j80")
+region = Rect2(16, 0, 16, 16)
 
-[node name="Stunner" type="Area2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd11m"]
+atlas = ExtResource("2_w1j80")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s62d8"]
+atlas = ExtResource("2_w1j80")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1wf1o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfl7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75cd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd11m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s62d8")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 6.0
+}]
+
+[node name="Stunner" type="Area2D" node_paths=PackedStringArray("visual")]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_6n605")
+visual = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ui20o")
+shape = SubResource("CircleShape2D_10ssg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.952941, 0.352941, 1)
-texture = SubResource("GradientTexture2D_i015b")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+sprite_frames = SubResource("SpriteFrames_1wf1o")
+animation = &"fly"
+autoplay = "fly"

@@ -3,6 +3,7 @@ class_name Stunner extends Area2D
 @export var roaming_mode : Roamer.RoamerMode
 
 @export var stun_length : float = 2.0
+@export var visual: Node2D
 
 @export_group('vertical or horizontal or circular')
 @export var roaming_radius : float = 64
@@ -52,6 +53,10 @@ func physics_vertical(delta:float):
 
 func physics_circular(delta:float):
 	var angle := initial_position.angle_to_point(global_position)
+	if rad_to_deg(angle) <= 180:
+		direction = 1
+	else:
+		direction = -1
 	angle += delta * deg_to_rad(roaming_speed)
 	global_position = initial_position + (roaming_radius * Vector2(cos(angle), sin(angle)))
 
@@ -66,3 +71,4 @@ func _physics_process(delta: float) -> void:
 		Roamer.RoamerMode.HORIZONTAL: physics_horizontal(delta)
 		Roamer.RoamerMode.VERTICAL: physics_vertical(delta)
 		Roamer.RoamerMode.CIRCULAR: physics_circular(delta)
+	visual.scale.x = direction

@@ -3,6 +3,7 @@ class_name Roamer extends Area2D
 enum RoamerMode { CUSTOM, HORIZONTAL, VERTICAL, CIRCULAR }
 
 @export var roaming_mode : RoamerMode
+@export var visual: Node2D
 
 @export_group('vertical or horizontal or circular')
 @export var roaming_radius : float = 64
@@ -47,6 +48,10 @@ func physics_vertical(delta:float):
 
 func physics_circular(delta:float):
 	var angle := initial_position.angle_to_point(global_position)
+	if rad_to_deg(angle) <= 180:
+		direction = 1
+	else:
+		direction = -1
 	angle += delta * deg_to_rad(roaming_speed)
 	global_position = initial_position + (roaming_radius * Vector2(cos(angle), sin(angle)))
 
@@ -57,3 +62,4 @@ func _physics_process(delta: float) -> void:
 		RoamerMode.HORIZONTAL: physics_horizontal(delta)
 		RoamerMode.VERTICAL: physics_vertical(delta)
 		RoamerMode.CIRCULAR: physics_circular(delta)
+	visual.scale.x = direction

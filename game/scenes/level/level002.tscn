@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="6_jucyy"]
 [ext_resource type="Script" path="res://game/scripts/terrain/level_goal.gd" id="7_w3vc6"]
 [ext_resource type="PackedScene" uid="uid://kyoytu02764t" path="res://game/scenes/level/level003.tscn" id="8_7vql6"]
-[ext_resource type="PackedScene" uid="uid://c1m311wf6sxnl" path="res://game/scenes/terrain/roamer.tscn" id="8_k6noq"]
+[ext_resource type="PackedScene" uid="uid://bnx4srks6vtah" path="res://game/scenes/terrain/roamer.tscn" id="8_k6noq"]
 
 [node name="Level002Roamers" type="Node2D"]
 
