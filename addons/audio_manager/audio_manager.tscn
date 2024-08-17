@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba1d40dbrw0bt"]
+[gd_scene load_steps=11 format=3 uid="uid://ba1d40dbrw0bt"]
 
 [ext_resource type="Script" path="res://addons/audio_manager/audio_manager_scene.gd" id="1_1vslr"]
 [ext_resource type="AudioStream" uid="uid://chh8ada3dsfd5" path="res://addons/audio_manager/sounds/bfxr_blip.wav" id="1_re8og"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://c27lc4o3m1y67" path="res://addons/audio_manager/sounds/bfxr_press.wav" id="4_youm6"]
 [ext_resource type="AudioStream" uid="uid://bukyy7per5rpv" path="res://game/assets/audio/sfx/kiewing.wav" id="5_lfjmb"]
 [ext_resource type="AudioStream" uid="uid://b08axennnte5f" path="res://game/resources/audio/sfx/stepofthefoot.wav" id="5_m21n5"]
+[ext_resource type="AudioStream" uid="uid://561emx4eks7i" path="res://game/resources/audio/sfx/blooep.wav" id="6_q8q3d"]
+[ext_resource type="AudioStream" uid="uid://driuviinjymyy" path="res://game/resources/audio/sfx/waaaaaaaaaaaahhhhhhhhh.wav" id="6_wcwbm"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_1vslr")
@@ -30,7 +32,7 @@ bus = &"BGM"
 [node name="SFX" type="Node" parent="."]
 
 [node name="MetalLand" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("4_sqkic")
+stream = ExtResource("6_q8q3d")
 volume_db = -5.0
 pitch_scale = 4.0
 bus = &"SFX"
@@ -39,6 +41,24 @@ bus = &"SFX"
 stream = ExtResource("5_m21n5")
 volume_db = -5.0
 autoplay = true
+bus = &"SFX"
+
+[node name="HookShot" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_q8q3d")
+volume_db = -5.0
+pitch_scale = 8.0
+bus = &"SFX"
+
+[node name="HookRope" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_wcwbm")
+volume_db = -20.0
+pitch_scale = 0.2
+bus = &"SFX"
+
+[node name="HookGrab" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_sqkic")
+volume_db = -8.0
+pitch_scale = 4.0
 bus = &"SFX"
 
 [node name="Kiewing" type="AudioStreamPlayer" parent="SFX"]

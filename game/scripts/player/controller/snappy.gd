@@ -97,6 +97,7 @@ func initiate_grapple() -> void:
 	rope.points[-1] = Vector2.ZERO
 	hook.global_position = rope.to_global(rope.points[-1])
 	hook.show()
+	AudioManager.play_sfx(AudioManager.sfx_hook_shot, true)
 
 func reset_grapple():
 	clear_grapple_target()
@@ -107,6 +108,7 @@ func reset_grapple():
 		player_state = PlayerState.AIRBORNE
 
 func clear_grapple_target():
+	AudioManager.sfx_hook_rope.stop()
 	hook.hide()
 	rope.points[-1] = Vector2.ZERO
 	hook.global_position = rope.to_global(rope.points[-1])
@@ -160,21 +162,25 @@ func grapple_firing_physics(delta:float) -> void:
 			if not data: return
 			if data.get_custom_data('tile_type') == 'one_way':
 				grapple_state = GrappleState.HIT
+				AudioManager.play_sfx(AudioManager.sfx_hook_grab, true)
 				grapple_target = OneWayPlatform.new()
 				grapple_target.global_position = cast.get_collision_point() + Vector2(0, 0)
 		elif cast.get_collider() is GrappleTarget:
 			grapple_state = GrappleState.HIT
+			AudioManager.play_sfx(AudioManager.sfx_hook_grab, true)
 			grapple_target = cast.get_collider()
 			if grapple_target and grapple_target.get_parent().has_method('grapple'):
 				grapple_target.get_parent().grapple()
 		elif cast.get_collider() is OneWayPlatform:
 			grapple_state = GrappleState.HIT
+			AudioManager.play_sfx(AudioManager.sfx_hook_grab, true)
 			grapple_target = cast.get_collider()
 		else:
 			if not character.is_on_floor():
 				grapple_state = GrappleState.COOLDOWN
 
 func grapple_hit_physics(_delta:float) -> void:
+	AudioManager.play_sfx(AudioManager.sfx_hook_rope, true)
 	character.collision_mask = 0
 	character.collision_layer = 0
 
