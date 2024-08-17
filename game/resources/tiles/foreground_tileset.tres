@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cdbtydialsg3l"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://cdbtydialsg3l"]
 
 [ext_resource type="Texture2D" uid="uid://b8rrmdpmp8a4o" path="res://game/assets/textures/tileset/tiles.png" id="1_8bapq"]
 [ext_resource type="PackedScene" uid="uid://c5xs08u5daqko" path="res://game/scenes/terrain/spike.tscn" id="2_pku44"]
+[ext_resource type="PackedScene" uid="uid://cavuj74tj36pi" path="res://game/scenes/terrain/diamond.tscn" id="3_cyxuv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qu2gi"]
 texture = ExtResource("1_8bapq")
@@ -27,8 +28,9 @@ texture = ExtResource("1_8bapq")
 3:0/0/custom_data_0 = "one_way"
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mxkaf"]
-resource_name = "Hazards"
+resource_name = "Interactives"
 scenes/1/scene = ExtResource("2_pku44")
+scenes/2/scene = ExtResource("3_cyxuv")
 
 [resource]
 physics_layer_0/collision_layer = 32
