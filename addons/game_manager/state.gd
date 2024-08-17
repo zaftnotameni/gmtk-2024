@@ -14,10 +14,12 @@ static var game_state_stack : Array[GameState] = [GameState.INITIAL]
 static var transition : bool = false
 
 func transition_start():
+	print_verbose('started transition')
 	transition = true
 	sig_transition_started.emit()
 
 func transition_finish():
+	print_verbose('finished transition')
 	transition = false
 	sig_transition_finished.emit()
 

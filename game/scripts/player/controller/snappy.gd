@@ -90,7 +90,7 @@ func initiate_grapple() -> void:
 func clear_grapple_target():
 	hook.hide()
 	rope.points[-1] = Vector2.ZERO
-	if grapple_target and grapple_target.get_parent().has_method('ungrapple'):
+	if grapple_target and grapple_target.get_parent() and grapple_target.get_parent().has_method('ungrapple'):
 		grapple_target.get_parent().ungrapple()
 	grapple_target = null
 
@@ -161,6 +161,7 @@ func movement_physics(delta:float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if State.game_state != GameManagerState.GameState.GAME: return
+	var was_on_floor = character.is_on_floor()
 	var input := PlayerInput.xy_normalized()
 	if input.x > 0.1:
 		sprite.flip_h = false
@@ -174,3 +175,10 @@ func _physics_process(delta: float) -> void:
 			grapple_firing_physics(delta)
 		GrappleState.HIT:
 			grapple_hit_physics(delta)
+
+	if character.is_on_floor() and was_on_floor and abs(character.velocity.x) > 0.2:
+		AudioManager.play_sfx(AudioManager.sfx_metal_land, true)
+	if character.is_on_floor() and not was_on_floor:
+		AudioManager.play_sfx(AudioManager.sfx_metal_step, true)
+	if character.is_on_wall():
+		AudioManager.sfx_metal_step.stop()

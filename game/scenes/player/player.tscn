@@ -1,9 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://d2w4hrolcacf"]
+[gd_scene load_steps=24 format=3 uid="uid://d2w4hrolcacf"]
 
 [ext_resource type="Texture2D" uid="uid://n6ffhdeohh4" path="res://game/assets/textures/grappler/grappler_idle.png" id="1_4dmup"]
 [ext_resource type="Texture2D" uid="uid://df7451l8rb2cc" path="res://game/assets/textures/grappler/grappler_hook.png" id="1_qef4r"]
 [ext_resource type="Script" path="res://game/scripts/player/player.gd" id="1_wdwkb"]
-[ext_resource type="Script" path="res://game/scripts/player/snappy_controller.gd" id="2_5nukf"]
+[ext_resource type="Script" path="res://game/scripts/player/controller/snappy.gd" id="2_5nukf"]
 [ext_resource type="Texture2D" uid="uid://bq1xf2vs8c72f" path="res://game/assets/textures/grappler/grappler_run.png" id="2_34dff"]
 [ext_resource type="Texture2D" uid="uid://34bbfee1bkjl" path="res://game/assets/textures/grappler/grappler_fall.png" id="2_mqwrg"]
 [ext_resource type="Texture2D" uid="uid://dlfm4ljs8m0dt" path="res://game/assets/textures/grappler/grappler_wire.png" id="4_o4j1t"]
@@ -119,12 +119,18 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tpyyh"]
+radius = 4.0
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 480
 script = ExtResource("1_wdwkb")
 
 [node name="Cast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 target_position = Vector2(0, -64)
+collision_mask = 16
 collide_with_areas = true
 
 [node name="PhysicsBodyCollision" type="CollisionShape2D" parent="."]
@@ -158,6 +164,14 @@ texture_mode = 1
 unique_name_in_owner = true
 position = Vector2(0, -12)
 texture = ExtResource("7_h6kno")
+
+[node name="HookStunner" type="Area2D" parent="Grapple/Hook"]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grapple/Hook/HookStunner"]
+shape = SubResource("CircleShape2D_tpyyh")
 
 [node name="PlayerControllerSnappy" type="Node" parent="."]
 script = ExtResource("2_5nukf")

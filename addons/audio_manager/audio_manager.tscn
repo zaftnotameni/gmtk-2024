@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba1d40dbrw0bt"]
+[gd_scene load_steps=8 format=3 uid="uid://ba1d40dbrw0bt"]
 
 [ext_resource type="Script" path="res://addons/audio_manager/audio_manager_scene.gd" id="1_1vslr"]
 [ext_resource type="AudioStream" uid="uid://chh8ada3dsfd5" path="res://addons/audio_manager/sounds/bfxr_blip.wav" id="1_re8og"]
 [ext_resource type="AudioStream" uid="uid://b62wcavmn48tc" path="res://addons/audio_manager/sounds/bfxr_focus.wav" id="2_fnp5g"]
+[ext_resource type="AudioStream" uid="uid://j1fojicytath" path="res://game/assets/audio/sfx/metal_land.ogg" id="3_oit1h"]
+[ext_resource type="AudioStream" uid="uid://bo7tk4i6nc7sd" path="res://game/assets/audio/sfx/metal_step.ogg" id="4_35vjo"]
 [ext_resource type="AudioStream" uid="uid://c27lc4o3m1y67" path="res://addons/audio_manager/sounds/bfxr_press.wav" id="4_youm6"]
+[ext_resource type="AudioStream" uid="uid://bukyy7per5rpv" path="res://game/assets/audio/sfx/kiewing.wav" id="5_lfjmb"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_1vslr")
@@ -20,6 +23,18 @@ stream = ExtResource("1_re8og")
 bus = &"BGM"
 
 [node name="SFX" type="Node" parent="."]
+
+[node name="MetalLand" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_oit1h")
+bus = &"SFX"
+
+[node name="MetalStep" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_35vjo")
+bus = &"SFX"
+
+[node name="Kiewing" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_lfjmb")
+bus = &"SFX"
 
 [node name="TestSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("1_re8og")

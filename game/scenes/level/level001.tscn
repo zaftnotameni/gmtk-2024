@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://game/scripts/terrain/level_goal.gd" id="7_xoyep"]
 [ext_resource type="PackedScene" uid="uid://drxh1u8rv8so1" path="res://game/scenes/level/level002.tscn" id="8_nj6b7"]
 
-[node name="Level001" type="Node2D"]
+[node name="Level001OneWay" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_8kvf7")]
 
