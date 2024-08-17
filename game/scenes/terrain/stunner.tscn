@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dedsny5oiuid6"]
+[gd_scene load_steps=9 format=3 uid="uid://6ay6fsvm7w22"]
 
 [ext_resource type="Script" path="res://game/scripts/terrain/stunner.gd" id="1_6n605"]
 [ext_resource type="Texture2D" uid="uid://bout11l2h3108" path="res://game/assets/textures/grapple_points/drone.png" id="2_w1j80"]

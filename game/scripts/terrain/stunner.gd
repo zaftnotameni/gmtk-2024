@@ -19,12 +19,12 @@ class_name Stunner extends Area2D
 func stun():
 	stun_elapsed = 0.0
 	stunned = true
-	get_node('Sprite2D').modulate = Color('#45ba48')
+	get_node('AnimatedSprite2D').modulate = Color('#45ba48')
 
 func unstun():
 	stun_elapsed = 0.0
 	stunned = false
-	get_node('Sprite2D').modulate = Color('#fff35a')
+	get_node('AnimatedSprite2D').modulate = Color('#fff35a')
 
 func setup_for_custom():
 	if not custom_waypoints or custom_waypoints.is_empty():
