@@ -3,7 +3,7 @@ class_name Stunner extends Area2D
 @export var roaming_mode : Roamer.RoamerMode
 
 @export var stun_length : float = 2.0
-@export var visual: Node2D
+@export var visual: AnimatedSprite2D
 
 @export_group('vertical or horizontal or circular')
 @export var roaming_radius : float = 64
@@ -19,12 +19,12 @@ class_name Stunner extends Area2D
 func stun():
 	stun_elapsed = 0.0
 	stunned = true
-	get_node('Sprite2D').modulate = Color('#45ba48')
+	visual.play(&"close")
 
 func unstun():
 	stun_elapsed = 0.0
 	stunned = false
-	get_node('Sprite2D').modulate = Color('#fff35a')
+	visual.play(&"fly")
 
 func setup_for_custom():
 	if not custom_waypoints or custom_waypoints.is_empty():
@@ -36,6 +36,7 @@ func setup_for_custom():
 func _ready() -> void:
 	if roaming_mode == Roamer.RoamerMode.CUSTOM: setup_for_custom()
 	initial_position = global_position
+	visual.play(&"fly")
 
 func physics_custom(_delta:float):
 	push_error('physics_custom is not implemented, pick horizontal/vertical/circular %s' % get_path())
