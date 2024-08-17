@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://d2w4hrolcacf"]
+[gd_scene load_steps=23 format=3 uid="uid://d2w4hrolcacf"]
 
 [ext_resource type="Texture2D" uid="uid://n6ffhdeohh4" path="res://game/assets/textures/grappler/grappler_idle.png" id="1_4dmup"]
 [ext_resource type="Texture2D" uid="uid://df7451l8rb2cc" path="res://game/assets/textures/grappler/grappler_hook.png" id="1_qef4r"]
 [ext_resource type="Script" path="res://game/scripts/player/player.gd" id="1_wdwkb"]
-[ext_resource type="PackedScene" uid="uid://ecre5x1e56kj" path="res://game/scenes/background/dust.tscn" id="2_3xtat"]
 [ext_resource type="Script" path="res://game/scripts/player/snappy_controller.gd" id="2_5nukf"]
 [ext_resource type="Texture2D" uid="uid://bq1xf2vs8c72f" path="res://game/assets/textures/grappler/grappler_run.png" id="2_34dff"]
 [ext_resource type="Texture2D" uid="uid://34bbfee1bkjl" path="res://game/assets/textures/grappler/grappler_fall.png" id="2_mqwrg"]
@@ -132,12 +131,11 @@ collide_with_areas = true
 shape = SubResource("RectangleShape2D_bh1qo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
 zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
-
-[node name="CPUParticles2D" parent="Camera2D" instance=ExtResource("2_3xtat")]
 
 [node name="Visual" type="Node2D" parent="."]
 
