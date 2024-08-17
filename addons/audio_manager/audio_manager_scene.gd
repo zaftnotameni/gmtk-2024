@@ -10,6 +10,9 @@ signal sig_volume_changed(which_bus:AudioBus, volume_linear_0_100:float)
 @onready var sfx_test_sound : AudioStreamPlayer = $SFX/TestSound
 @onready var sfx_metal_land : AudioStreamPlayer = $SFX/MetalLand
 @onready var sfx_metal_step : AudioStreamPlayer = $SFX/MetalStep
+@onready var sfx_hook_shot : AudioStreamPlayer = $SFX/HookShot
+@onready var sfx_hook_grab : AudioStreamPlayer = $SFX/HookGrab
+@onready var sfx_hook_rope: AudioStreamPlayer = $SFX/HookRope
 @onready var sfx_kiewing : AudioStreamPlayer = $SFX/Kiewing
 @onready var ui_test_sound : AudioStreamPlayer = $UI/TestSound
 @onready var ui_focus : AudioStreamPlayer = $UI/Focus
