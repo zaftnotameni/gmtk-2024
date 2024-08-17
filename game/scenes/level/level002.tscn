@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://drxh1u8rv8so1"]
+[gd_scene load_steps=12 format=4 uid="uid://drxh1u8rv8so1"]
 
 [ext_resource type="PackedScene" uid="uid://b1yi0feutffi" path="res://game/scenes/background/background.tscn" id="1_d0cca"]
+[ext_resource type="Script" path="res://addons/game_manager/at/hud.gd" id="2_85wqq"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="2_irbb0"]
 [ext_resource type="Script" path="res://addons/game_manager/in/game.gd" id="3_fc63n"]
+[ext_resource type="PackedScene" uid="uid://csrle4wr4xi2i" path="res://game/scenes/timer/timer_hud.tscn" id="3_p5cem"]
 [ext_resource type="Script" path="res://game/scripts/menu/pauseable.gd" id="4_o7t11"]
 [ext_resource type="PackedScene" uid="uid://nv1cibju11qh" path="res://game/scenes/terrain/foreground_tilemap.tscn" id="5_xtdoe"]
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="6_jucyy"]
@@ -13,6 +15,10 @@
 [node name="Level002Roamers" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_d0cca")]
+
+[node name="AtHUD" type="Node" parent="."]
+script = ExtResource("2_85wqq")
+scene = ExtResource("3_p5cem")
 
 [node name="Unpauses" type="Node" parent="."]
 script = ExtResource("2_irbb0")

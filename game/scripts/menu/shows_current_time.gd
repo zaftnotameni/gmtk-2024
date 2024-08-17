@@ -1,18 +1,23 @@
 class_name ShowsCurrentTime extends Node
 
-var line_edit : LineEdit
+@export var line_edit : LineEdit
+@export var label : Label
 
 func _enter_tree() -> void:
 	process_mode = ProcessMode.PROCESS_MODE_INHERIT if Engine.is_editor_hint() else ProcessMode.PROCESS_MODE_ALWAYS
-	if not line_edit: line_edit = get_parent()
-	if not line_edit: line_edit = owner
+	if not line_edit and get_parent() is LineEdit: line_edit = get_parent()
+	if not line_edit and owner is LineEdit: line_edit = owner
+	if not label and get_parent() is Label: label = get_parent()
+	if not label and owner is Label: label = owner
 
 func _ready() -> void:
-	if not line_edit: push_error('missing line_edit on %s' % get_path())
+	if not line_edit and not label: push_error('missing line_edit or label on %s' % get_path())
 
 func _process(_delta: float) -> void:
 	if line_edit and State.current_time > 1:
 		line_edit.text = string_format_time(State.current_time)
+	if label and State.current_time > 1:
+		label.text = string_format_time(State.current_time)
 
 static func string_format_time(time_seconds: float) -> String:
 	if time_seconds <= 0: return '--:--:--.---'

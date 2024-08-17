@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cblf4vilv7j4m"]
+[gd_scene load_steps=11 format=4 uid="uid://cblf4vilv7j4m"]
 
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="1_2ssa5"]
 [ext_resource type="PackedScene" uid="uid://b1yi0feutffi" path="res://game/scenes/background/background.tscn" id="1_8kvf7"]
@@ -8,10 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="5_61ced"]
 [ext_resource type="Script" path="res://game/scripts/terrain/level_goal.gd" id="7_xoyep"]
 [ext_resource type="PackedScene" uid="uid://drxh1u8rv8so1" path="res://game/scenes/level/level002.tscn" id="8_nj6b7"]
+[ext_resource type="Script" path="res://addons/game_manager/at/hud.gd" id="9_jpas7"]
+[ext_resource type="PackedScene" uid="uid://csrle4wr4xi2i" path="res://game/scenes/timer/timer_hud.tscn" id="10_foja6"]
 
 [node name="Level001OneWay" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_8kvf7")]
+
+[node name="AtHUD" type="Node" parent="."]
+script = ExtResource("9_jpas7")
+scene = ExtResource("10_foja6")
 
 [node name="Unpauses" type="Node" parent="."]
 script = ExtResource("1_2ssa5")
