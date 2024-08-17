@@ -147,6 +147,18 @@ respawn={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="generic"
+2d_physics/layer_2="player_body"
+2d_physics/layer_3="hook_stunner"
+2d_physics/layer_4="target_stunner"
+2d_physics/layer_5="hookable"
+2d_physics/layer_6="solid_terrain"
+2d_physics/layer_7="one_way_terrain"
+2d_physics/layer_8="level_goal"
+2d_physics/layer_9="checkpoint"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
