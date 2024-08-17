@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://cblf4vilv7j4m"]
+[gd_scene load_steps=9 format=4 uid="uid://cblf4vilv7j4m"]
 
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="1_2ssa5"]
 [ext_resource type="PackedScene" uid="uid://b1yi0feutffi" path="res://game/scenes/background/background.tscn" id="1_8kvf7"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://game/scripts/menu/pauseable.gd" id="3_wnp8r"]
 [ext_resource type="PackedScene" uid="uid://nv1cibju11qh" path="res://game/scenes/terrain/foreground_tilemap.tscn" id="4_sstbt"]
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="5_61ced"]
+[ext_resource type="Script" path="res://game/scripts/terrain/level_goal.gd" id="7_xoyep"]
+[ext_resource type="PackedScene" uid="uid://drxh1u8rv8so1" path="res://game/scenes/level/level002.tscn" id="8_nj6b7"]
 
 [node name="Level001" type="Node2D"]
 
@@ -27,3 +29,8 @@ tile_map_data = PackedByteArray("AAABAB0AAAABAAAAAAACAB0AAAABAAAAAAADAB0AAAABAAA
 position = Vector2(144, 432)
 active = true
 spawn_on_ready = true
+
+[node name="LevelGoal" type="Area2D" parent="."]
+position = Vector2(192, -8)
+script = ExtResource("7_xoyep")
+next_level = ExtResource("8_nj6b7")
