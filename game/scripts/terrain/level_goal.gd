@@ -49,7 +49,7 @@ func go_to_next_level():
 	tween.parallel().tween_callback(owner.add_sibling.bind(instance))
 	tween.tween_callback(State.mark_as_game).set_delay(0.1)
 	tween.tween_callback(State.transition_finish).set_delay(0.1)
-	transition.queue_free()
+	tween.tween_callback(transition.queue_free).set_delay(0.1)
 
 func on_body_entered(body:Node2D):
 	if body is Player: go_to_next_level()
