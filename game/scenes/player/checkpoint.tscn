@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://disdj2vlloaq6"]
+[gd_scene load_steps=13 format=3 uid="uid://disdj2vlloaq6"]
 
 [ext_resource type="Script" path="res://game/scripts/player/checkpoint.gd" id="1_ph418"]
 [ext_resource type="Texture2D" uid="uid://igt2w30du1dq" path="res://game/assets/textures/grappler/grappler_spawner.png" id="2_dv5hl"]
 [ext_resource type="Texture2D" uid="uid://n6ffhdeohh4" path="res://game/assets/textures/grappler/grappler_idle.png" id="3_lpfjv"]
+[ext_resource type="AudioStream" uid="uid://driuviinjymyy" path="res://game/resources/audio/sfx/waaaaaaaaaaaahhhhhhhhh.wav" id="4_wba4j"]
+[ext_resource type="AudioStream" uid="uid://iq2b1otjbqxv" path="res://game/resources/audio/sfx/Chomp.wav" id="5_nups7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7eft6"]
 size = Vector2(32, 32)
@@ -88,6 +90,42 @@ tracks/6/path = NodePath("Boom:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WindUp:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WindUp:pitch_scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Boom2:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -181,6 +219,42 @@ tracks/6/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WindUp:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WindUp:pitch_scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.2, 3.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Boom2:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tvjmf"]
 _data = {
@@ -259,3 +333,15 @@ initial_velocity_min = 20.0
 initial_velocity_max = 25.0
 scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_4rssh")
+
+[node name="WindUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wba4j")
+volume_db = -15.0
+
+[node name="Boom2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nups7")
+volume_db = -10.0
+pitch_scale = 2.0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 5)
