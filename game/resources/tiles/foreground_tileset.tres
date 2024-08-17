@@ -12,7 +12,17 @@ texture = ExtResource("1_8bapq")
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:2/0 = 0
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
+2:0/0/physics_layer_0/polygon_0/one_way = true
+2:0/0/custom_data_0 = "one_way"
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
+3:0/0/physics_layer_0/polygon_0/one_way = true
+3:0/0/custom_data_0 = "one_way"
 
 [resource]
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "tile_type"
+custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_qu2gi")
