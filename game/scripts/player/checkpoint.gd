@@ -45,6 +45,8 @@ func spawn():
 	Layers.game.add_child.call_deferred(p)
 	p.process_mode = Node.PROCESS_MODE_DISABLED
 	p.hide()
+	p.global_position.y += 7.5
+	p.global_position.x += 2.0
 	await p.ready
 	animator.play("flash")
 	await animator.animation_finished
