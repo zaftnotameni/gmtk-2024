@@ -1,7 +1,7 @@
 class_name PlayerControllerSnappy extends Node
 
 enum PlayerState { INITIAL, GROUNDED, AIRBORNE, HOOK_IMPULSE, HOOKING }
-enum GrappleState { READY, FIRING, HIT }
+enum GrappleState { READY, COOLDOWN, FIRING, HIT }
 
 const GROUP := 'snappy'
 
@@ -22,6 +22,8 @@ const GROUP := 'snappy'
 @export var player_state : PlayerState
 @export var grapple_state : GrappleState
 @export var grapple_target : Node2D
+@export var grapple_cooldown_elapsed : float = 0
+@export var grapple_cooldown_time : float = 0.5
 
 @export_category('nodes')
 @export var character : CharacterBody2D
@@ -109,10 +111,20 @@ func clear_grapple_target():
 	grapple_target = null
 
 func grapple_ready_physics(_delta:float) -> void:
+	grapple_cooldown_elapsed = 0.0
 	clear_grapple_target()
+
+func grapple_cooldown_physics(delta:float) -> void:
+	clear_grapple_target()
+	grapple_cooldown_elapsed += delta
+	if character.velocity.y < 0: character.velocity.y = 0
+	if grapple_cooldown_elapsed > grapple_cooldown_time:
+		grapple_cooldown_elapsed = 0
+		grapple_state = GrappleState.READY
 
 func grapple_firing_physics(delta:float) -> void:
 	sprite.play('hook')
+	grapple_cooldown_elapsed = 0.0
 	rope.points[-1].y -= rope_impulse * delta
 	hook.global_position = rope.to_global(rope.points[-1])
 	hook.show()
@@ -125,6 +137,7 @@ func grapple_firing_physics(delta:float) -> void:
 			player_state = PlayerState.GROUNDED
 		if not character.is_on_floor():
 			player_state = PlayerState.AIRBORNE
+			grapple_state = GrappleState.COOLDOWN
 	if cast.is_colliding():
 		if cast.get_collider() is TileMapLayer:
 			var layer := cast.get_collider() as TileMapLayer
@@ -136,16 +149,20 @@ func grapple_firing_physics(delta:float) -> void:
 				grapple_state = GrappleState.HIT
 				grapple_target = OneWayPlatform.new()
 				grapple_target.global_position = cast.get_collision_point() + Vector2(0, 0)
-		if cast.get_collider() is GrappleTarget:
+		elif cast.get_collider() is GrappleTarget:
 			grapple_state = GrappleState.HIT
 			grapple_target = cast.get_collider()
 			if grapple_target and grapple_target.get_parent().has_method('grapple'):
 				grapple_target.get_parent().grapple()
-		if cast.get_collider() is OneWayPlatform:
+		elif cast.get_collider() is OneWayPlatform:
 			grapple_state = GrappleState.HIT
 			grapple_target = cast.get_collider()
+		else:
+			if not character.is_on_floor():
+				grapple_state = GrappleState.COOLDOWN
 
 func grapple_hit_physics(_delta:float) -> void:
+	grapple_cooldown_elapsed = 0.0
 	sprite.play('hook')
 	character.velocity.x = 0
 	if grapple_target is OneWayPlatform:
@@ -182,6 +199,9 @@ func _physics_process(delta: float) -> void:
 	if input.x < -0.1:
 		sprite.flip_h = true
 	match grapple_state:
+		GrappleState.COOLDOWN:
+			grapple_cooldown_physics(delta)
+			movement_physics(delta)
 		GrappleState.READY:
 			grapple_ready_physics(delta)
 			movement_physics(delta)
