@@ -4,6 +4,7 @@ const GROUP := 'checkpoints'
 
 @export var active : bool = false
 @export var spawn_on_ready : bool = false
+@export var animator: AnimationPlayer
 
 @export_group('internals')
 @export var scene : PackedScene
@@ -36,7 +37,13 @@ func spawn():
 	var p := scene.instantiate() as Node2D
 	p.global_position = global_position
 	Layers.game.add_child(p)
-	await p.ready
+	p.process_mode = Node.PROCESS_MODE_DISABLED
+	p.hide()
+	animator.play("flash")
+	await animator.animation_finished
+	p.process_mode = Node.PROCESS_MODE_INHERIT
+	p.show()
+
 
 func deactivate():
 	active = false
