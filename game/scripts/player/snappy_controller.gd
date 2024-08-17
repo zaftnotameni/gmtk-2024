@@ -18,7 +18,7 @@ enum GrappleState { READY, FIRING, HIT }
 @export_category('internals')
 @export var player_state : PlayerState
 @export var grapple_state : GrappleState
-@export var grapple_target : GrappleTarget
+@export var grapple_target : Node2D
 
 @export_category('nodes')
 @export var character : CharacterBody2D
@@ -108,6 +108,9 @@ func grapple_firing_physics(delta:float) -> void:
 		if cast.get_collider() is GrappleTarget:
 			grapple_state = GrappleState.HIT
 			grapple_target = cast.get_collider()
+		if cast.get_collider() is OneWayPlatform:
+			grapple_state = GrappleState.HIT
+			grapple_target = cast.get_collider()
 
 func grapple_hit_physics(_delta:float) -> void:
 	sprite.play('hook')
@@ -149,6 +152,10 @@ func _physics_process(delta: float) -> void:
 			grapple_firing_physics(delta)
 		GrappleState.HIT:
 			grapple_hit_physics(delta)
+
+func on_one_way_platform_hit(target:OneWayPlatform) -> void:
+	grapple_state = GrappleState.HIT
+	grapple_target = target
 
 func on_grapple_target_hit(target:GrappleTarget) -> void:
 	grapple_state = GrappleState.HIT
