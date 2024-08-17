@@ -11,6 +11,9 @@ static func tree() -> SceneTree: return Engine.get_main_loop()
 static func all() -> Array: return tree().get_nodes_in_group(GROUP)
 static func first() -> Player: return tree().get_first_node_in_group(GROUP)
 
+func _ready() -> void:
+	$AnimationPlayer.play('spawn')
+
 func die() -> void:
 	process_mode = PROCESS_MODE_DISABLED
 	animator.play("die")
