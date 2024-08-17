@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb6e2vftni1sy"]
+
+[ext_resource type="Script" path="res://game/scripts/boss/weak_point.gd" id="1_wjinw"]
+
+[sub_resource type="Gradient" id="Gradient_o6ool"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gu5ju"]
+gradient = SubResource("Gradient_o6ool")
+width = 16
+height = 16
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06m21"]
+
+[node name="WeakPoint" type="Area2D"]
+collision_layer = 1024
+collision_mask = 4
+script = ExtResource("1_wjinw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_gu5ju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_06m21")
