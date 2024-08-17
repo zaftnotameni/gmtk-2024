@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://csrle4wr4xi2i"]
+
+[ext_resource type="Script" path="res://game/scripts/menu/shows_current_time.gd" id="1_a8arc"]
+
+[node name="TimerHud" type="PanelContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -124.0
+offset_bottom = 87.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "--:--:--.---"
+
+[node name="ShowsCurrentTime" type="Node" parent="MarginContainer/Label"]
+script = ExtResource("1_a8arc")
