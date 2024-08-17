@@ -71,7 +71,7 @@ func _enter_tree() -> void:
 
 func update_ui(volume_linear_0_100:float, slider:Slider=null, label:Label=null):
 	if slider: slider.value = volume_linear_0_100
-	if label: label.text = str(roundi(volume_linear_0_100))
+	if label: label.text = str(roundi(volume_linear_0_100)) + '%'
 
 func set_volume_linear_0_100(which_bus:AudioBus, volume_linear_0_100:float, slider:Slider=null, label:Label=null, skip_update_from_audio_server:=false):
 	AudioServer.set_bus_volume_db(which_bus, linear_to_db(volume_linear_0_100 / 100.0))

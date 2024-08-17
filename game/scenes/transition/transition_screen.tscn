@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://yvvxffn8j8tx"]
+
+[ext_resource type="Script" path="res://game/scripts/transition/transition_screen_scene.gd" id="1_3sl0l"]
+[ext_resource type="PackedScene" uid="uid://b1yi0feutffi" path="res://game/scenes/background/background.tscn" id="2_n4iol"]
+[ext_resource type="Texture2D" uid="uid://df7451l8rb2cc" path="res://game/assets/textures/grappler/grappler_hook.png" id="3_71rf0"]
+
+[node name="TransitionScreen" type="Node2D"]
+script = ExtResource("1_3sl0l")
+
+[node name="Background" parent="." instance=ExtResource("2_n4iol")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_71rf0")

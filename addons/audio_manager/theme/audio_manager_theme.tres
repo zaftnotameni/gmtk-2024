@@ -1,31 +1,31 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://iw41c5meb6py"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dooje"]
-size = Vector2(0, 24)
+size = Vector2(0, 36)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xu3ca"]
 size = Vector2(0, 0)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qf0co"]
-size = Vector2(2, 24)
+size = Vector2(0, 36)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_604hi"]
 size = Vector2(0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bn2w"]
-bg_color = Color(0.286865, 0, 0.367188, 1)
+bg_color = Color(0.25098, 0.305882, 0.54902, 1)
 expand_margin_top = 12.0
-expand_margin_bottom = 12.0
+expand_margin_bottom = 18.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84vq4"]
-bg_color = Color(0.953125, 0.0856323, 0.93957, 1)
+bg_color = Color(0.207843, 0.635294, 0.815686, 1)
 expand_margin_top = 12.0
-expand_margin_bottom = 12.0
+expand_margin_bottom = 18.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0o3k"]
-bg_color = Color(0.163054, 0.00762939, 0.195313, 1)
+bg_color = Color(0.129412, 0.0901961, 0.333333, 1)
 expand_margin_top = 12.0
-expand_margin_bottom = 12.0
+expand_margin_bottom = 18.0
 
 [resource]
 HSlider/constants/center_grabber = 1
@@ -37,3 +37,5 @@ HSlider/icons/tick = SubResource("PlaceholderTexture2D_604hi")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_1bn2w")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_84vq4")
 HSlider/styles/slider = SubResource("StyleBoxFlat_f0o3k")
+Label/colors/font_color = Color(0.207843, 0.635294, 0.815686, 1)
+Label/font_sizes/font_size = 48
