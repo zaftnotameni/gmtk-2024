@@ -11,7 +11,8 @@ enum GrappleState { READY, FIRING, HIT }
 @export var max_speed_down : float = 600
 @export var rope_max_length : float = 64
 @export var rope_impulse : float = 1600 / 8.0
-@export var grapple_impulse : float = 400
+@export var grapple_impulse : float = 300
+@export var grapple_impulse_platform : float = 200
 @export var hook_impulse_time : float = 0.01
 @export var hook_impulse_elapsed : float = 0.0
 
@@ -115,7 +116,10 @@ func grapple_firing_physics(delta:float) -> void:
 func grapple_hit_physics(_delta:float) -> void:
 	sprite.play('hook')
 	character.velocity.x = 0
-	character.velocity.y = -grapple_impulse
+	if grapple_target is OneWayPlatform:
+		character.velocity.y = -grapple_impulse_platform
+	else:
+		character.velocity.y = -grapple_impulse
 	if grapple_target:
 		rope.points[-1].y = rope.to_local(grapple_target.global_position).y
 		if character.global_position.y < grapple_target.global_position.y:
