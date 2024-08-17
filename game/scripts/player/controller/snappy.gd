@@ -24,6 +24,8 @@ const GROUP := 'snappy'
 @export var grapple_target : Node2D
 @export var grapple_cooldown_elapsed : float = 0
 @export var grapple_cooldown_time : float = 0.5
+@export_flags_2d_physics var initial_mask : int
+@export_flags_2d_physics var initial_layer : int
 
 @export_category('nodes')
 @export var character : CharacterBody2D
@@ -43,6 +45,8 @@ func _ready() -> void:
 	if not sprite: sprite = %Sprite
 	if not hook: hook = %Hook
 	if not stun: stun = %HookStunner
+	initial_mask = character.collision_mask
+	initial_layer = character.collision_layer
 
 func default_physics(delta:float) -> void:
 	var input := PlayerInput.xy_normalized()
@@ -111,10 +115,16 @@ func clear_grapple_target():
 	grapple_target = null
 
 func grapple_ready_physics(_delta:float) -> void:
+	character.collision_mask = initial_mask
+	character.collision_layer = initial_layer
+
 	grapple_cooldown_elapsed = 0.0
 	clear_grapple_target()
 
 func grapple_cooldown_physics(delta:float) -> void:
+	character.collision_mask = initial_mask
+	character.collision_layer = initial_layer
+
 	clear_grapple_target()
 	grapple_cooldown_elapsed += delta
 	if character.velocity.y < 0: character.velocity.y = 0
@@ -123,6 +133,9 @@ func grapple_cooldown_physics(delta:float) -> void:
 		grapple_state = GrappleState.READY
 
 func grapple_firing_physics(delta:float) -> void:
+	character.collision_mask = initial_mask
+	character.collision_layer = initial_layer
+
 	sprite.play('hook')
 	grapple_cooldown_elapsed = 0.0
 	rope.points[-1].y -= rope_impulse * delta
@@ -162,6 +175,9 @@ func grapple_firing_physics(delta:float) -> void:
 				grapple_state = GrappleState.COOLDOWN
 
 func grapple_hit_physics(_delta:float) -> void:
+	character.collision_mask = 0
+	character.collision_layer = 0
+
 	grapple_cooldown_elapsed = 0.0
 	sprite.play('hook')
 	character.velocity.x = 0
