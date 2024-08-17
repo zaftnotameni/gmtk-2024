@@ -1,41 +1,68 @@
-[gd_scene load_steps=9 format=3 uid="uid://6ay6fsvm7w22"]
+[gd_scene load_steps=13 format=3 uid="uid://dedsny5oiuid6"]
 
 [ext_resource type="Script" path="res://game/scripts/terrain/stunner.gd" id="1_6n605"]
-[ext_resource type="Texture2D" uid="uid://bout11l2h3108" path="res://game/assets/textures/grapple_points/drone.png" id="2_w1j80"]
+[ext_resource type="Texture2D" uid="uid://cwpdj1xga2p42" path="res://game/assets/textures/grapple_points/stun_drone_close.png" id="2_u25bm"]
+[ext_resource type="Texture2D" uid="uid://cukknm7eaf46q" path="res://game/assets/textures/grapple_points/stun_drone_fly.png" id="3_khll8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_10ssg"]
 radius = 16.0312
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sfl7b"]
-atlas = ExtResource("2_w1j80")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv5wq"]
+atlas = ExtResource("2_u25bm")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_75cd7"]
-atlas = ExtResource("2_w1j80")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hlvh"]
+atlas = ExtResource("2_u25bm")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jd11m"]
-atlas = ExtResource("2_w1j80")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k53u"]
+atlas = ExtResource("2_u25bm")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s62d8"]
-atlas = ExtResource("2_w1j80")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydbq0"]
+atlas = ExtResource("3_khll8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d1e2"]
+atlas = ExtResource("3_khll8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5i2d"]
+atlas = ExtResource("3_khll8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtixb"]
+atlas = ExtResource("3_khll8")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1wf1o"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sfl7b")
+"texture": SubResource("AtlasTexture_bv5wq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_75cd7")
+"texture": SubResource("AtlasTexture_3hlvh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jd11m")
+"texture": SubResource("AtlasTexture_1k53u")
+}],
+"loop": false,
+"name": &"close",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydbq0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s62d8")
+"texture": SubResource("AtlasTexture_7d1e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5i2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtixb")
 }],
 "loop": true,
 "name": &"fly",
@@ -52,7 +79,7 @@ visual = NodePath("AnimatedSprite2D")
 shape = SubResource("CircleShape2D_10ssg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
 sprite_frames = SubResource("SpriteFrames_1wf1o")
 animation = &"fly"
 autoplay = "fly"
+frame_progress = 0.595031
