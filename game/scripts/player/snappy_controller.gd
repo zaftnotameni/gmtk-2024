@@ -10,9 +10,9 @@ enum GrappleState { READY, FIRING, HIT }
 @export var gravity_down : float = 800
 @export var max_speed_down : float = 600
 @export var rope_max_length : float = 64
-@export var rope_impulse : float = 1600 / 8.0
+@export var rope_impulse : float = 200
 @export var grapple_impulse : float = 300
-@export var grapple_impulse_platform : float = 200
+@export var grapple_impulse_platform : float = 220
 @export var hook_impulse_time : float = 0.01
 @export var hook_impulse_elapsed : float = 0.0
 
@@ -60,6 +60,7 @@ func default_physics(delta:float) -> void:
 
 	if not character.is_on_floor():
 		player_state = PlayerState.AIRBORNE
+		sprite.play('air')
 
 func hook_impulse_physics(delta:float) -> void:
 	var input := PlayerInput.xy_normalized()
@@ -86,10 +87,15 @@ func initiate_grapple() -> void:
 	hook.global_position = rope.to_global(rope.points[-1])
 	hook.show()
 
-func grapple_ready_physics(_delta:float) -> void:
+func clear_grapple_target():
 	hook.hide()
 	rope.points[-1] = Vector2.ZERO
+	if grapple_target and grapple_target.get_parent().has_method('ungrapple'):
+		grapple_target.get_parent().ungrapple()
 	grapple_target = null
+
+func grapple_ready_physics(_delta:float) -> void:
+	clear_grapple_target()
 
 func grapple_firing_physics(delta:float) -> void:
 	sprite.play('hook')
@@ -106,9 +112,21 @@ func grapple_firing_physics(delta:float) -> void:
 		if not character.is_on_floor():
 			player_state = PlayerState.AIRBORNE
 	if cast.is_colliding():
+		if cast.get_collider() is TileMapLayer:
+			var layer := cast.get_collider() as TileMapLayer
+			if not layer: return
+			var coords := layer.get_coords_for_body_rid(cast.get_collider_rid())
+			var data := layer.get_cell_tile_data(coords)
+			if not data: return
+			if data.get_custom_data('tile_type') == 'one_way':
+				grapple_state = GrappleState.HIT
+				grapple_target = OneWayPlatform.new()
+				grapple_target.global_position = cast.get_collision_point() + Vector2(0, 0)
 		if cast.get_collider() is GrappleTarget:
 			grapple_state = GrappleState.HIT
 			grapple_target = cast.get_collider()
+			if grapple_target and grapple_target.get_parent().has_method('grapple'):
+				grapple_target.get_parent().grapple()
 		if cast.get_collider() is OneWayPlatform:
 			grapple_state = GrappleState.HIT
 			grapple_target = cast.get_collider()
@@ -122,14 +140,14 @@ func grapple_hit_physics(_delta:float) -> void:
 		character.velocity.y = -grapple_impulse
 	if grapple_target:
 		rope.points[-1].y = rope.to_local(grapple_target.global_position).y
+		hook.global_position = rope.to_global(rope.points[-1])
 		if character.global_position.y < grapple_target.global_position.y:
 			grapple_state = GrappleState.READY
 			player_state = PlayerState.HOOK_IMPULSE
 			hook_impulse_elapsed = 0.0
-			grapple_target = null
+			clear_grapple_target()
 	else:
-		grapple_state = GrappleState.READY
-		grapple_target = null
+		clear_grapple_target()
 
 	character.move_and_slide()
 
@@ -156,11 +174,3 @@ func _physics_process(delta: float) -> void:
 			grapple_firing_physics(delta)
 		GrappleState.HIT:
 			grapple_hit_physics(delta)
-
-func on_one_way_platform_hit(target:OneWayPlatform) -> void:
-	grapple_state = GrappleState.HIT
-	grapple_target = target
-
-func on_grapple_target_hit(target:GrappleTarget) -> void:
-	grapple_state = GrappleState.HIT
-	grapple_target = target
