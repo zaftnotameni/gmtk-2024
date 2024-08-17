@@ -17,9 +17,11 @@ func _enter_tree() -> void:
 	if not scene: scene = load('res://game/scenes/player/player.tscn')
 
 func _ready() -> void:
-	if spawn_on_ready: spawn.call_deferred()
 	body_entered.connect(on_body_entered)
 	if active: activate()
+	if not State.game_state == GameManagerState.GameState.GAME:
+		await State.sig_game_state_game
+	if spawn_on_ready: spawn.call_deferred()
 
 func on_body_entered(body:Node2D):
 	if body is Player: activate()

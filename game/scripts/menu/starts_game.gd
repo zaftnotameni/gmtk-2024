@@ -9,12 +9,13 @@ const FIRST_LEVEL := preload('res://game/scenes/level/level001.tscn')
 
 func on_pressed():
 	var instance : Node2D = scene.instantiate()
+	State.transition_start()
 	Layers.game.add_child.call_deferred(instance)
 	var tween := create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.set_pause_mode(Tween.TweenPauseMode.TWEEN_PAUSE_PROCESS)
 	tween.parallel().tween_property(menu, ^'position:x', -2000, 0.3).from(0)
-	tween.parallel().tween_property(instance, ^'position:x', 0, 0.3).from(2000)
 	await tween.finished
+	State.transition_finish()
 	menu.queue_free()
 
 func _enter_tree() -> void:

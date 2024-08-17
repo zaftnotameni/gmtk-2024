@@ -2,12 +2,24 @@
 class_name GameManagerState extends Node
 
 signal sig_game_state_changed(new_state:GameState, prev_state:GameState)
+signal sig_game_state_game()
+signal sig_transition_finished()
+signal sig_transition_started()
 
 enum GameState { INITIAL = 0, LOADING, TITLE, MENU, CUTSCENE, GAME, PAUSED, VICTORY, DEFEAT }
 
 static var current_time : float = 0.0
 static var game_state : GameState = GameState.INITIAL
 static var game_state_stack : Array[GameState] = [GameState.INITIAL]
+static var transition : bool = false
+
+func transition_start():
+	transition = true
+	sig_transition_started.emit()
+
+func transition_finish():
+	transition = false
+	sig_transition_finished.emit()
 
 # these functions completely override the state stack, setting it to a single state
 func mark_as_initial(): mark_as(GameState.INITIAL)
@@ -50,6 +62,7 @@ func pop_as(expected_current_state:GameState):
 	game_state = game_state_stack[-1]
 	print_verbose('game_state: %s' % str(game_state_stack.map(name_of)))
 	sig_game_state_changed.emit(game_state)
+	if game_state == GameState.GAME: sig_game_state_game.emit()
 
 func push_as(new_state:GameState):
 	if new_state == game_state: return
@@ -57,6 +70,7 @@ func push_as(new_state:GameState):
 	game_state_stack.push_back(new_state)
 	print_verbose('game_state: %s' % str(game_state_stack.map(name_of)))
 	sig_game_state_changed.emit(game_state)
+	if game_state == GameState.GAME: sig_game_state_game.emit()
 
 func mark_as(new_state:GameState):
 	if new_state == game_state: return
@@ -65,6 +79,7 @@ func mark_as(new_state:GameState):
 	game_state_stack = [new_state]
 	print_verbose('game_state: %s' % str(game_state_stack.map(name_of)))
 	sig_game_state_changed.emit(game_state, prev_state)
+	if game_state == GameState.GAME: sig_game_state_game.emit()
 
 func name_of(state_id:GameState) -> String:
 	return GameState.find_key(state_id)
