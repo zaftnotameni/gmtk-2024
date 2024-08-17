@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvj43ml301lyq"
-path="res://.godot/imported/grappling_hook_tip.png-ce9ac06fd0ae36f353e052572959606e.ctex"
+uid="uid://bsdp0tktyfvsk"
+path="res://.godot/imported/grappler_spawner_off.png-03d05bc3c0ecf6b7bfb69df989a93156.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/assets/textures/grappler/grappling_hook_tip.png"
-dest_files=["res://.godot/imported/grappling_hook_tip.png-ce9ac06fd0ae36f353e052572959606e.ctex"]
+source_file="res://game/assets/textures/grappler/grappler_spawner_off.png"
+dest_files=["res://.godot/imported/grappler_spawner_off.png-03d05bc3c0ecf6b7bfb69df989a93156.ctex"]
 
 [params]
 
