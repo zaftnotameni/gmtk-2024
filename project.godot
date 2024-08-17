@@ -163,6 +163,7 @@ respawn={
 2d_physics/layer_8="level_goal"
 2d_physics/layer_9="checkpoint"
 2d_physics/layer_10="hazard"
+2d_physics/layer_11="weak_point"
 
 [physics]
 
