@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dvyv40q50kxcb"]
+[gd_scene load_steps=14 format=4 uid="uid://dvyv40q50kxcb"]
 
 [ext_resource type="PackedScene" uid="uid://b1yi0feutffi" path="res://game/scenes/background/background.tscn" id="1_463ix"]
 [ext_resource type="Script" path="res://addons/game_manager/at/hud.gd" id="2_0nclk"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cb6e2vftni1sy" path="res://game/scenes/boss/weak_point.tscn" id="10_gm6ym"]
 [ext_resource type="Script" path="res://game/scripts/boss/test.gd" id="10_v7ykv"]
 [ext_resource type="Script" path="res://game/scripts/behaviors/sin_waves.gd" id="11_4m0iy"]
+[ext_resource type="PackedScene" uid="uid://cn61ng4h8eo0l" path="res://game/scenes/terrain/moving_platform.tscn" id="12_n05lj"]
 
 [sub_resource type="Curve2D" id="Curve2D_pai2x"]
 _data = {
@@ -60,3 +61,13 @@ position = Vector2(-56, -32)
 
 [node name="SinWaves" type="Node" parent="WeakPoint"]
 script = ExtResource("11_4m0iy")
+
+[node name="MovingPlatform" parent="." instance=ExtResource("12_n05lj")]
+position = Vector2(-208, -32)
+
+[node name="SinWaves" type="Node" parent="MovingPlatform"]
+script = ExtResource("11_4m0iy")
+amplitude_x = 20.0
+amplitude_y = 0.0
+speed_x = 1.0
+speed_y = 0.0
