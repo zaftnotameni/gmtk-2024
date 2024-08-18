@@ -41,6 +41,7 @@ Vector2i(-1, -1): {
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ws4v7"]
+random_pitch = 1.05
 streams_count = 1
 stream_0/stream = ExtResource("5_m21n5")
 
