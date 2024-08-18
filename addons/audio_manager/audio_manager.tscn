@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ba1d40dbrw0bt"]
+[gd_scene load_steps=12 format=3 uid="uid://ba1d40dbrw0bt"]
 
 [ext_resource type="Script" path="res://addons/audio_manager/audio_manager_scene.gd" id="1_1vslr"]
 [ext_resource type="AudioStream" uid="uid://chh8ada3dsfd5" path="res://addons/audio_manager/sounds/bfxr_blip.wav" id="1_re8og"]
@@ -10,6 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://b08axennnte5f" path="res://game/resources/audio/sfx/stepofthefoot.wav" id="5_m21n5"]
 [ext_resource type="AudioStream" uid="uid://561emx4eks7i" path="res://game/resources/audio/sfx/blooep.wav" id="6_q8q3d"]
 [ext_resource type="AudioStream" uid="uid://driuviinjymyy" path="res://game/resources/audio/sfx/waaaaaaaaaaaahhhhhhhhh.wav" id="6_wcwbm"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ws4v7"]
+streams_count = 1
+stream_0/stream = ExtResource("5_m21n5")
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_1vslr")
@@ -38,7 +42,7 @@ pitch_scale = 4.0
 bus = &"SFX"
 
 [node name="MetalStep" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("5_m21n5")
+stream = SubResource("AudioStreamRandomizer_ws4v7")
 volume_db = -5.0
 bus = &"SFX"
 
