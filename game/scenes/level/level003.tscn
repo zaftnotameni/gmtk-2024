@@ -38,10 +38,10 @@ active = true
 spawn_on_ready = true
 
 [node name="LevelTitle" parent="." instance=ExtResource("9_g5sfs")]
-offset_left = 168.0
-offset_top = 408.0
-offset_right = 456.0
-offset_bottom = 434.0
+offset_left = 96.0
+offset_top = 464.0
+offset_right = 352.0
+offset_bottom = 480.0
 text = "Level 03: Why did it have to be Spikes?"
 
 [node name="LevelGoal" type="Area2D" parent="."]

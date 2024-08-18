@@ -1,5 +1,7 @@
 class_name Checkpoint extends Area2D
 
+signal sig_spawn_animation_finished()
+
 const GROUP := 'checkpoints'
 
 @export var active : bool = false
@@ -52,7 +54,7 @@ func spawn():
 	await animator.animation_finished
 	p.show()
 	p.process_mode = Node.PROCESS_MODE_INHERIT
-
+	sig_spawn_animation_finished.emit()
 
 func deactivate():
 	active = false
