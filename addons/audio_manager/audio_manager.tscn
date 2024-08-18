@@ -40,7 +40,6 @@ bus = &"SFX"
 [node name="MetalStep" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("5_m21n5")
 volume_db = -5.0
-autoplay = true
 bus = &"SFX"
 
 [node name="HookShot" type="AudioStreamPlayer" parent="SFX"]
