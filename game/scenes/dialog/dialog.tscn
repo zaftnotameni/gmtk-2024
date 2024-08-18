@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1pa1xbul0335"]
+
+[ext_resource type="Script" path="res://game/scripts/dialog/dialog.gd" id="1_orvfs"]
+
+[node name="Dialog" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+autowrap_mode = 3
+script = ExtResource("1_orvfs")
+pages = Array[String](["Mao meo mjá mi'au. Miauw meow meo niaou. Myām̥ō miao miyav muning muwaa'.
+
+Mjau miyāʾūṉ mjau. Ya-ong mjau νιάου mjau ngiyaw. Miyav mjau mi'au myau νιάου mi'au meo. Meo mjau meo miav nyā miao νιάου miyav mi'au.
+", "Mao meo mjá mi'au. Miauw meow meo niaou. Myām̥ō miao miyav muning muwaa'.
+
+Mjau miyāʾūṉ mjau. Ya-ong mjau νιάου mjau ngiyaw. Miyav mjau mi'au myau νιάου mi'au meo. Meo mjau meo miav nyā miao νιάου miyav mi'au.", "Mao meo mjá mi'au. Miauw meow meo niaou. Myām̥ō miao miyav muning muwaa'.
+
+Mjau miyāʾūṉ mjau. Ya-ong mjau νιάου mjau ngiyaw. Miyav mjau mi'au myau νιάου mi'au meo. Meo mjau meo miav nyā miao νιάου miyav mi'au."])
