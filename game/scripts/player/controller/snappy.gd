@@ -294,4 +294,5 @@ static func chained_hooks_add(how_many:float=1):
 
 static func chained_hooks_reset():
 	if chained_hooks_count > 0: print_verbose('chained hooks reset!')
+	chained_hooks_percentage *= 0.5
 	chained_hooks_count = 0

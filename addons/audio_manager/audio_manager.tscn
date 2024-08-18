@@ -1,15 +1,44 @@
-[gd_scene load_steps=12 format=3 uid="uid://ba1d40dbrw0bt"]
+[gd_scene load_steps=18 format=3 uid="uid://ba1d40dbrw0bt"]
 
 [ext_resource type="Script" path="res://addons/audio_manager/audio_manager_scene.gd" id="1_1vslr"]
 [ext_resource type="AudioStream" uid="uid://chh8ada3dsfd5" path="res://addons/audio_manager/sounds/bfxr_blip.wav" id="1_re8og"]
 [ext_resource type="AudioStream" uid="uid://b62wcavmn48tc" path="res://addons/audio_manager/sounds/bfxr_focus.wav" id="2_fnp5g"]
 [ext_resource type="AudioStream" uid="uid://c5vjua3rvpwgp" path="res://game/assets/audio/bgm/lofimenuwq.mp3" id="3_n0ouj"]
+[ext_resource type="AudioStream" uid="uid://b2lnyvnmmunn1" path="res://game/assets/audio/bgm/1.wav" id="4_0xbp4"]
 [ext_resource type="AudioStream" uid="uid://iq2b1otjbqxv" path="res://game/resources/audio/sfx/Chomp.wav" id="4_sqkic"]
 [ext_resource type="AudioStream" uid="uid://c27lc4o3m1y67" path="res://addons/audio_manager/sounds/bfxr_press.wav" id="4_youm6"]
+[ext_resource type="AudioStream" uid="uid://c1vetvwoiwqpg" path="res://game/assets/audio/bgm/2.wav" id="5_5ixuw"]
 [ext_resource type="AudioStream" uid="uid://bukyy7per5rpv" path="res://game/assets/audio/sfx/kiewing.wav" id="5_lfjmb"]
 [ext_resource type="AudioStream" uid="uid://b08axennnte5f" path="res://game/resources/audio/sfx/stepofthefoot.wav" id="5_m21n5"]
+[ext_resource type="AudioStream" uid="uid://ctf2iqrguvij6" path="res://game/assets/audio/bgm/3.wav" id="6_2rnex"]
 [ext_resource type="AudioStream" uid="uid://561emx4eks7i" path="res://game/resources/audio/sfx/blooep.wav" id="6_q8q3d"]
 [ext_resource type="AudioStream" uid="uid://driuviinjymyy" path="res://game/resources/audio/sfx/waaaaaaaaaaaahhhhhhhhh.wav" id="6_wcwbm"]
+[ext_resource type="AudioStream" uid="uid://duh752yn7shur" path="res://game/assets/audio/bgm/4.wav" id="7_87obw"]
+[ext_resource type="Script" path="res://addons/audio_manager/dynamic_music.gd" id="8_gsi1s"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_2svgd"]
+clip_count = 4
+clip_0/name = &"1"
+clip_0/stream = ExtResource("4_0xbp4")
+clip_0/auto_advance = 0
+clip_1/name = &"2"
+clip_1/stream = ExtResource("5_5ixuw")
+clip_1/auto_advance = 0
+clip_2/name = &"3"
+clip_2/stream = ExtResource("6_2rnex")
+clip_2/auto_advance = 0
+clip_3/name = &"4"
+clip_3/stream = ExtResource("7_87obw")
+clip_3/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+}
+}
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ws4v7"]
 streams_count = 1
@@ -32,6 +61,11 @@ bus = &"BGM"
 [node name="Title" type="AudioStreamPlayer" parent="BGM"]
 stream = ExtResource("3_n0ouj")
 bus = &"BGM"
+
+[node name="Level" type="AudioStreamPlayer" parent="BGM"]
+stream = SubResource("AudioStreamInteractive_2svgd")
+bus = &"BGM"
+script = ExtResource("8_gsi1s")
 
 [node name="SFX" type="Node" parent="."]
 
