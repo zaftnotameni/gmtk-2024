@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://3vcgnxxngx6m"]
+
+[ext_resource type="Script" path="res://game/scripts/menu/shows_victory_time.gd" id="1_07606"]
+[ext_resource type="Script" path="res://game/scripts/menu/shows_player_name.gd" id="2_q4olm"]
+[ext_resource type="Script" path="res://game/scripts/menu/grabs_focus.gd" id="3_uvjxb"]
+[ext_resource type="Script" path="res://game/scripts/menu/submit_presses.gd" id="4_gcc2y"]
+[ext_resource type="Script" path="res://game/scripts/menu/requires_victory_time_and_name.gd" id="5_mlo18"]
+
+[node name="VictoryScreen" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.027451, 0, 0.172549, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]
+[b]Congratulations![/b]
+
+You've reached the top!
+[/center]"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+alignment = 1
+
+[node name="ScoreInput" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "--:--:--.---"
+placeholder_text = "--:--:--.---"
+alignment = 1
+editable = false
+expand_to_text_length = true
+
+[node name="ShowsVictoryTime" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/ScoreInput"]
+script = ExtResource("1_07606")
+
+[node name="NameInput" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Your Name"
+alignment = 1
+max_length = 14
+expand_to_text_length = true
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+caret_blink = true
+
+[node name="ShowsPlayerName" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/NameInput"]
+script = ExtResource("2_q4olm")
+
+[node name="GrabsFocus" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/NameInput"]
+script = ExtResource("3_uvjxb")
+
+[node name="SubmitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Submit Score"
+
+[node name="SubmitPresses" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/SubmitButton"]
+script = ExtResource("4_gcc2y")
+
+[node name="RequiresVictoryTimeAndName" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/SubmitButton"]
+script = ExtResource("5_mlo18")
