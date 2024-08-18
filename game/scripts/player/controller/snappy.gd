@@ -168,18 +168,21 @@ func grapple_firing_physics(delta:float) -> void:
 			if not data: return
 			if data.get_custom_data('tile_type') == 'one_way':
 				grapple_state = GrappleState.HIT
+				PlayerControllerSnappy.chained_hooks_add()
 				AudioManager.play_sfx(AudioManager.sfx_hook_grab, true)
 				grapple_target = OneWayPlatform.new()
 				grapple_target.global_position = cast.get_collision_point() + Vector2(0, 0)
 		elif cast.get_collider() is GrappleTarget:
 			print_verbose('hit grapple target %s' % cast.get_collider().get_path())
 			grapple_state = GrappleState.HIT
+			PlayerControllerSnappy.chained_hooks_add()
 			AudioManager.play_sfx(AudioManager.sfx_hook_grab, true)
 			grapple_target = cast.get_collider()
 			if grapple_target and grapple_target.get_parent().has_method('grapple'):
 				grapple_target.get_parent().grapple()
 		elif cast.get_collider() is OneWayPlatform:
 			grapple_state = GrappleState.HIT
+			PlayerControllerSnappy.chained_hooks_add()
 			AudioManager.play_sfx(AudioManager.sfx_hook_grab, true)
 			grapple_target = cast.get_collider()
 		else:
@@ -241,6 +244,9 @@ func _physics_process(delta: float) -> void:
 		GrappleState.HIT:
 			grapple_hit_physics(delta)
 
+	if character.is_on_floor() and grapple_state != GrappleState.HIT:
+		PlayerControllerSnappy.chained_hooks_reset()
+
 	if character.is_on_floor() and was_on_floor and abs(character.velocity.x) > 0.2:
 		AudioManager.play_sfx(AudioManager.sfx_metal_step, true)
 	if character.is_on_floor() and not was_on_floor:
@@ -254,3 +260,23 @@ static func first() -> Player: return tree().get_first_node_in_group(GROUP)
 static func reset_grapple_owned_by(part:Node):
 	for snappy:PlayerControllerSnappy in PlayerControllerSnappy.all():
 		if snappy.owner == part.owner: snappy.reset_grapple()
+
+static var chained_hooks_count : float = 0
+static var chained_hooks_percentage : float = 0
+static var chained_hooks_max : float = 20
+
+static func get_chained_hooks_percentagae() -> float:
+	return chained_hooks_percentage
+
+static func get_chained_hooks_count() -> float:
+	return chained_hooks_count
+
+static func chained_hooks_add(how_many:float=1):
+	chained_hooks_count += how_many
+	chained_hooks_percentage = (chained_hooks_count / chained_hooks_max) if chained_hooks_max > 0 else 0.0
+	if chained_hooks_percentage > 1: chained_hooks_percentage = 1
+	print_verbose('chained hooks: %s (%.2f)' % [chained_hooks_count, chained_hooks_percentage])
+
+static func chained_hooks_reset():
+	chained_hooks_count = 0
+	print_verbose('chained hooks reset!')
