@@ -84,8 +84,8 @@ position = Vector2(320, 192)
 roaming_mode = 3
 
 [node name="LevelTitle" parent="." instance=ExtResource("12_ahier")]
-offset_left = 168.0
-offset_top = 416.0
-offset_right = 456.0
-offset_bottom = 442.0
+offset_left = 96.0
+offset_top = 464.0
+offset_right = 272.0
+offset_bottom = 480.0
 text = "Level 02: A Moving Target"

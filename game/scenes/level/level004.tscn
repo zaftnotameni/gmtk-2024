@@ -39,10 +39,10 @@ active = true
 spawn_on_ready = true
 
 [node name="LevelTitle" parent="." instance=ExtResource("9_o2p63")]
-offset_left = 168.0
-offset_top = 408.0
-offset_right = 456.0
-offset_bottom = 434.0
+offset_left = 96.0
+offset_top = 464.0
+offset_right = 288.0
+offset_bottom = 480.0
 text = "Level 04: With My Eyes Closed"
 
 [node name="Stunner" parent="." instance=ExtResource("10_0nln7")]

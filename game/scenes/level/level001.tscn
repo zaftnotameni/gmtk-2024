@@ -43,7 +43,7 @@ script = ExtResource("7_xoyep")
 next_level = ExtResource("8_nj6b7")
 
 [node name="LevelTitle" parent="." instance=ExtResource("11_g4xci")]
-offset_left = 48.0
-offset_top = 384.0
-offset_right = 480.0
-offset_bottom = 422.0
+offset_left = 80.0
+offset_top = 464.0
+offset_right = 224.0
+offset_bottom = 477.0
