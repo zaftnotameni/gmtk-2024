@@ -5,3 +5,4 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	AudioManager.bgm_title.stop()
+	AudioManager.play_bgm(AudioManager.bgm_levels_dynamic)

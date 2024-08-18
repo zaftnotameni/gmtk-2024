@@ -1,0 +1,28 @@
+extends AudioStreamPlayer
+
+var previous_percentage: float = 0.0
+var current: int = 0
+func _process(delta: float) -> void:
+	previous_percentage = PlayerControllerSnappy.get_chained_hooks_count()
+	print(previous_percentage)
+	
+	logic()
+	
+func logic() -> void:
+	if !get_stream_playback(): return
+	if previous_percentage > 0.6:
+		if current == 3: return
+		current = 3
+		get_stream_playback().switch_to_clip(3)
+	if previous_percentage > 0.3:
+		if current == 2: return
+		current = 2
+		get_stream_playback().switch_to_clip(2)
+	if previous_percentage > 0.15:
+		if current == 1: return
+		current = 1
+		get_stream_playback().switch_to_clip(1)
+	else:
+		if current == 0: return
+		current = 0
+		get_stream_playback().switch_to_clip(0)
