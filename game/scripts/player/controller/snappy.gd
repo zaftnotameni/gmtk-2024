@@ -119,6 +119,8 @@ func clear_grapple_target():
 func grapple_ready_physics(_delta:float) -> void:
 	character.collision_mask = initial_mask
 	character.collision_layer = initial_layer
+	stun.monitoring = false
+	stun.monitorable = false
 
 	grapple_cooldown_elapsed = 0.0
 	clear_grapple_target()
@@ -126,6 +128,8 @@ func grapple_ready_physics(_delta:float) -> void:
 func grapple_cooldown_physics(delta:float) -> void:
 	character.collision_mask = initial_mask
 	character.collision_layer = initial_layer
+	stun.monitoring = false
+	stun.monitorable = false
 
 	clear_grapple_target()
 	grapple_cooldown_elapsed += delta
@@ -137,6 +141,8 @@ func grapple_cooldown_physics(delta:float) -> void:
 func grapple_firing_physics(delta:float) -> void:
 	character.collision_mask = initial_mask
 	character.collision_layer = initial_layer
+	stun.monitoring = true
+	stun.monitorable = true
 
 	sprite.play('hook')
 	grapple_cooldown_elapsed = 0.0
@@ -183,6 +189,8 @@ func grapple_hit_physics(_delta:float) -> void:
 	AudioManager.play_sfx(AudioManager.sfx_hook_rope, true)
 	character.collision_mask = 0
 	character.collision_layer = 0
+	stun.monitoring = true
+	stun.monitorable = true
 
 	grapple_cooldown_elapsed = 0.0
 	sprite.play('hook')
@@ -242,3 +250,6 @@ func _physics_process(delta: float) -> void:
 static func tree() -> SceneTree: return Engine.get_main_loop()
 static func all() -> Array: return tree().get_nodes_in_group(GROUP)
 static func first() -> Player: return tree().get_first_node_in_group(GROUP)
+static func reset_grapple_owned_by(part:Node):
+	for snappy:PlayerControllerSnappy in PlayerControllerSnappy.all():
+		if snappy.owner == part.owner: snappy.reset_grapple()
