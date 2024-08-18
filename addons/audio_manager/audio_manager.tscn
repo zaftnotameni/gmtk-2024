@@ -31,10 +31,11 @@ clip_3/name = &"4"
 clip_3/stream = ExtResource("7_87obw")
 clip_3/auto_advance = 0
 _transitions = {
-Vector2i(-1, 0): {
+Vector2i(-1, -1): {
 "fade_beats": 1,
-"fade_mode": 0,
+"fade_mode": 4,
 "from_time": 2,
+"hold_previous": true,
 "to_time": 0
 }
 }
