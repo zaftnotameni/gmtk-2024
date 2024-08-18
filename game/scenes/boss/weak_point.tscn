@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://game/scripts/boss/weak_point.gd" id="1_wjinw"]
 [ext_resource type="Texture2D" uid="uid://bagf7jein442a" path="res://game/assets/textures/boss/boss.png" id="2_earvc"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vk4yy"]
+radius = 12.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vx6v3"]
 atlas = ExtResource("2_earvc")
 region = Rect2(16, 0, 16, 16)
@@ -42,17 +45,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_06m21"]
-
 [node name="WeakPoint" type="Area2D"]
 collision_layer = 1024
 collision_mask = 4
 script = ExtResource("1_wjinw")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vk4yy")
+
 [node name="Heart" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_r5hcr")
 animation = &"full_health"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_06m21")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxw5fntlsxrq4"]
 
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_nlakt"]
-[ext_resource type="PackedScene" uid="uid://cry8cxlnmimig" path="res://game/scenes/boss/boss.tscn" id="2_txtjf"]
+[ext_resource type="PackedScene" uid="uid://djlqyg7hr1oru" path="res://game/scenes/boss/boss.tscn" id="2_txtjf"]
 
 [node name="BossLevel" instance=ExtResource("1_nlakt")]
 
