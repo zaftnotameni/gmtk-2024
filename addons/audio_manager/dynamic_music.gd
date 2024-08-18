@@ -7,6 +7,7 @@ func _process(delta: float) -> void:
 	previous_percentage += PlayerControllerSnappy.get_chained_hooks_percentagae() * delta * 3.0
 	previous_percentage -= delta * 0.1
 	previous_percentage = clamp(previous_percentage, 0.0, 1.0)
+	
 	logic()
 	
 func logic() -> void:

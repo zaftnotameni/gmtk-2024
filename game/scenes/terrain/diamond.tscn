@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b8rrmdpmp8a4o" path="res://game/assets/textures/tileset/tiles.png" id="2_mvrfb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5kv8"]
-radius = 16.0
+radius = 12.0416
 
 [node name="Diamond" type="Area2D"]
 collision_layer = 16

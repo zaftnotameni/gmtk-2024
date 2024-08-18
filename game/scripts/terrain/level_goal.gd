@@ -1,7 +1,6 @@
 class_name LevelGoal extends Area2D
 
 @export var next_level : PackedScene
-@export var animator: AnimationPlayer
 
 var tween : Tween
 
