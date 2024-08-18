@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn61ng4h8eo0l"]
+
+[ext_resource type="Texture2D" uid="uid://b8rrmdpmp8a4o" path="res://game/assets/textures/tileset/tiles.png" id="1_vg6q4"]
+[ext_resource type="Script" path="res://game/scripts/terrain/grapple_target.gd" id="2_pr5b0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dydvn"]
+size = Vector2(64, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48vfg"]
+size = Vector2(16, 8)
+
+[node name="MovingPlatform" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dydvn")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-24, 4)
+texture = ExtResource("1_vg6q4")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="GrappleTarget" type="Area2D" parent="Sprite2D"]
+position = Vector2(0, -4)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_pr5b0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/GrappleTarget"]
+shape = SubResource("RectangleShape2D_48vfg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-8, 4)
+texture = ExtResource("1_vg6q4")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="GrappleTarget2" type="Area2D" parent="Sprite2D2"]
+position = Vector2(0, -4)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_pr5b0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/GrappleTarget2"]
+shape = SubResource("RectangleShape2D_48vfg")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(8, 4)
+texture = ExtResource("1_vg6q4")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="GrappleTarget3" type="Area2D" parent="Sprite2D3"]
+position = Vector2(-16, -4)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_pr5b0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D3/GrappleTarget3"]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_48vfg")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(24, 4)
+texture = ExtResource("1_vg6q4")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="GrappleTarget4" type="Area2D" parent="Sprite2D4"]
+position = Vector2(-16, -4)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_pr5b0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D4/GrappleTarget4"]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_48vfg")
