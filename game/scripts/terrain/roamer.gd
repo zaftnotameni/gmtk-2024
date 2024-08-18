@@ -14,6 +14,7 @@ enum RoamerMode { CUSTOM, HORIZONTAL, VERTICAL, CIRCULAR, MANUAL }
 @export var grappled : bool = false
 @export var initial_position : Vector2
 @export var direction : float = 1
+@export var kill_on_exit: bool = false
 
 func grapple():
 	grappled = true
@@ -47,6 +48,8 @@ func physics_horizontal(delta:float):
 func physics_vertical(delta:float):
 	global_position.y += direction * delta * roaming_speed
 	if initial_position.distance_to(global_position) >= roaming_radius:
+		if kill_on_exit:
+			queue_free()
 		direction *= -1
 
 func physics_circular(delta:float):
