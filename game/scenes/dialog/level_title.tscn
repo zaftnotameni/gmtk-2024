@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccdtcxvo8noem"]
+
+[ext_resource type="Script" path="res://game/scripts/dialog/level_title.gd" id="1_wwc54"]
+
+[node name="LevelTitle" type="Label"]
+theme_override_colors/font_outline_color = Color(0.027451, 0, 0.172549, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Level 01: Built To Scale"
+script = ExtResource("1_wwc54")
