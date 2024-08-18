@@ -44,7 +44,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gm1wk"]
-radius = 16.0312
+radius = 12.0
 
 [node name="Roamer" type="Area2D" node_paths=PackedStringArray("visual")]
 collision_layer = 0

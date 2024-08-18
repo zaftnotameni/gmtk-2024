@@ -7,7 +7,7 @@
 size = Vector2(64, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48vfg"]
-size = Vector2(16, 8)
+size = Vector2(24, 8)
 
 [node name="MovingPlatform" type="CharacterBody2D"]
 collision_layer = 32
