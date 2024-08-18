@@ -2,12 +2,11 @@ extends AudioStreamPlayer
 
 var previous_percentage: float = 0.0
 var current: int = 0
+
 func _process(delta: float) -> void:
 	previous_percentage += PlayerControllerSnappy.get_chained_hooks_percentagae() * 0.7
 	previous_percentage -= delta * 0.15
 	previous_percentage = clamp(previous_percentage, 0.0, 1.0)
-	print(previous_percentage)
-	
 	logic()
 	
 func logic() -> void:
