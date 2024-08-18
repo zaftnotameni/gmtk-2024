@@ -4,17 +4,17 @@ signal sig_weakpoint_hit()
 
 @export_group('internals')
 @export var sprite : AnimatedSprite2D
-@export var health := 3
+@export var health : int = 3
 @export var animation_stages : Array[String] = ['dead', 'last_health', 'half_health', 'full_health']
 
 const GROUP := 'weak_point'
 
 func change_health_to(new_health_value:int=health):
-	if new_health_value > (animation_stages.size() - 1) or new_health_value < 0:
+	if new_health_value > (animation_stages.size() - 1):
 		push_error('invalid health value: %s, current: %s at %s' % [new_health_value, health, get_path()])
 		return
 	health = new_health_value
-	sprite.play(animation_stages[health])
+	sprite.play(animation_stages[max(health, 0)])
 
 func on_hook_stunner_hit_weakpoint(hook_pointy_bit:HookStunner):
 	sig_weakpoint_hit.emit()
