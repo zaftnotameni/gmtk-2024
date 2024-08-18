@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccdtcxvo8noem"]
+
+[ext_resource type="Script" path="res://game/scripts/dialog/level_title.gd" id="1_wwc54"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j53ry"]
+bg_color = Color(0.027451, 0, 0.172549, 1)
+border_width_left = 8
+border_width_right = 8
+border_color = Color(0.027451, 0, 0.172549, 1)
+
+[node name="LevelTitle" type="Label"]
+custom_minimum_size = Vector2(0, 16)
+theme_override_colors/font_color = Color(0.207843, 0.635294, 0.815686, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_j53ry")
+text = "Level 01: Built To Scale"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_wwc54")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+color = Color(0.027451, 0, 0.172549, 1)

@@ -7,6 +7,7 @@ signal sig_volume_changed(which_bus:AudioBus, volume_linear_0_100:float)
 @onready var master_test_sound : AudioStreamPlayer = $Master/TestSound
 @onready var bgm_test_sound : AudioStreamPlayer = $BGM/TestSound
 @onready var bgm_title : AudioStreamPlayer = $BGM/Title
+@onready var bgm_levels_dynamic : AudioStreamPlayer = $BGM/Level
 @onready var sfx_test_sound : AudioStreamPlayer = $SFX/TestSound
 @onready var sfx_metal_land : AudioStreamPlayer = $SFX/MetalLand
 @onready var sfx_metal_step : AudioStreamPlayer = $SFX/MetalStep
