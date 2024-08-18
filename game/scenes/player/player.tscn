@@ -244,7 +244,19 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(4, 4)]
+"values": [Vector2(3, 3)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Visual:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_n8ckm"]
@@ -269,7 +281,7 @@ tracks/1/path = NodePath("Grapple/Hook:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, -12), Vector2(0, -256)]
@@ -282,7 +294,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.7),
-"transitions": PackedFloat32Array(1, 7.21001, 1),
+"transitions": PackedFloat32Array(1, 7.20999, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -256)]
 }
@@ -293,10 +305,22 @@ tracks/3/path = NodePath("Grapple/Rope:points")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.7),
+"transitions": PackedFloat32Array(1, 7.20999, 1),
 "update": 0,
 "values": [PackedVector2Array(0, 0, 0, 0), PackedVector2Array(0, 0, 0, -256), PackedVector2Array(0, -256, 0, -256)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visual:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.56, 1.8)]
 }
 
 [sub_resource type="Animation" id="Animation_nk7ap"]
@@ -418,7 +442,7 @@ shape = SubResource("RectangleShape2D_bh1qo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
