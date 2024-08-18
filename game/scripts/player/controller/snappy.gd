@@ -6,8 +6,8 @@ enum GrappleState { READY, COOLDOWN, FIRING, HIT }
 const GROUP := 'snappy'
 
 @export_category('configuration')
-@export var initial_speed_ground : float = 200
-@export var initial_speed_air : float = 200
+@export var initial_speed_ground : float = 160
+@export var initial_speed_air : float = 160
 @export var gravity_up : float = 800
 @export var gravity_down : float = 800
 @export var max_speed_down : float = 600
