@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://3vcgnxxngx6m"]
+[gd_scene load_steps=12 format=3 uid="uid://3vcgnxxngx6m"]
 
 [ext_resource type="Script" path="res://game/scripts/menu/shows_victory_time.gd" id="1_07606"]
+[ext_resource type="Script" path="res://addons/game_manager/pause/unpauseable.gd" id="1_smc67"]
+[ext_resource type="Script" path="res://game/scripts/menu/forces_victory_time.gd" id="1_x3oqr"]
+[ext_resource type="Script" path="res://addons/game_manager/in/victory.gd" id="2_jk1l6"]
 [ext_resource type="Script" path="res://game/scripts/menu/shows_player_name.gd" id="2_q4olm"]
-[ext_resource type="Script" path="res://game/scripts/menu/grabs_focus.gd" id="3_uvjxb"]
+[ext_resource type="Script" path="res://game/scripts/menu/grabs_focus_if_no_name.gd" id="4_eb4ir"]
 [ext_resource type="Script" path="res://game/scripts/menu/submit_presses.gd" id="4_gcc2y"]
 [ext_resource type="Script" path="res://game/scripts/menu/requires_victory_time_and_name.gd" id="5_mlo18"]
+[ext_resource type="Script" path="res://game/scripts/menu/grabs_focus_if_name.gd" id="7_cj1i3"]
+[ext_resource type="Script" path="res://game/scripts/menu/submits_victory.gd" id="8_0uc01"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xp1v3"]
+bg_color = Color(0.129412, 0.0901961, 0.333333, 1)
 
 [node name="VictoryScreen" type="PanelContainer"]
 anchors_preset = 15
@@ -12,6 +20,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Unpauseable" type="Node" parent="."]
+script = ExtResource("1_smc67")
+
+[node name="StateVictory" type="Node" parent="."]
+script = ExtResource("2_jk1l6")
+wipe_state_stack = true
+
+[node name="ForcesVictoryTime" type="Node" parent="."]
+script = ExtResource("1_x3oqr")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -29,13 +47,15 @@ layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
 text = "[center]
-[b]Congratulations![/b]
+[font_size=64]Congratulations[/font_size]
 
-You've reached the top!
+[font_size=48]You've reached the top[/font_size]
+
+[font_size=48]Only those truly built to scale can ascend to such heights![/font_size]
 [/center]"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(400, 200)
+custom_minimum_size = Vector2(600, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
@@ -45,6 +65,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
+theme_override_font_sizes/font_size = 64
 text = "--:--:--.---"
 placeholder_text = "--:--:--.---"
 alignment = 1
@@ -57,6 +78,7 @@ script = ExtResource("1_07606")
 [node name="NameInput" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 64
 placeholder_text = "Your Name"
 alignment = 1
 max_length = 14
@@ -69,15 +91,23 @@ caret_blink = true
 [node name="ShowsPlayerName" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/NameInput"]
 script = ExtResource("2_q4olm")
 
-[node name="GrabsFocus" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/NameInput"]
-script = ExtResource("3_uvjxb")
+[node name="GrabsFocusIfNoName" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/NameInput"]
+script = ExtResource("4_eb4ir")
 
 [node name="SubmitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Submit Score"
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_xp1v3")
+text = "Submit Time"
 
 [node name="SubmitPresses" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/SubmitButton"]
 script = ExtResource("4_gcc2y")
 
 [node name="RequiresVictoryTimeAndName" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/SubmitButton"]
 script = ExtResource("5_mlo18")
+
+[node name="GrabsFocusIfName" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/SubmitButton"]
+script = ExtResource("7_cj1i3")
+
+[node name="SubmitsVictory" type="Node" parent="MarginContainer/VBoxContainer/VBoxContainer/SubmitButton"]
+script = ExtResource("8_0uc01")

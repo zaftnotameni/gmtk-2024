@@ -6,12 +6,20 @@ class_name SubmitsVictory extends Node
 @export var name_input : LineEdit
 @export var score_input : LineEdit
 
+const LEADERBOARDS_SCREEN := preload('res://game/scenes/menu/screen/leaderboards_screen.tscn')
+
 func on_pressed():
 	if not button: return
 	if not name_input: return
 	if not score_input: return
 	if State.victory_time < 1: return
 	if button.get_meta('prevent_submit', false): return
+	var children_to_wipe := []
+	children_to_wipe.append_array(Layers.background.get_children())
+	children_to_wipe.append_array(Layers.game.get_children())
+	children_to_wipe.append_array(Layers.hud.get_children())
+	children_to_wipe.append_array(Layers.menu.get_children())
+	var instance := LEADERBOARDS_SCREEN.instantiate()
 
 	var previous_text = button.text
 	button.text = 'Submitting Score...'
@@ -28,12 +36,23 @@ func on_pressed():
 	var tween := create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.set_pause_mode(Tween.TweenPauseMode.TWEEN_PAUSE_PROCESS)
 	tween.tween_interval(1.0)
-	tween.tween_property(menu, ^'position:x', 2000, 0.3).from_current()
 	await tween.finished
 
 	button.text = previous_text
 	button.disabled = false
 	name_input.editable = true
+	menu.add_sibling(instance)
+
+	tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.set_pause_mode(Tween.TweenPauseMode.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(menu, ^'position:x', 2000, 0.3).from_current()
+	tween.parallel().tween_property(instance, ^'position:x', 0, 0.3).from(-2000)
+	await tween.finished
+	wipe_all(children_to_wipe)
+	menu.queue_free()
+
+func wipe_all(children:Array=[]):
+	for child in children: child.queue_free()
 
 func _enter_tree() -> void:
 	process_mode = ProcessMode.PROCESS_MODE_INHERIT if Engine.is_editor_hint() else ProcessMode.PROCESS_MODE_ALWAYS
