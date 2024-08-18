@@ -5,6 +5,8 @@ enum GrappleState { READY, COOLDOWN, FIRING, HIT }
 
 const GROUP := 'snappy'
 
+static var combo_label_scene := load('res://game/scenes/combo/combo_label.tscn')
+
 @export_category('configuration')
 @export var initial_speed_ground : float = 160
 @export var initial_speed_air : float = 160
@@ -34,6 +36,22 @@ const GROUP := 'snappy'
 @export var sprite : AnimatedSprite2D
 @export var hook : Sprite2D
 @export var stun : Area2D
+
+func on_grapple_just_hit():
+	PlayerControllerSnappy.chained_hooks_add()
+	var combo_label := combo_label_scene.instantiate() as Label
+	if not combo_label: return
+	if not grapple_target: return
+	if not cast.is_colliding(): return
+	combo_label.text = ' %sx' % chained_hooks_count
+	combo_label.global_position = cast.get_collision_point() + Vector2(-48, -48)
+	Layers.game.add_child(combo_label)
+
+func change_grapple_state_to(new_grapple_state:GrappleState=grapple_state):
+	if grapple_state == new_grapple_state: return
+	if new_grapple_state == GrappleState.HIT:
+		on_grapple_just_hit()
+	grapple_state = new_grapple_state
 
 func _enter_tree() -> void:
 	add_to_group(GROUP)
@@ -92,7 +110,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func initiate_grapple() -> void:
 	if grapple_state != GrappleState.READY: return
-	grapple_state = GrappleState.FIRING
+	change_grapple_state_to(GrappleState.FIRING)
 	player_state = PlayerState.HOOKING
 	rope.points[-1] = Vector2.ZERO
 	hook.global_position = rope.to_global(rope.points[-1])
@@ -101,7 +119,7 @@ func initiate_grapple() -> void:
 
 func reset_grapple():
 	clear_grapple_target()
-	grapple_state = GrappleState.READY
+	change_grapple_state_to(GrappleState.READY)
 	if character.is_on_floor():
 		player_state = PlayerState.GROUNDED
 	if not character.is_on_floor():
@@ -136,7 +154,7 @@ func grapple_cooldown_physics(delta:float) -> void:
 	if character.velocity.y < 0: character.velocity.y = 0
 	if grapple_cooldown_elapsed > grapple_cooldown_time:
 		grapple_cooldown_elapsed = 0
-		grapple_state = GrappleState.READY
+		change_grapple_state_to(GrappleState.READY)
 
 func grapple_firing_physics(delta:float) -> void:
 	character.collision_mask = initial_mask
@@ -152,13 +170,13 @@ func grapple_firing_physics(delta:float) -> void:
 	if abs(rope.points[-1].y) > rope_max_length:
 		rope.points[-1].y = -rope_max_length
 		hook.global_position = rope.to_global(rope.points[-1])
-		grapple_state = GrappleState.READY
+		change_grapple_state_to(GrappleState.READY)
 		hook.hide()
 		if character.is_on_floor():
 			player_state = PlayerState.GROUNDED
 		if not character.is_on_floor():
 			player_state = PlayerState.AIRBORNE
-			grapple_state = GrappleState.COOLDOWN
+			change_grapple_state_to(GrappleState.COOLDOWN)
 	if cast.is_colliding():
 		if cast.get_collider() is TileMapLayer:
 			var layer := cast.get_collider() as TileMapLayer
@@ -167,27 +185,24 @@ func grapple_firing_physics(delta:float) -> void:
 			var data := layer.get_cell_tile_data(coords)
 			if not data: return
 			if data.get_custom_data('tile_type') == 'one_way':
-				grapple_state = GrappleState.HIT
-				PlayerControllerSnappy.chained_hooks_add()
 				AudioManager.play_sfx(AudioManager.sfx_hook_grab, true)
 				grapple_target = OneWayPlatform.new()
+				change_grapple_state_to(GrappleState.HIT)
 				grapple_target.global_position = cast.get_collision_point() + Vector2(0, 0)
 		elif cast.get_collider() is GrappleTarget:
 			print_verbose('hit grapple target %s' % cast.get_collider().get_path())
-			grapple_state = GrappleState.HIT
-			PlayerControllerSnappy.chained_hooks_add()
 			AudioManager.play_sfx(AudioManager.sfx_hook_grab, true)
 			grapple_target = cast.get_collider()
+			change_grapple_state_to(GrappleState.HIT)
 			if grapple_target and grapple_target.get_parent().has_method('grapple'):
 				grapple_target.get_parent().grapple()
 		elif cast.get_collider() is OneWayPlatform:
-			grapple_state = GrappleState.HIT
-			PlayerControllerSnappy.chained_hooks_add()
 			AudioManager.play_sfx(AudioManager.sfx_hook_grab, true)
 			grapple_target = cast.get_collider()
+			change_grapple_state_to(GrappleState.HIT)
 		else:
 			if not character.is_on_floor():
-				grapple_state = GrappleState.COOLDOWN
+				change_grapple_state_to(GrappleState.COOLDOWN)
 
 func grapple_hit_physics(_delta:float) -> void:
 	AudioManager.play_sfx(AudioManager.sfx_hook_rope, true)
@@ -207,7 +222,7 @@ func grapple_hit_physics(_delta:float) -> void:
 		rope.points[-1].y = rope.to_local(grapple_target.global_position).y
 		hook.global_position = rope.to_global(rope.points[-1])
 		if character.global_position.y < grapple_target.global_position.y:
-			grapple_state = GrappleState.READY
+			change_grapple_state_to(GrappleState.READY)
 			player_state = PlayerState.HOOK_IMPULSE
 			hook_impulse_elapsed = 0.0
 			clear_grapple_target()
@@ -278,5 +293,5 @@ static func chained_hooks_add(how_many:float=1):
 	print_verbose('chained hooks: %s (%.2f)' % [chained_hooks_count, chained_hooks_percentage])
 
 static func chained_hooks_reset():
+	if chained_hooks_count > 0: print_verbose('chained hooks reset!')
 	chained_hooks_count = 0
-	print_verbose('chained hooks reset!')
