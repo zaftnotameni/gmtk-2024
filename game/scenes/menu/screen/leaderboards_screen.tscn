@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://addons/smart_quiver/leaderboards/leaderboard_ui.gd" id="1_fgtgs"]
 [ext_resource type="Script" path="res://addons/game_manager/in/menu.gd" id="1_kj8y7"]
+[ext_resource type="Script" path="res://addons/game_manager/pause/unpauseable.gd" id="1_q5ymo"]
 [ext_resource type="Script" path="res://game/scripts/menu/closes_menu.gd" id="2_h8fe8"]
 [ext_resource type="Script" path="res://addons/audio_manager/blips/focus_blip.gd" id="3_6x31n"]
 [ext_resource type="Script" path="res://addons/audio_manager/blips/press_blip.gd" id="4_2yx12"]
 [ext_resource type="Script" path="res://game/scripts/menu/grabs_focus.gd" id="6_esa22"]
-[ext_resource type="PackedScene" uid="uid://cftp5p1mapgu7" path="res://game/scenes/menu/popup/submit_score_popup.tscn" id="7_lxpdo"]
 
 [node name="LeaderboardsScreen" type="PanelContainer"]
 anchors_preset = 15
@@ -14,6 +14,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Unpauseable" type="Node" parent="."]
+script = ExtResource("1_q5ymo")
 
 [node name="StateMenu" type="Node" parent="."]
 script = ExtResource("1_kj8y7")
@@ -97,8 +100,3 @@ script = ExtResource("4_2yx12")
 
 [node name="GrabsFocus" type="Node" parent="MarginContainer/VBoxContainer/Back"]
 script = ExtResource("6_esa22")
-
-[node name="SubmitScorePopup" parent="." instance=ExtResource("7_lxpdo")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
