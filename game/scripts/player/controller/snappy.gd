@@ -172,6 +172,7 @@ func grapple_firing_physics(delta:float) -> void:
 				grapple_target = OneWayPlatform.new()
 				grapple_target.global_position = cast.get_collision_point() + Vector2(0, 0)
 		elif cast.get_collider() is GrappleTarget:
+			print_verbose('hit grapple target %s' % cast.get_collider().get_path())
 			grapple_state = GrappleState.HIT
 			AudioManager.play_sfx(AudioManager.sfx_hook_grab, true)
 			grapple_target = cast.get_collider()

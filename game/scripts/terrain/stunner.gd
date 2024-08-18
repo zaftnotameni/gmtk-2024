@@ -15,16 +15,27 @@ class_name Stunner extends Area2D
 @export var initial_position : Vector2
 @export var direction : float = 1
 @export var stun_elapsed : float = 0.0
+@export var grapple_target : GrappleTarget
 
 func stun():
+	set_deferred('monitorable', false)
+	set_deferred('monitoring',  false)
+	grapple_target.set_deferred('monitorable', false)
+	grapple_target.set_deferred('monitoring',  false)
+	grapple_target.set_deferred('collision_layer',  0)
 	stun_elapsed = 0.0
 	stunned = true
-	visual.play(&"close")
+	visual.play("close")
 
 func unstun():
+	set_deferred('monitorable', true)
+	set_deferred('monitoring',  true)
+	grapple_target.set_deferred('monitorable', true)
+	grapple_target.set_deferred('monitoring',  true)
+	grapple_target.set_deferred('collision_layer',  16)
 	stun_elapsed = 0.0
 	stunned = false
-	visual.play(&"fly")
+	visual.play("fly")
 
 func setup_for_custom():
 	if not custom_waypoints or custom_waypoints.is_empty():
@@ -35,8 +46,12 @@ func setup_for_custom():
 
 func _ready() -> void:
 	if roaming_mode == Roamer.RoamerMode.CUSTOM: setup_for_custom()
+	if not grapple_target: grapple_target = %GrappleTarget
 	initial_position = global_position
-	visual.play(&"fly")
+	visual.play("fly")
+
+func physics_manual(_delta:float):
+	set_physics_process(false)
 
 func physics_custom(_delta:float):
 	push_error('physics_custom is not implemented, pick horizontal/vertical/circular %s' % get_path())
@@ -68,6 +83,7 @@ func _physics_process(delta: float) -> void:
 		else: return
 		
 	match roaming_mode:
+		Roamer.RoamerMode.MANUAL: physics_manual(delta)
 		Roamer.RoamerMode.CUSTOM: physics_custom(delta)
 		Roamer.RoamerMode.HORIZONTAL: physics_horizontal(delta)
 		Roamer.RoamerMode.VERTICAL: physics_vertical(delta)
