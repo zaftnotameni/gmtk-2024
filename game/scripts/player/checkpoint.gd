@@ -9,7 +9,7 @@ const GROUP := 'checkpoints'
 @export var animator: AnimationPlayer
 
 @export_group('internals')
-@export var scene : PackedScene
+@export var scene : PackedScene ## PLayer scene
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not active: return
