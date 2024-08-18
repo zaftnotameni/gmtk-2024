@@ -30,4 +30,5 @@ func prepare_tween() -> Tween:
 	tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.set_pause_mode(Tween.TweenPauseMode.TWEEN_PAUSE_PROCESS)
 	tween.bind_node(Layers.game)
+	tree_exiting.connect(tween.kill)
 	return tween
