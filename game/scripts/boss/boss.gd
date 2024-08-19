@@ -26,7 +26,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	var ke := event as InputEventKey
 	if not ke: return
 	if not ke.is_pressed(): return
-	if ke.keycode == KEY_F7: on_weakpoint_hit()
+	if ke.keycode == KEY_F7: await on_weakpoint_hit()
 
 func _ready() -> void:
 	weakpoint.sig_weakpoint_hit.connect(on_weakpoint_hit)
@@ -77,47 +77,68 @@ func on_weakpoint_hit() -> void:
 	match boss_phase:
 		BossPhases.CHILL:
 			boss_phase = BossPhases.MID
-			on_boss_phase_changed()
+			await on_boss_phase_changed()
 		BossPhases.MID:
 			boss_phase = BossPhases.ALMOST_DEAD
-			on_boss_phase_changed()
+			await on_boss_phase_changed()
 		BossPhases.ALMOST_DEAD:
 			boss_phase = BossPhases.DEATH_ANIMATION
-			on_boss_phase_changed()
+			await on_boss_phase_changed()
 
+var animating : bool = false
+
+var tween : Tween
 
 func on_boss_phase_changed():
 	if dead: return
+	while animating:
+		await get_tree().create_timer(0.1).timeout
 	match boss_phase:
 		BossPhases.MID:
-			hurt()
-			await create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).tween_property(
-				self, "position", Vector2(0, -848), 34.0
-			).finished
+			animating = true
+			await hurt()
+			if tween and tween.is_running(): tween.kill()
+			tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+			tween.tween_property(self, "position", Vector2(0, -848), 34.0)
+			await tween.finished
+			animating = false
 		BossPhases.ALMOST_DEAD:
-			hurt()
-			await create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).tween_property(
-				self, "position", Vector2(0, -1288), 34.0
-			).finished
+			await hurt()
+			if tween and tween.is_running(): tween.kill()
+			tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+			tween.tween_property(self, "position", Vector2(0, -1288), 34.0)
+			await tween.finished
+			animating = false
 		BossPhases.DEATH_ANIMATION:
-			hurt()
-			die()
+			animating = true
+			await hurt()
+			await die()
+			animating = false
 
 func die():
 	dead = true
-	await create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).tween_property(
-		self, "position", Vector2(0, -128), 6.0
-	).finished
+	animating = true
+	if tween and tween.is_running(): tween.kill()
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "position", Vector2(0, -128), 3.0)
+	await tween.finished
+	print_verbose('tween finished')
 	animator.play("die")
 	await animator.animation_finished
+	print_verbose('die finished')
+	animating = false
 	queue_free()
 
 func hurt() -> void:
 	if dead:
 		return
 	if weakpoint.health > 0:
+		animating = true
 		speed *= speed_scale
 		animator.play("hurt")
+		await get_tree().create_timer(0.1).timeout
+		await animator.animation_finished
+		animating = false
 		return
 
 func _exit_tree() -> void:
