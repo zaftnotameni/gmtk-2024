@@ -20,6 +20,12 @@ enum BossPhases { ALMOST_DEAD, MID, CHILL, DEATH_ANIMATION }
 
 var boss_phase := BossPhases.CHILL
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	var ke := event as InputEventKey
+	if not ke: return
+	if not ke.is_pressed(): return
+	if ke.keycode == KEY_F7: on_weakpoint_hit()
+
 func _ready() -> void:
 	weakpoint.sig_weakpoint_hit.connect(on_weakpoint_hit)
 	timer.timeout.connect(timeout)
