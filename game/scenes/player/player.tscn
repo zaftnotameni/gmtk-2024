@@ -455,6 +455,8 @@ unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_ad2fn")
 animation = &"idle"
 
+[node name="PointLight2D" type="PointLight2D" parent="Visual"]
+
 [node name="Grapple" type="Node2D" parent="."]
 
 [node name="Rope" type="Line2D" parent="Grapple"]
