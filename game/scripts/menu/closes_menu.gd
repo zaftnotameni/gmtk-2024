@@ -4,11 +4,17 @@ class_name ClosesMenu extends Node
 @export var menu : Control
 @export var button : BaseButton
 
+var TITLE_SCREEN := load('res://game/scenes/menu/screen/title_screen.tscn')
+
 func on_pressed():
 	var previous : Control
 
 	for child in menu.get_parent().get_children():
 		if child is Control and child != menu: previous = child
+
+	if not previous and State.game_state == GameManagerState.GameState.MENU:
+		previous = TITLE_SCREEN.instantiate()
+		menu.add_sibling(previous)
 
 	var tween := create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.set_pause_mode(Tween.TweenPauseMode.TWEEN_PAUSE_PROCESS)

@@ -1,10 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://djlqyg7hr1oru"]
+[gd_scene load_steps=8 format=3 uid="uid://dbapyengrt7nv"]
 
-[ext_resource type="Script" path="res://game/scripts/boss/boss.gd" id="1_8da1h"]
-[ext_resource type="Texture2D" uid="uid://bagf7jein442a" path="res://game/assets/textures/boss/boss.png" id="2_8bf1f"]
-[ext_resource type="PackedScene" uid="uid://bnx4srks6vtah" path="res://game/scenes/terrain/roamer.tscn" id="2_v8doe"]
-[ext_resource type="PackedScene" uid="uid://dedsny5oiuid6" path="res://game/scenes/terrain/stunner.tscn" id="3_fmi6h"]
-[ext_resource type="PackedScene" uid="uid://cb6e2vftni1sy" path="res://game/scenes/boss/weak_point.tscn" id="3_j0ll5"]
+[ext_resource type="Texture2D" uid="uid://bagf7jein442a" path="res://game/assets/textures/boss/boss.png" id="4_4isn5"]
+[ext_resource type="PackedScene" uid="uid://cb6e2vftni1sy" path="res://game/scenes/boss/weak_point.tscn" id="5_s6aec"]
 
 [sub_resource type="Animation" id="Animation_3kscm"]
 length = 0.001
@@ -515,19 +512,14 @@ _data = {
 "idle": SubResource("Animation_hl4kl")
 }
 
-[node name="Boss" type="Node2D" node_paths=PackedStringArray("weakpoint", "timer", "animator")]
-script = ExtResource("1_8da1h")
-weakpoint = NodePath("WeakPoint")
-timer = NodePath("Timer")
-animator = NodePath("AnimationPlayer")
-drone_scene = ExtResource("2_v8doe")
-stunner_scene = ExtResource("3_fmi6h")
+[node name="BigBoss" type="Node2D"]
+scale = Vector2(4, 4)
 
 [node name="LeftHand" type="Node2D" parent="."]
 position = Vector2(-24, 32)
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftHand"]
-texture = ExtResource("2_8bf1f")
+texture = ExtResource("4_4isn5")
 hframes = 4
 vframes = 4
 frame = 4
@@ -536,19 +528,19 @@ frame = 4
 position = Vector2(24, 32)
 
 [node name="Sprite2D" type="Sprite2D" parent="RightHand"]
-texture = ExtResource("2_8bf1f")
+texture = ExtResource("4_4isn5")
 hframes = 4
 vframes = 4
 frame = 5
 
 [node name="Head" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
-texture = ExtResource("2_8bf1f")
+texture = ExtResource("4_4isn5")
 hframes = 2
 vframes = 2
 frame = 2
 
-[node name="WeakPoint" parent="." instance=ExtResource("3_j0ll5")]
+[node name="WeakPoint" parent="." instance=ExtResource("5_s6aec")]
 position = Vector2(0, 40)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

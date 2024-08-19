@@ -22,27 +22,29 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[b]GMTK 2024[/b]
+text = "[font_size=64]Hookshot Robot[/font_size]
 
-All sprites, textures, effects created during the jam.
+A game made in 4 days for: GMTK 2024 - Built to Scale
 
 [u]Team members:[/u]
 
-- ZAFT -  - [code]https://zafteer.itch.io/[/code]
-- HotNoggin -  - [code]https://www.hotnogginstudios.com/[/code]
-- TheNetherPug -  - [code]https://github.com/TheNetherPug[/code]
+- ZAFT - Programming - [code]https://zafteer.itch.io/[/code]
+- HotNoggin - Art - [code]https://www.hotnogginstudios.com/[/code]
+- TheNetherPug - Music/VFX/SFX - [code]https://github.com/TheNetherPug[/code]
 
 [u]Using:[/u]
 
-- Godot 4.3-rc3 - [code]https://github.com/godotengine[/code]
+- godot (4.3-rc3) - [code]https://github.com/godotengine[/code]
 - neovim - [code]https://neovim.io[/code]
 - butler - [code]https://itch.io/docs/butler/pushing.html[/code]
 - bfxr - [code]https://www.bfxr.net[/code]
+- lmms - [code]https://lmms.io/[/code]
 
 [u]Credits:[/u]
 
-- Kenney Input Prompts - [code]https://kenney.nl/assets/input-prompts[/code]
-- ? Kenney UI Audio - [code]https://kenney.nl/assets/ui-audio[/code]"
+All assets (sprites, textures, music, SFX) were made by us during the JAM, except:
+
+- Font: Monogram - [code]https://datagoblin.itch.io/monogram[/code]"
 tab_size = 2
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]

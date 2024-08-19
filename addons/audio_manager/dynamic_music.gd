@@ -16,18 +16,22 @@ func logic() -> void:
 	if previous_percentage > 0.75:
 		if current == 3: return
 		current = 3
+		print_verbose('switching to 3')
 		get_stream_playback().switch_to_clip(3)
 		return
 	if previous_percentage > 0.5:
 		if current == 2: return
 		current = 2
+		print_verbose('switching to 2')
 		get_stream_playback().switch_to_clip(2)
 		return
 	if previous_percentage > 0.2:
 		if current == 1: return
 		current = 1
+		print_verbose('switching to 1')
 		get_stream_playback().switch_to_clip(1)
 		return
 	if current == 0: return
 	current = 0
+	print_verbose('switching to 0')
 	get_stream_playback().switch_to_clip(0)
