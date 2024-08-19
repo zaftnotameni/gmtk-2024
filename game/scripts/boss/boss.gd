@@ -20,6 +20,8 @@ enum BossPhases { ALMOST_DEAD, MID, CHILL, DEATH_ANIMATION }
 
 var boss_phase := BossPhases.CHILL
 
+static var spawned_enemies : Array[Node] = []
+
 func _unhandled_key_input(event: InputEvent) -> void:
 	var ke := event as InputEventKey
 	if not ke: return
@@ -118,6 +120,11 @@ func hurt() -> void:
 		animator.play("hurt")
 		return
 
+func _exit_tree() -> void:
+	for enemy:Node in spawned_enemies:
+		if enemy and not enemy.is_queued_for_deletion(): enemy.queue_free()
+	spawned_enemies.clear()
+
 func spawn_drone(x: float = position.x, y: float = position.y) -> void:
 	var instance: Roamer = drone_scene.instantiate() as Roamer
 	add_sibling.call_deferred(instance)
@@ -126,6 +133,8 @@ func spawn_drone(x: float = position.x, y: float = position.y) -> void:
 	instance.roaming_radius = drone_cover_distance
 	instance.kill_on_exit = true
 	instance.direction = 1
+	spawned_enemies.push_back(instance)
+	instance.tree_exiting.connect(spawned_enemies.erase.bind(instance), CONNECT_ONE_SHOT)
 
 func spawn_stunner(x: float = position.x, y: float = position.y) -> void:
 	var instance: Stunner = stunner_scene.instantiate() as Stunner
@@ -135,3 +144,5 @@ func spawn_stunner(x: float = position.x, y: float = position.y) -> void:
 	instance.roaming_radius = drone_cover_distance
 	instance.kill_on_exit = true
 	instance.direction = 1
+	spawned_enemies.push_back(instance)
+	instance.tree_exiting.connect(spawned_enemies.erase.bind(instance), CONNECT_ONE_SHOT)
