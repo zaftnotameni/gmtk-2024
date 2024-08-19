@@ -6,7 +6,6 @@ extends Camera2D
 @onready var max_y : float = -1000000
 
 func _ready() -> void:
-	await get_tree().create_timer(0.2).timeout
 	var layers := get_tree().get_nodes_in_group('tiles')
 	for layer:TileMapLayer in layers:
 		if (layer.name as String).contains('ack'): continue
