@@ -75,6 +75,7 @@ background_layer=""
 game_layer=""
 menu_layer=""
 hud_layer=""
+tiles=""
 
 [gui]
 

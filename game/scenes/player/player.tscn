@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://d2w4hrolcacf"]
+[gd_scene load_steps=32 format=3 uid="uid://d2w4hrolcacf"]
 
 [ext_resource type="Texture2D" uid="uid://n6ffhdeohh4" path="res://game/assets/textures/grappler/grappler_idle.png" id="1_4dmup"]
 [ext_resource type="Texture2D" uid="uid://df7451l8rb2cc" path="res://game/assets/textures/grappler/grappler_hook.png" id="1_qef4r"]
 [ext_resource type="Script" path="res://game/scripts/player/player.gd" id="1_wdwkb"]
 [ext_resource type="Script" path="res://game/scripts/player/controller/snappy.gd" id="2_5nukf"]
 [ext_resource type="Texture2D" uid="uid://bq1xf2vs8c72f" path="res://game/assets/textures/grappler/grappler_run.png" id="2_34dff"]
+[ext_resource type="Script" path="res://game/scripts/player/camera_2d.gd" id="2_dr3j4"]
 [ext_resource type="Texture2D" uid="uid://34bbfee1bkjl" path="res://game/assets/textures/grappler/grappler_fall.png" id="2_mqwrg"]
 [ext_resource type="Texture2D" uid="uid://dlfm4ljs8m0dt" path="res://game/assets/textures/grappler/grappler_wire.png" id="4_o4j1t"]
 [ext_resource type="Texture2D" uid="uid://dvj43ml301lyq" path="res://game/assets/textures/grappler/grappling_hook_tip.png" id="7_h6kno"]
@@ -447,6 +448,7 @@ zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
+script = ExtResource("2_dr3j4")
 
 [node name="Visual" type="Node2D" parent="."]
 
