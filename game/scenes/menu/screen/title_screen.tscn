@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://be7tyglgcy5eo"]
+[gd_scene load_steps=16 format=3 uid="uid://be7tyglgcy5eo"]
 
 [ext_resource type="Texture2D" uid="uid://dnx66du4lbp8t" path="res://game/assets/logos/gmtk2024-logo.png" id="1_0of8n"]
 [ext_resource type="Script" path="res://addons/game_manager/in/title.gd" id="1_3h6ar"]
+[ext_resource type="PackedScene" uid="uid://b1yi0feutffi" path="res://game/scenes/background/background.tscn" id="1_aawh1"]
 [ext_resource type="Script" path="res://game/scripts/audio/player_menu_music.gd" id="1_rtw35"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="2_c1xnr"]
 [ext_resource type="Script" path="res://game/scripts/menu/shows_options_screen.gd" id="2_vkjj4"]
@@ -13,12 +14,54 @@
 [ext_resource type="Script" path="res://game/scripts/menu/starts_game.gd" id="6_ijc1e"]
 [ext_resource type="Script" path="res://game/scripts/menu/shows_about_screen.gd" id="7_bg0yh"]
 
+[sub_resource type="Curve" id="Curve_qohaf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.141221, 0.969811), -0.523418, -0.523418, 0, 0, Vector2(1, 0), -1.11834, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_2ksvd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.141221, 0.969811), -0.523418, -0.523418, 0, 0, Vector2(1, 0), -1.11834, 0.0, 0, 0]
+point_count = 3
+
 [node name="TitleScreen" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Background" parent="." instance=ExtResource("1_aawh1")]
+
+[node name="Dust" type="CPUParticles2D" parent="."]
+position = Vector2(752, 480)
+rotation = -0.161108
+amount = 32
+lifetime = 6.0
+preprocess = 176.25
+emission_shape = 3
+emission_rect_extents = Vector2(600, 600)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 6.0
+scale_amount_min = 4.0
+scale_amount_max = 16.0
+scale_amount_curve = SubResource("Curve_qohaf")
+color = Color(1, 1, 1, 0.328)
+
+[node name="Dust2" type="CPUParticles2D" parent="."]
+position = Vector2(616, 480)
+rotation = -0.161108
+amount = 32
+lifetime = 6.0
+preprocess = 176.25
+emission_shape = 3
+emission_rect_extents = Vector2(600, 600)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 6.0
+scale_amount_min = 4.0
+scale_amount_max = 16.0
+scale_amount_curve = SubResource("Curve_2ksvd")
+color = Color(1, 1, 1, 0.328)
 
 [node name="PlaysMenuMusic" type="Node" parent="."]
 script = ExtResource("1_rtw35")
