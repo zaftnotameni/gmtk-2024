@@ -9,6 +9,7 @@ signal sig_transition_started()
 enum GameState { INITIAL = 0, LOADING, TITLE, MENU, CUTSCENE, GAME, PAUSED, VICTORY, DEFEAT }
 
 static var current_time : float = 0.0
+static var victory_time : float = 0.0
 static var game_state : GameState = GameState.INITIAL
 static var game_state_stack : Array[GameState] = [GameState.INITIAL]
 static var transition : bool = false
@@ -73,6 +74,8 @@ func push_as(new_state:GameState):
 	print_verbose('game_state: %s' % str(game_state_stack.map(name_of)))
 	sig_game_state_changed.emit(game_state)
 	if game_state == GameState.GAME: sig_game_state_game.emit()
+	if game_state == GameState.TITLE: victory_time = 0
+	if game_state == GameState.VICTORY: victory_time = current_time
 
 func mark_as(new_state:GameState):
 	if new_state == game_state: return
@@ -82,6 +85,8 @@ func mark_as(new_state:GameState):
 	print_verbose('game_state: %s' % str(game_state_stack.map(name_of)))
 	sig_game_state_changed.emit(game_state, prev_state)
 	if game_state == GameState.GAME: sig_game_state_game.emit()
+	if game_state == GameState.TITLE: victory_time = 0
+	if game_state == GameState.VICTORY: victory_time = current_time
 
 func name_of(state_id:GameState) -> String:
 	return GameState.find_key(state_id)

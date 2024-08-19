@@ -442,6 +442,7 @@ shape = SubResource("RectangleShape2D_bh1qo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
+offset = Vector2(0, -64)
 zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
