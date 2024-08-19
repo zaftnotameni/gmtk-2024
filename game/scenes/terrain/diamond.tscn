@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cavuj74tj36pi"]
+[gd_scene load_steps=5 format=3 uid="uid://cavuj74tj36pi"]
 
 [ext_resource type="Script" path="res://game/scripts/terrain/grapple_target.gd" id="1_jvbny"]
 [ext_resource type="Texture2D" uid="uid://b8rrmdpmp8a4o" path="res://game/assets/textures/tileset/tiles.png" id="2_mvrfb"]
+[ext_resource type="PackedScene" uid="uid://uebfv1gm6b5h" path="res://game/resources/world/dust.tscn" id="3_0d4vg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5kv8"]
 radius = 12.0416
@@ -14,7 +15,16 @@ script = ExtResource("1_jvbny")
 shape = SubResource("CircleShape2D_t5kv8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(3, 3, 3, 1)
 texture = ExtResource("2_mvrfb")
 hframes = 4
 vframes = 4
 frame = 4
+
+[node name="Dust" parent="." instance=ExtResource("3_0d4vg")]
+position = Vector2(0, 0)
+rotation = 0.0
+amount = 8
+emission_shape = 2
+emission_sphere_radius = 20.75
+radial_accel_min = -2.0
