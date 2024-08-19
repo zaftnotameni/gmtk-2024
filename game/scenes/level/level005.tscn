@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://qrhup8qfp35q"]
+[gd_scene load_steps=15 format=4 uid="uid://qrhup8qfp35q"]
 
 [ext_resource type="PackedScene" uid="uid://b1yi0feutffi" path="res://game/scenes/background/background.tscn" id="1_a7n7l"]
 [ext_resource type="Script" path="res://addons/game_manager/at/hud.gd" id="2_hj1n6"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://ccdtcxvo8noem" path="res://game/scenes/dialog/level_title.tscn" id="9_drkrw"]
 [ext_resource type="Script" path="res://game/scripts/behaviors/path_auto_follow.gd" id="10_jlx6h"]
 [ext_resource type="PackedScene" uid="uid://cn61ng4h8eo0l" path="res://game/scenes/terrain/moving_platform.tscn" id="11_mdb44"]
+[ext_resource type="Script" path="res://game/scripts/terrain/level_goal.gd" id="12_jaewn"]
+[ext_resource type="PackedScene" uid="uid://bnukpjg2s3d7m" path="res://game/scenes/level/boss_level.tscn" id="13_n1jap"]
 
 [sub_resource type="Curve2D" id="Curve2D_fxqex"]
 _data = {
@@ -140,3 +142,8 @@ script = ExtResource("10_jlx6h")
 reverse = true
 
 [node name="MovingPlatform" parent="Path2D2/PathAutoFollow5" instance=ExtResource("11_mdb44")]
+
+[node name="LevelGoal" type="Area2D" parent="."]
+position = Vector2(387, -8)
+script = ExtResource("12_jaewn")
+next_level = ExtResource("13_n1jap")
