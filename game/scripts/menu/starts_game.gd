@@ -1,6 +1,6 @@
 class_name StartsGame extends Node
 
-const FIRST_LEVEL := preload('res://game/scenes/level/level001.tscn')
+const FIRST_LEVEL := preload('res://game/scenes/level/level01.tscn')
 
 @export_group('optional')
 @export var menu : Control

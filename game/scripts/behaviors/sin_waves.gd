@@ -3,6 +3,8 @@ class_name SinWaves extends Node
 @export_group('configuration')
 @export var amplitude_x : float = 0
 @export var amplitude_y : float = 8
+@export var offset_x: float = 0
+@export var offset_y: float = 0
 @export var speed_x : float = 0
 @export var speed_y : float = 1
 
@@ -25,5 +27,5 @@ func _physics_process(delta: float) -> void:
 	if not target: return
 	angle_x = wrap(angle_x + delta * speed_x, 0, 2 * PI)
 	angle_y = wrap(angle_y + delta * speed_y, 0, 2 * PI)
-	target.global_position.x = initial_x + sin(angle_x) * amplitude_x
-	target.global_position.y = initial_y + sin(angle_y) * amplitude_y
+	target.global_position.x = initial_x + offset_x + sin(angle_x) * amplitude_x
+	target.global_position.y = initial_y + offset_y + sin(angle_y) * amplitude_y
