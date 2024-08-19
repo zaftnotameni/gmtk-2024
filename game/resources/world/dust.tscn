@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://uebfv1gm6b5h"]
+
+[sub_resource type="Curve" id="Curve_h1gtn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.141221, 0.969811), -0.523418, -0.523418, 0, 0, Vector2(1, 0), -1.11834, 0.0, 0, 0]
+point_count = 3
+
+[node name="Dust" type="CPUParticles2D"]
+position = Vector2(245, 241)
+rotation = -0.161108
+amount = 32
+lifetime = 6.0
+preprocess = 176.25
+emission_shape = 3
+emission_rect_extents = Vector2(52.53, 219.905)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 6.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_h1gtn")
+color = Color(1, 1, 1, 0.328)

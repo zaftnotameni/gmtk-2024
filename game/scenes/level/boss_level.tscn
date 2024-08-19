@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://bnukpjg2s3d7m"]
 
-[ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_nlakt"]
+[ext_resource type="PackedScene" path="res://game/scenes/level/base_level.tscn" id="1_nlakt"]
 [ext_resource type="PackedScene" uid="uid://3vcgnxxngx6m" path="res://game/scenes/menu/screen/victory_screen.tscn" id="2_csv4n"]
 [ext_resource type="PackedScene" uid="uid://djlqyg7hr1oru" path="res://game/scenes/boss/boss.tscn" id="2_txtjf"]
 [ext_resource type="Script" path="res://game/scripts/boss/boss_level_script.gd" id="4_6h2h5"]
