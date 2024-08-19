@@ -46,12 +46,16 @@ func timeout() -> void:
 		BossPhases.CHILL:
 			if spawn_count >= 2:
 				spawn_drone(position.x - 24, position.y + 32)
+				spawn_drone(position.x + 24, position.y + 32)
 			else:
+				spawn_drone(position.x - 24, position.y + 32)
 				spawn_drone(position.x + 24, position.y + 32)
 		BossPhases.MID:
 			if spawn_count >= 2:
 				spawn_stunner(position.x - 24, position.y + 32)
+				spawn_stunner(position.x + 24, position.y + 32)
 			else:
+				spawn_stunner(position.x - 24, position.y + 32)
 				spawn_stunner(position.x + 24, position.y + 32)
 		BossPhases.ALMOST_DEAD:
 			if spawn_count == 0:

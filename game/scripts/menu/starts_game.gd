@@ -10,6 +10,7 @@ const FIRST_LEVEL := preload('res://game/scenes/level/level001.tscn')
 func on_pressed():
 	var instance : Node2D = scene.instantiate()
 	GameManagerState.reset_time()
+	State.victory_time = 0
 	State.transition_start()
 	Layers.game.add_child.call_deferred(instance)
 	var tween := create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
