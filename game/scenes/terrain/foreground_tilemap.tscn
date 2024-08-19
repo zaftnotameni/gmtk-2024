@@ -2,5 +2,5 @@
 
 [ext_resource type="TileSet" uid="uid://cdbtydialsg3l" path="res://game/resources/tiles/foreground_tileset.tres" id="1_bwwak"]
 
-[node name="ForegroundTilemap" type="TileMapLayer"]
+[node name="ForegroundTilemap" type="TileMapLayer" groups=["tiles"]]
 tile_set = ExtResource("1_bwwak")
