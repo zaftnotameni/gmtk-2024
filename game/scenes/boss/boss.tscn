@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game/scripts/boss/boss.gd" id="1_8da1h"]
 [ext_resource type="Texture2D" uid="uid://bagf7jein442a" path="res://game/assets/textures/boss/boss.png" id="2_8bf1f"]
-[ext_resource type="PackedScene" uid="uid://bnx4srks6vtah" path="res://game/scenes/terrain/roamer.tscn" id="2_v8doe"]
+[ext_resource type="PackedScene" uid="uid://c1m311wf6sxnl" path="res://game/scenes/terrain/roamer.tscn" id="2_v8doe"]
 [ext_resource type="PackedScene" uid="uid://dedsny5oiuid6" path="res://game/scenes/terrain/stunner.tscn" id="3_fmi6h"]
 [ext_resource type="PackedScene" uid="uid://cb6e2vftni1sy" path="res://game/scenes/boss/weak_point.tscn" id="3_j0ll5"]
 
@@ -382,7 +382,7 @@ tracks/9/keys = {
 }
 tracks/10/type = "value"
 tracks/10/imported = false
-tracks/10/enabled = true
+tracks/10/enabled = false
 tracks/10/path = NodePath("WeakPoint:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
