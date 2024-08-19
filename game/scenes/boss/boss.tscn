@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game/scripts/boss/boss.gd" id="1_8da1h"]
 [ext_resource type="Texture2D" uid="uid://bagf7jein442a" path="res://game/assets/textures/boss/boss.png" id="2_8bf1f"]
-[ext_resource type="PackedScene" uid="uid://c1m311wf6sxnl" path="res://game/scenes/terrain/roamer.tscn" id="2_v8doe"]
+[ext_resource type="PackedScene" uid="uid://bnx4srks6vtah" path="res://game/scenes/terrain/roamer.tscn" id="2_v8doe"]
 [ext_resource type="PackedScene" uid="uid://dedsny5oiuid6" path="res://game/scenes/terrain/stunner.tscn" id="3_fmi6h"]
 [ext_resource type="PackedScene" uid="uid://cb6e2vftni1sy" path="res://game/scenes/boss/weak_point.tscn" id="3_j0ll5"]
 
@@ -116,6 +116,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [2]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WeakPoint:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_rlgv0"]
@@ -253,10 +265,10 @@ tracks/0/path = NodePath("LeftHand:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-32, 20), Vector2(-32, 20), Vector2(-24, 32)]
+"values": [Vector2(-32, 20), Vector2(-32, 20), Vector2(-24, 32), Vector2(-24, 32)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -265,10 +277,10 @@ tracks/1/path = NodePath("RightHand:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(32, 20), Vector2(32, 20), Vector2(24, 32)]
+"values": [Vector2(32, 20), Vector2(32, 20), Vector2(24, 32), Vector2(24, 32)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -301,10 +313,10 @@ tracks/4/path = NodePath("LeftHand:rotation")
 tracks/4/interp = 4
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [-0.785398, 0.0]
+"values": [-0.785398, 0.0, 0.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -313,10 +325,10 @@ tracks/5/path = NodePath("RightHand:rotation")
 tracks/5/interp = 4
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.785398, 0.0]
+"values": [0.785398, 0.0, 0.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -367,6 +379,18 @@ tracks/9/keys = {
 "args": [&"idle", -1, 1.0, false],
 "method": &"play"
 }]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("WeakPoint:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(100, 0, 1, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_hl4kl"]
