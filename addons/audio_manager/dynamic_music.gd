@@ -1,37 +1,36 @@
 extends AudioStreamPlayer
 
-var previous_percentage: float = 0.0
-var current: int = 0
+var percentage: float = 0.0
 
 func _process(delta: float) -> void:
-	previous_percentage += PlayerControllerSnappy.get_chained_hooks_percentagae() * delta * 3.0
-	previous_percentage -= delta * 0.1
-	previous_percentage = clamp(previous_percentage, 0.0, 1.0)
+	percentage += PlayerControllerSnappy.get_chained_hooks_percentagae() * delta * 3.0
+	percentage -= delta * 0.1
+	percentage = clamp(percentage, 0.0, 1.0)
+	#print(percentage)
+
+func _play(from_position: float = 0.0) -> void:
+	print("A")
+	$Timer.start()
 	
-	logic()
-	
-func logic() -> void:
+func _stop():
+	$Timer.stop()
+
+func _on_timer_timeout() -> void:
 	if !playing: return
-	if !get_stream_playback(): return
-	if previous_percentage > 0.75:
-		if current == 3: return
-		current = 3
-		print_verbose('switching to 3')
-		get_stream_playback().switch_to_clip(3)
+	if percentage > 0.75:
+		unmute(0)
 		return
-	if previous_percentage > 0.5:
-		if current == 2: return
-		current = 2
-		print_verbose('switching to 2')
-		get_stream_playback().switch_to_clip(2)
+	if percentage > 0.5:
+		unmute(1)
 		return
-	if previous_percentage > 0.2:
-		if current == 1: return
-		current = 1
-		print_verbose('switching to 1')
-		get_stream_playback().switch_to_clip(1)
+	if percentage > 0.3:
+		unmute(2)
 		return
-	if current == 0: return
-	current = 0
-	print_verbose('switching to 0')
-	get_stream_playback().switch_to_clip(0)
+	unmute(3)
+
+
+func unmute(index: int) -> void:
+	for i in stream.stream_count:
+		if i == index: continue
+		stream.set_sync_stream_volume(i, -60.0)
+	stream.set_sync_stream_volume(index, 0.0)

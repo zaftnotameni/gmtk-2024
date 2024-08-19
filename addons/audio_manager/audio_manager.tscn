@@ -16,29 +16,16 @@
 [ext_resource type="AudioStream" uid="uid://duh752yn7shur" path="res://game/assets/audio/bgm/4.wav" id="7_87obw"]
 [ext_resource type="Script" path="res://addons/audio_manager/dynamic_music.gd" id="8_gsi1s"]
 
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_2svgd"]
-clip_count = 4
-clip_0/name = &"1"
-clip_0/stream = ExtResource("4_0xbp4")
-clip_0/auto_advance = 0
-clip_1/name = &"2"
-clip_1/stream = ExtResource("5_5ixuw")
-clip_1/auto_advance = 0
-clip_2/name = &"3"
-clip_2/stream = ExtResource("6_2rnex")
-clip_2/auto_advance = 0
-clip_3/name = &"4"
-clip_3/stream = ExtResource("7_87obw")
-clip_3/auto_advance = 0
-_transitions = {
-Vector2i(-1, -1): {
-"fade_beats": 1,
-"fade_mode": 3,
-"from_time": 2,
-"hold_previous": true,
-"to_time": 0
-}
-}
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_r8285"]
+stream_count = 4
+stream_0/stream = ExtResource("7_87obw")
+stream_0/volume = -60.0
+stream_1/stream = ExtResource("6_2rnex")
+stream_1/volume = -60.0
+stream_2/stream = ExtResource("5_5ixuw")
+stream_2/volume = -60.0
+stream_3/stream = ExtResource("4_0xbp4")
+stream_3/volume = 0.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ws4v7"]
 random_pitch = 1.05
@@ -64,9 +51,13 @@ stream = ExtResource("3_n0ouj")
 bus = &"BGM"
 
 [node name="Level" type="AudioStreamPlayer" parent="BGM"]
-stream = SubResource("AudioStreamInteractive_2svgd")
+stream = SubResource("AudioStreamSynchronized_r8285")
 bus = &"BGM"
 script = ExtResource("8_gsi1s")
+
+[node name="Timer" type="Timer" parent="BGM/Level"]
+wait_time = 2.448
+autostart = true
 
 [node name="SFX" type="Node" parent="."]
 
@@ -120,3 +111,5 @@ bus = &"UI"
 [node name="Press" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource("4_youm6")
 bus = &"UI"
+
+[connection signal="timeout" from="BGM/Level/Timer" to="BGM/Level" method="_on_timer_timeout"]
