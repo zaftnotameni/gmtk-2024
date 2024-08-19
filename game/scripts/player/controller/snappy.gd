@@ -39,13 +39,14 @@ static var combo_label_scene := load('res://game/scenes/combo/combo_label.tscn')
 
 func on_grapple_just_hit():
 	PlayerControllerSnappy.chained_hooks_add()
-	var combo_label := combo_label_scene.instantiate() as Label
-	if not combo_label: return
-	if not grapple_target: return
-	if not cast.is_colliding(): return
-	combo_label.text = ' %sx' % chained_hooks_count
-	combo_label.global_position = cast.get_collision_point() + Vector2(-48, -48)
-	Layers.game.add_child(combo_label)
+	if chained_hooks_count >= 5:
+		var combo_label := combo_label_scene.instantiate() as Label
+		if not combo_label: return
+		if not grapple_target: return
+		if not cast.is_colliding(): return
+		combo_label.text = ' %sx' % chained_hooks_count
+		combo_label.global_position = cast.get_collision_point() + Vector2(-48, -48)
+		Layers.game.add_child(combo_label)
 
 func change_grapple_state_to(new_grapple_state:GrappleState=grapple_state):
 	if grapple_state == new_grapple_state: return
