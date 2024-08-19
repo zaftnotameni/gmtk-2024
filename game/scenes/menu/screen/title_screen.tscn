@@ -241,14 +241,6 @@ script = ExtResource("3_o1bdh")
 [node name="PressBlip" type="Node" parent="MarginContainer/VBoxContainer/About"]
 script = ExtResource("4_wobmx")
 
-[node name="Head" type="Sprite2D" parent="."]
-position = Vector2(1301, 33)
-scale = Vector2(4, 4)
-texture = ExtResource("20_5xal6")
-hframes = 2
-vframes = 2
-frame = 2
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(400, 464)
 scale = Vector2(4, 4)
