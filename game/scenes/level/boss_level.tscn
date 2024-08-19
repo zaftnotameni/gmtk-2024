@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://bnukpjg2s3d7m"]
+[gd_scene load_steps=6 format=4 uid="uid://bnukpjg2s3d7m"]
 
-[ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_nlakt"]
+[ext_resource type="PackedScene" path="res://game/scenes/level/base_level.tscn" id="1_nlakt"]
 [ext_resource type="PackedScene" uid="uid://3vcgnxxngx6m" path="res://game/scenes/menu/screen/victory_screen.tscn" id="2_csv4n"]
 [ext_resource type="PackedScene" uid="uid://djlqyg7hr1oru" path="res://game/scenes/boss/boss.tscn" id="2_txtjf"]
 [ext_resource type="Script" path="res://game/scripts/boss/boss_level_script.gd" id="4_6h2h5"]
+[ext_resource type="AudioStream" uid="uid://b2g1ug566pfus" path="res://game/assets/audio/bgm/scientific_shenanigans.mp3" id="5_s8prv"]
 
 [node name="BossLevel" instance=ExtResource("1_nlakt")]
 
@@ -105,3 +106,8 @@ position = Vector2(130, -1382)
 
 [node name="BossLevelScript" type="Node" parent="." index="10"]
 script = ExtResource("4_6h2h5")
+
+[node name="Music" type="AudioStreamPlayer" parent="BossLevelScript" index="0"]
+stream = ExtResource("5_s8prv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BossLevelScript" index="1"]

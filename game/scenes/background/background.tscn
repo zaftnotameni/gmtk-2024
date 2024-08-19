@@ -42,6 +42,13 @@ sources/0 = SubResource("TileSetAtlasSource_ckram")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_seqif")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -3327.0
+offset_top = -2254.0
+offset_right = 3367.0
+offset_bottom = 2294.0
+color = Color(0.027451, 0, 0.172549, 1)
+
 [node name="Blocks2" type="Parallax2D" parent="."]
 scale = Vector2(2.3, 2.3)
 scroll_scale = Vector2(0.02, 0.02)

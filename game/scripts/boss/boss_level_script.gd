@@ -24,4 +24,6 @@ func on_boss_dead():
 	await tween.finished
 
 func _ready() -> void:
+	AudioManager.bgm_levels_dynamic.stop()
 	boss.tree_exited.connect(on_boss_dead)
+	$Music.play()
