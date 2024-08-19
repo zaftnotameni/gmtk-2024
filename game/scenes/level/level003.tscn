@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="6_6h4sw"]
 [ext_resource type="Script" path="res://game/scripts/terrain/level_goal.gd" id="7_ixbui"]
 [ext_resource type="PackedScene" uid="uid://ccdtcxvo8noem" path="res://game/scenes/dialog/level_title.tscn" id="9_g5sfs"]
-[ext_resource type="PackedScene" uid="uid://dmp13fcnc2jct" path="res://game/scenes/level/level004.tscn" id="11_4g5jq"]
-[ext_resource type="PackedScene" uid="uid://b2jswhit1rsnj" path="res://game/resources/world/light.tscn" id="12_koqw0"]
+[ext_resource type="PackedScene" uid="uid://bnukpjg2s3d7m" path="res://game/scenes/level/boss_level.tscn" id="11_4g5jq"]
+[ext_resource type="PackedScene" path="res://game/resources/world/light.tscn" id="12_koqw0"]
 
 [node name="Level003SpikesAndDiamonds" type="Node2D"]
 
