@@ -14,7 +14,8 @@ func change_health_to(new_health_value:int=health):
 		push_error('invalid health value: %s, current: %s at %s' % [new_health_value, health, get_path()])
 		return
 	health = new_health_value
-	sprite.play(animation_stages[max(health, 0)])
+	if new_health_value > 0:
+		sprite.play(animation_stages[max(health, 0)])
 
 func on_hook_stunner_hit_weakpoint(hook_pointy_bit:HookStunner):
 	sig_weakpoint_hit.emit()

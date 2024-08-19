@@ -16,6 +16,7 @@ class_name Stunner extends Area2D
 @export var direction : float = 1
 @export var stun_elapsed : float = 0.0
 @export var grapple_target : GrappleTarget
+@export var kill_on_exit: bool = false
 
 func stun():
 	set_deferred('monitorable', false)
@@ -65,6 +66,8 @@ func physics_horizontal(delta:float):
 func physics_vertical(delta:float):
 	global_position.y += direction * delta * roaming_speed
 	if initial_position.distance_to(global_position) >= roaming_radius:
+		if kill_on_exit:
+			queue_free()
 		direction *= -1
 
 func physics_circular(delta:float):
