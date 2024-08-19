@@ -19,7 +19,9 @@ func go_to_next_level():
 	if not next_level: return
 
 	# prepare instance for next level
-	var instance : Node2D = next_level.instantiate()
+	var instance : CanvasItem = next_level.instantiate()
+	if instance is Control:
+		State.mark_as_victory()
 
 	# remove current player
 	for p:Player in Player.all():
@@ -30,9 +32,14 @@ func go_to_next_level():
 	owner.add_sibling.call_deferred(instance)
 	owner.queue_free()
 
-	prepare_tween()
-	# mark the game as in "game" mode again
-	tween.tween_callback(State.mark_as_game).set_delay(0.1)
+	if instance is Node2D:
+		prepare_tween()
+		# mark the game as in "game" mode again
+		tween.tween_callback(State.mark_as_game).set_delay(0.1)
+	if instance is Control:
+		prepare_tween()
+		# mark the game as in "game" mode again
+		tween.tween_callback(State.mark_as_victory).set_delay(0.1)
 
 
 func on_body_entered(body:Node2D):
