@@ -159,18 +159,21 @@ offset_bottom = 638.0
 texture = ExtResource("3_eyhuy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(496, 458)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_fa230")
 autoplay = "default"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(936, 540)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_3pmwi")
 autoplay = "default"
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(624, 610)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_8ipal")
@@ -225,5 +228,6 @@ vframes = 4
 frame = 5
 
 [node name="WeakPoint" parent="." instance=ExtResource("8_gjjas")]
+visible = false
 position = Vector2(696, 386)
 scale = Vector2(4, 4)
