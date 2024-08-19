@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://ba6cf3kergxpj"]
 
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_d4owm"]
-[ext_resource type="PackedScene" uid="uid://bnukpjg2s3d7m" path="res://game/scenes/level/boss_level.tscn" id="2_l0y8e"]
+[ext_resource type="PackedScene" uid="uid://w0c7w1rykep0" path="res://game/scenes/level/level03.tscn" id="2_s7iq6"]
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="3_3thol"]
 
 [node name="Level02" instance=ExtResource("1_d4owm")]
@@ -14,7 +14,7 @@ position = Vector2(-80, -16)
 
 [node name="LevelGoal" parent="." index="7"]
 position = Vector2(0, -896)
-next_level = ExtResource("2_l0y8e")
+next_level = ExtResource("2_s7iq6")
 
 [node name="LevelTitle" parent="." index="8"]
 text = "Level 02: Chained"
