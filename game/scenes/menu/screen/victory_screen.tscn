@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://3vcgnxxngx6m"]
+[gd_scene load_steps=12 format=3 uid="uid://bilcwkf8g8hac"]
 
 [ext_resource type="Script" path="res://game/scripts/menu/shows_victory_time.gd" id="1_07606"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauseable.gd" id="1_smc67"]
@@ -49,9 +49,9 @@ bbcode_enabled = true
 text = "[center]
 [font_size=64]Congratulations[/font_size]
 
-[font_size=48]You've reached the top[/font_size]
+[font_size=48]You have reached the peak and defeated Her Grace.[/font_size]
 
-[font_size=48]Only those truly built to scale can ascend to such heights![/font_size]
+[font_size=48]Only those truly built to scale can ascend to such heights.[/font_size]
 [/center]"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
