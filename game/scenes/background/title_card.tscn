@@ -1,0 +1,229 @@
+[gd_scene load_steps=27 format=3 uid="uid://0ppxkkaqgxvo"]
+
+[ext_resource type="PackedScene" uid="uid://b1yi0feutffi" path="res://game/scenes/background/background.tscn" id="1_iqua2"]
+[ext_resource type="Texture2D" uid="uid://cukknm7eaf46q" path="res://game/assets/textures/grapple_points/stun_drone_fly.png" id="2_6e06v"]
+[ext_resource type="Texture2D" uid="uid://bagf7jein442a" path="res://game/assets/textures/boss/boss.png" id="2_x5ual"]
+[ext_resource type="Texture2D" uid="uid://twqlssamcni4" path="res://game/assets/logos/logo.png" id="3_eyhuy"]
+[ext_resource type="Texture2D" uid="uid://bout11l2h3108" path="res://game/assets/textures/grapple_points/drone.png" id="3_kw6mu"]
+[ext_resource type="Texture2D" uid="uid://bq1xf2vs8c72f" path="res://game/assets/textures/grappler/grappler_run.png" id="5_7gfaf"]
+[ext_resource type="PackedScene" uid="uid://cb6e2vftni1sy" path="res://game/scenes/boss/weak_point.tscn" id="8_gjjas"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lva6"]
+atlas = ExtResource("2_6e06v")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0qht"]
+atlas = ExtResource("2_6e06v")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs1b6"]
+atlas = ExtResource("2_6e06v")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it57x"]
+atlas = ExtResource("2_6e06v")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fa230"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lva6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0qht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs1b6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it57x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j16im"]
+atlas = ExtResource("3_kw6mu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuwkr"]
+atlas = ExtResource("3_kw6mu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c8j0"]
+atlas = ExtResource("3_kw6mu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gvf5"]
+atlas = ExtResource("3_kw6mu")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3pmwi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j16im")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuwkr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3c8j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gvf5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u512x"]
+atlas = ExtResource("5_7gfaf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv7sc"]
+atlas = ExtResource("5_7gfaf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toty8"]
+atlas = ExtResource("5_7gfaf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wy20"]
+atlas = ExtResource("5_7gfaf")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8ff0"]
+atlas = ExtResource("5_7gfaf")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2r2b"]
+atlas = ExtResource("5_7gfaf")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ipal"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u512x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv7sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_toty8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wy20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8ff0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2r2b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_jgxnj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.141221, 0.969811), -0.523418, -0.523418, 0, 0, Vector2(1, 0), -1.11834, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_s58wn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.141221, 0.969811), -0.523418, -0.523418, 0, 0, Vector2(1, 0), -1.11834, 0.0, 0, 0]
+point_count = 3
+
+[node name="TitleCard" type="Node2D"]
+position = Vector2(0, -2)
+
+[node name="Background" parent="." instance=ExtResource("1_iqua2")]
+
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(888, 178)
+scale = Vector2(4, 4)
+texture = ExtResource("2_x5ual")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 384.0
+offset_top = 160.0
+offset_right = 1007.0
+offset_bottom = 596.0
+texture = ExtResource("3_eyhuy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(496, 416)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_fa230")
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(936, 498)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_3pmwi")
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(624, 568)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_8ipal")
+autoplay = "default"
+
+[node name="Dust" type="CPUParticles2D" parent="."]
+position = Vector2(904, 472)
+rotation = -0.161108
+amount = 32
+lifetime = 6.0
+preprocess = 176.25
+emission_shape = 3
+emission_rect_extents = Vector2(600, 600)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 6.0
+scale_amount_min = 4.0
+scale_amount_max = 16.0
+scale_amount_curve = SubResource("Curve_jgxnj")
+color = Color(1, 1, 1, 0.328)
+
+[node name="Dust2" type="CPUParticles2D" parent="."]
+position = Vector2(768, 472)
+rotation = -0.161108
+amount = 32
+lifetime = 6.0
+preprocess = 176.25
+emission_shape = 3
+emission_rect_extents = Vector2(600, 600)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 6.0
+scale_amount_min = 4.0
+scale_amount_max = 16.0
+scale_amount_curve = SubResource("Curve_s58wn")
+color = Color(1, 1, 1, 0.328)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(416, 368)
+scale = Vector2(4, 4)
+texture = ExtResource("2_x5ual")
+hframes = 4
+vframes = 4
+frame = 4
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(960, 344)
+scale = Vector2(4, 4)
+texture = ExtResource("2_x5ual")
+hframes = 4
+vframes = 4
+frame = 5
+
+[node name="WeakPoint" parent="." instance=ExtResource("8_gjjas")]
+position = Vector2(696, 344)
+scale = Vector2(4, 4)

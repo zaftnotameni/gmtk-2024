@@ -94,7 +94,7 @@ animations = [{
 curve = SubResource("Curve2D_pa3ko")
 
 [node name="PathAutoFollow" type="PathFollow2D" parent="Path2D"]
-position = Vector2(1495.03, 617.909)
+position = Vector2(1495.03, 617.91)
 progress = 6706.8
 rotates = false
 script = ExtResource("1_4g23p")
@@ -108,7 +108,7 @@ autoplay = "default"
 curve = SubResource("Curve2D_nnfeg")
 
 [node name="PathAutoFollow" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(360.941, 881.889)
+position = Vector2(360.938, 881.889)
 progress = 1400.01
 rotates = false
 script = ExtResource("1_4g23p")
