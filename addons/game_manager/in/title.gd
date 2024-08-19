@@ -13,4 +13,3 @@ func _ready() -> void:
 		State.mark_as_title()
 	else:
 		State.push_title()
-

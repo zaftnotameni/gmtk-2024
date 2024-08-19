@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkwbvigna7p05"]
+[gd_scene load_steps=11 format=4 uid="uid://dkwbvigna7p05"]
 
 [ext_resource type="PackedScene" uid="uid://b1yi0feutffi" path="res://game/scenes/background/background.tscn" id="1_01msy"]
 [ext_resource type="Script" path="res://addons/game_manager/at/hud.gd" id="2_0uqho"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://nv1cibju11qh" path="res://game/scenes/terrain/foreground_tilemap.tscn" id="7_8gad1"]
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="8_r58jc"]
 [ext_resource type="Script" path="res://game/scripts/terrain/level_goal.gd" id="9_02jf8"]
+[ext_resource type="PackedScene" uid="uid://ccdtcxvo8noem" path="res://game/scenes/dialog/level_title.tscn" id="10_6wkjw"]
 
 [node name="BaseLevel" type="Node2D"]
 
@@ -28,7 +29,7 @@ script = ExtResource("5_4xda1")
 script = ExtResource("6_sw17w")
 
 [node name="ForegroundTilemap" parent="." instance=ExtResource("7_8gad1")]
-tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD0/wAAAAAAAAAAAADz/wAAAAAAAAAAAADy/wAAAAAAAAAAAAD1/wAAAAAAAAAAAAD2/wAAAAAAAAAAAAD3/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD//wAAAAADAAAAAAAAAAAAAAADAAAAAAD+/wAAAAADAAAAAAD9/wAAAAADAAAAAAD8/wAAAAADAAAAAAD0/wAAAAADAAAAAADz/wAAAAADAAAAAADy/wAAAAABAAAAAAD1/wAAAAADAAAAAAD2/wAAAAADAAAAAAD3/wAAAAADAAAAAAD4/wAAAAADAAAAAAD5/wAAAAADAAAAAAD6/wAAAAADAAAAAAD7/wAAAAADAAAAAAABAAAAAAADAAAAAAACAAAAAAADAAAAAAADAAAAAAADAAAAAAAEAAAAAAADAAAAAAAFAAAAAAADAAAAAAAGAAAAAAADAAAAAAAHAAAAAAADAAAAAAAIAAAAAAADAAAAAAAJAAAAAAADAAAAAAAKAAAAAAADAAAAAAALAAAAAAADAAAAAAAMAAAAAAADAAAAAAANAAAAAAABAAAAAAANAAEAAAAAAAAAAAANAAIAAAAAAAAAAAANAAMAAAAAAAAAAAANAAQAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAoAAAAAAAAAAAANAAsAAAAAAAAAAAANAAwAAAAAAAAAAAANAA0AAAAAAAAAAAANAA4AAAAAAAAAAAANAA8AAAAAAAAAAADy/wEAAAAAAAAAAADy/wIAAAAAAAAAAADy/wMAAAAAAAAAAADy/wQAAAAAAAAAAADy/wUAAAAAAAAAAADy/wYAAAAAAAAAAADy/wcAAAAAAAAAAADy/wgAAAAAAAAAAADy/wkAAAAAAAAAAADy/woAAAAAAAAAAADy/wsAAAAAAAAAAADy/wwAAAAAAAAAAADy/w0AAAAAAAAAAADy/w4AAAAAAAAAAADy/w8AAAAAAAAAAAA=")
 
 [node name="Checkpoint" parent="." instance=ExtResource("8_r58jc")]
 position = Vector2(0, -16)
@@ -38,3 +39,8 @@ spawn_on_ready = true
 [node name="LevelGoal" type="Area2D" parent="."]
 position = Vector2(0, -80)
 script = ExtResource("9_02jf8")
+
+[node name="LevelTitle" parent="." instance=ExtResource("10_6wkjw")]
+offset_top = 16.0
+offset_bottom = 32.0
+text = "Level 00: Secret"

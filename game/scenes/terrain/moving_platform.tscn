@@ -10,15 +10,17 @@ size = Vector2(64, 8)
 size = Vector2(24, 8)
 
 [node name="MovingPlatform" type="CharacterBody2D"]
+position = Vector2(0, -8)
 collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_dydvn")
 one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-24, 4)
+position = Vector2(-24, 0)
 texture = ExtResource("1_vg6q4")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
@@ -33,7 +35,7 @@ script = ExtResource("2_pr5b0")
 shape = SubResource("RectangleShape2D_48vfg")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(-8, 4)
+position = Vector2(-8, 0)
 texture = ExtResource("1_vg6q4")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
@@ -48,7 +50,7 @@ script = ExtResource("2_pr5b0")
 shape = SubResource("RectangleShape2D_48vfg")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(8, 4)
+position = Vector2(8, 0)
 texture = ExtResource("1_vg6q4")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
@@ -64,7 +66,7 @@ position = Vector2(16, 0)
 shape = SubResource("RectangleShape2D_48vfg")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(24, 4)
+position = Vector2(24, 0)
 texture = ExtResource("1_vg6q4")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
