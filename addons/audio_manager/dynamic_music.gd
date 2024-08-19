@@ -23,7 +23,7 @@ func _on_timer_timeout() -> void:
 	if percentage > 0.5:
 		unmute(1)
 		return
-	if percentage > 0.3:
+	if percentage > 0.2:
 		unmute(2)
 		return
 	unmute(3)
