@@ -15,7 +15,7 @@ script = ExtResource("1_jvbny")
 shape = SubResource("CircleShape2D_t5kv8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(3, 3, 3, 1)
+modulate = Color(2, 2, 3, 1)
 texture = ExtResource("2_mvrfb")
 hframes = 4
 vframes = 4
