@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://djlqyg7hr1oru"]
+[gd_scene load_steps=15 format=3 uid="uid://djlqyg7hr1oru"]
 
 [ext_resource type="Script" path="res://game/scripts/boss/boss.gd" id="1_8da1h"]
 [ext_resource type="Texture2D" uid="uid://bagf7jein442a" path="res://game/assets/textures/boss/boss.png" id="2_8bf1f"]
 [ext_resource type="PackedScene" uid="uid://bnx4srks6vtah" path="res://game/scenes/terrain/roamer.tscn" id="2_v8doe"]
 [ext_resource type="PackedScene" uid="uid://dedsny5oiuid6" path="res://game/scenes/terrain/stunner.tscn" id="3_fmi6h"]
 [ext_resource type="PackedScene" uid="uid://cb6e2vftni1sy" path="res://game/scenes/boss/weak_point.tscn" id="3_j0ll5"]
+[ext_resource type="AudioStream" uid="uid://bukyy7per5rpv" path="res://game/assets/audio/sfx/kiewing.wav" id="6_hhlpl"]
+[ext_resource type="AudioStream" uid="uid://iq2b1otjbqxv" path="res://game/resources/audio/sfx/Chomp.wav" id="7_vmnxa"]
 
 [sub_resource type="Animation" id="Animation_3kscm"]
 length = 0.001
@@ -141,10 +143,70 @@ tracks/10/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Boom:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Kiewing:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Chomp:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath(".:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Chomp:pitch_scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
 
 [sub_resource type="Animation" id="Animation_rlgv0"]
 resource_name = "die"
-length = 2.0
+length = 4.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -153,10 +215,10 @@ tracks/0/path = NodePath("LeftHand:position")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-32, 20), Vector2(-30, 24), Vector2(-36, 20), Vector2(-32, 20), Vector2(-32, 16), Vector2(-32, 20), Vector2(-24, 24), Vector2(-24, 16), Vector2(-39, 16), Vector2(-32, 20), Vector2(-24, 16), Vector2(-32, 20)]
+"values": [Vector2(-32, 20), Vector2(-30, 24), Vector2(-36, 20), Vector2(-32, 20), Vector2(-32, 16), Vector2(-32, 20), Vector2(-24, 24), Vector2(-24, 16), Vector2(-39, 16), Vector2(-32, 20), Vector2(-24, 16), Vector2(-32, 20), Vector2(-30, 24), Vector2(-36, 20), Vector2(-32, 20), Vector2(-32, 16), Vector2(-32, 20), Vector2(-24, 24), Vector2(-24, 16), Vector2(-39, 16), Vector2(-32, 20), Vector2(-24, 16), Vector2(-32, 20)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -165,10 +227,10 @@ tracks/1/path = NodePath("RightHand:position")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(32, 20), Vector2(40, 22), Vector2(30, 18), Vector2(44, 16), Vector2(32, 20), Vector2(32, 22), Vector2(32, 20), Vector2(24, 26), Vector2(24, 20), Vector2(38, 18), Vector2(28, 26), Vector2(28, 18)]
+"values": [Vector2(32, 20), Vector2(40, 22), Vector2(30, 18), Vector2(44, 16), Vector2(32, 20), Vector2(32, 22), Vector2(32, 20), Vector2(24, 26), Vector2(24, 20), Vector2(38, 18), Vector2(28, 26), Vector2(28, 18), Vector2(40, 22), Vector2(30, 18), Vector2(44, 16), Vector2(32, 20), Vector2(32, 22), Vector2(32, 20), Vector2(24, 26), Vector2(24, 20), Vector2(38, 18), Vector2(28, 26), Vector2(28, 18)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -177,10 +239,10 @@ tracks/2/path = NodePath("Head:position")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, -8), Vector2(0, -8), Vector2(-4, -8), Vector2(4, 8), Vector2(-4, -8), Vector2(4, -8), Vector2(-4, -8), Vector2(4, -8), Vector2(4, 8), Vector2(4, -8), Vector2(-4, -8), Vector2(4, -8), Vector2(-4, -8)]
+"values": [Vector2(0, -8), Vector2(0, -8), Vector2(-4, -8), Vector2(4, 8), Vector2(-4, -8), Vector2(4, -8), Vector2(-4, -8), Vector2(4, -8), Vector2(4, 8), Vector2(4, -8), Vector2(-4, -8), Vector2(4, -8), Vector2(-4, -8), Vector2(-4, -8), Vector2(4, 8), Vector2(-4, -8), Vector2(4, -8), Vector2(-4, -8), Vector2(4, -8), Vector2(4, 8), Vector2(4, -8), Vector2(-4, -8), Vector2(4, -8), Vector2(-4, -8)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -264,6 +326,66 @@ tracks/9/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "values": []
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Boom:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Kiewing:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.9, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(8, 8, 8, 1), Color(100, 100, 100, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Chomp:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8, 1, 1.1, 1.2, 1.4, 1.5, 1.6, 1.7, 1.9, 2, 2.1, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Chomp:pitch_scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 0.5]
 }
 
 [sub_resource type="Animation" id="Animation_teudn"]
@@ -415,6 +537,18 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Chomp:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_hl4kl"]
@@ -692,6 +826,11 @@ _data = {
 "protect": SubResource("Animation_1gjrn")
 }
 
+[sub_resource type="Curve" id="Curve_3de34"]
+max_value = 4.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0267176, 4), 0.0, 0.0, 0, 0, Vector2(0.20229, 0.981132), -2.04114, -2.04114, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [node name="Boss" type="Node2D" node_paths=PackedStringArray("weakpoint", "timer", "animator")]
 script = ExtResource("1_8da1h")
 weakpoint = NodePath("WeakPoint")
@@ -737,3 +876,29 @@ autoplay = "idle"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
+
+[node name="Boom" type="CPUParticles2D" parent="."]
+self_modulate = Color(3, 3, 3, 1)
+position = Vector2(1, 7)
+emitting = false
+amount = 64
+lifetime = 2.5
+speed_scale = 6.0
+emission_shape = 2
+emission_sphere_radius = 5.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 25.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_3de34")
+
+[node name="Kiewing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_hhlpl")
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="Chomp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_vmnxa")
+pitch_scale = 2.0
+bus = &"SFX"

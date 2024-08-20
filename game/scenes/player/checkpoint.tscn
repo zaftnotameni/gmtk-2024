@@ -355,11 +355,13 @@ scale_amount_curve = SubResource("Curve_4rssh")
 [node name="WindUp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_wba4j")
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="Boom2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_nups7")
 volume_db = -10.0
 pitch_scale = 2.0
+bus = &"SFX"
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 5)
@@ -367,3 +369,4 @@ position = Vector2(0, 5)
 [node name="Woophm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ssehy")
 volume_db = -10.0
+bus = &"SFX"
