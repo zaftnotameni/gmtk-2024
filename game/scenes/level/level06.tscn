@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=4 uid="uid://bf0xdf6prym2e"]
 
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_mkxb0"]
-[ext_resource type="PackedScene" uid="uid://bnukpjg2s3d7m" path="res://game/scenes/level/boss_level.tscn" id="2_8ivhi"]
 [ext_resource type="PackedScene" uid="uid://dedsny5oiuid6" path="res://game/scenes/terrain/stunner.tscn" id="2_m8cya"]
+[ext_resource type="PackedScene" uid="uid://cajet6s3adeip" path="res://game/scenes/level/level07.tscn" id="2_rpism"]
 [ext_resource type="Script" path="res://game/scripts/terrain/marker_right.gd" id="4_kmrfq"]
 [ext_resource type="Script" path="res://game/scripts/terrain/marker_left.gd" id="5_d3crn"]
 
@@ -13,7 +13,7 @@ tile_map_data = PackedByteArray("AAD//wAAAAADAAAAAAAAAAAAAAADAAAAAAD+/wAAAAADAAA
 
 [node name="LevelGoal" parent="." index="7"]
 position = Vector2(0, -768)
-next_level = ExtResource("2_8ivhi")
+next_level = ExtResource("2_rpism")
 
 [node name="LevelTitle" parent="." index="8"]
 offset_left = -96.0
