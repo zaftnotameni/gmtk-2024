@@ -124,5 +124,5 @@ position = Vector2(224, 0)
 script = ExtResource("11_uexjg")
 
 [node name="MarkerLeft" type="Marker2D" parent="." index="15"]
-position = Vector2(-232, 0)
+position = Vector2(-224, 0)
 script = ExtResource("10_4d70j")

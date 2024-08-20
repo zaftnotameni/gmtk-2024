@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	#print(percentage)
 
 func _play(from_position: float = 0.0) -> void:
-	print("A")
+	unmute(0)
 	$Timer.start()
 	
 func _stop():

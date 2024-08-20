@@ -289,13 +289,12 @@ texture = ExtResource("2_w8qc4")
 
 [node name="Light" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(2, 2, 2, 1)
+modulate = Color(1.5, 1.5, 1.5, 1)
 texture = ExtResource("3_88umg")
 
 [node name="Dust" parent="Light" instance=ExtResource("4_t3xqs")]
 position = Vector2(0, -9)
 amount = 4
-speed_scale = 1.0
 emission_shape = 2
 emission_sphere_radius = 15.0
 radial_accel_min = -2.0
