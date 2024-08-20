@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=4 uid="uid://b7bwhin6cus2k"]
+[gd_scene load_steps=6 format=4 uid="uid://bf0xdf6prym2e"]
 
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_mkxb0"]
 [ext_resource type="PackedScene" uid="uid://bnukpjg2s3d7m" path="res://game/scenes/level/boss_level.tscn" id="2_8ivhi"]
 [ext_resource type="PackedScene" uid="uid://dedsny5oiuid6" path="res://game/scenes/terrain/stunner.tscn" id="2_m8cya"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_right.gd" id="4_kmrfq"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_left.gd" id="5_d3crn"]
 
 [node name="Level06" instance=ExtResource("1_mkxb0")]
 
@@ -64,3 +66,11 @@ direction = -1.0
 position = Vector2(128, -544)
 roaming_mode = 1
 direction = -1.0
+
+[node name="MarkerRight" type="Marker2D" parent="." index="19"]
+position = Vector2(224, 0)
+script = ExtResource("4_kmrfq")
+
+[node name="MarkerLeft" type="Marker2D" parent="." index="20"]
+position = Vector2(-232, 0)
+script = ExtResource("5_d3crn")

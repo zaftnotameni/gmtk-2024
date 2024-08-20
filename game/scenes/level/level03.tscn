@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://w0c7w1rykep0"]
+[gd_scene load_steps=5 format=4 uid="uid://w0c7w1rykep0"]
 
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_h2p4v"]
 [ext_resource type="PackedScene" uid="uid://c5uf2anbxafq" path="res://game/scenes/level/level04.tscn" id="2_w6153"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_right.gd" id="3_3utl1"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_left.gd" id="4_5h2mn"]
 
 [node name="Level03" instance=ExtResource("1_h2p4v")]
 
@@ -19,3 +21,11 @@ next_level = ExtResource("2_w6153")
 offset_left = -88.0
 offset_right = 88.0
 text = "Level 03: The floor is..."
+
+[node name="MarkerRight" type="Marker2D" parent="." index="9"]
+position = Vector2(224, 0)
+script = ExtResource("3_3utl1")
+
+[node name="MarkerLeft" type="Marker2D" parent="." index="10"]
+position = Vector2(-232, 0)
+script = ExtResource("4_5h2mn")

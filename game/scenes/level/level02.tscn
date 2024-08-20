@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://ba6cf3kergxpj"]
+[gd_scene load_steps=13 format=4 uid="uid://ba6cf3kergxpj"]
 
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_d4owm"]
 [ext_resource type="PackedScene" uid="uid://b2jswhit1rsnj" path="res://game/resources/world/light.tscn" id="2_a3waj"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://nv1cibju11qh" path="res://game/scenes/terrain/foreground_tilemap.tscn" id="3_3d0va"]
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="3_3thol"]
 [ext_resource type="PackedScene" uid="uid://uebfv1gm6b5h" path="res://game/resources/world/dust.tscn" id="4_fg6di"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_right.gd" id="7_d620d"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_left.gd" id="8_jfuab"]
 
 [sub_resource type="Animation" id="Animation_8fv4l"]
 resource_name = "Anim"
@@ -165,3 +167,11 @@ text = "Level 02: Chained"
 
 [node name="Checkpoint2" parent="." index="9" instance=ExtResource("3_3thol")]
 position = Vector2(160, -416)
+
+[node name="MarkerRight" type="Marker2D" parent="." index="10"]
+position = Vector2(224, 0)
+script = ExtResource("7_d620d")
+
+[node name="MarkerLeft" type="Marker2D" parent="." index="11"]
+position = Vector2(-232, 0)
+script = ExtResource("8_jfuab")
