@@ -19,7 +19,7 @@ tile_map_data = PackedByteArray("AADo/7j/AAABAAAAAADo/7n/AAABAAAAAADo/7r/AAABAAA
 
 [node name="Dust" parent="Background" index="8" instance=ExtResource("4_fg6di")]
 position = Vector2(0, -355)
-amount = 256
+amount = 128
 emission_rect_extents = Vector2(195.595, 564.855)
 
 [node name="ForegroundTilemap" parent="." index="5"]
