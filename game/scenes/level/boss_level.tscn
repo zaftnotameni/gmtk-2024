@@ -1,11 +1,30 @@
-[gd_scene load_steps=10 format=4 uid="uid://bnukpjg2s3d7m"]
+[gd_scene load_steps=14 format=4 uid="uid://bnukpjg2s3d7m"]
 
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_nlakt"]
 [ext_resource type="PackedScene" uid="uid://3vcgnxxngx6m" path="res://game/scenes/menu/screen/victory_screen.tscn" id="2_csv4n"]
+[ext_resource type="PackedScene" uid="uid://b2jswhit1rsnj" path="res://game/resources/world/light.tscn" id="2_jds17"]
 [ext_resource type="PackedScene" uid="uid://djlqyg7hr1oru" path="res://game/scenes/boss/boss.tscn" id="2_txtjf"]
+[ext_resource type="PackedScene" uid="uid://nv1cibju11qh" path="res://game/scenes/terrain/foreground_tilemap.tscn" id="3_lwku2"]
 [ext_resource type="Script" path="res://game/scripts/boss/boss_level_script.gd" id="4_6h2h5"]
+[ext_resource type="PackedScene" uid="uid://uebfv1gm6b5h" path="res://game/resources/world/dust.tscn" id="4_81ppg"]
+[ext_resource type="Texture2D" uid="uid://cyj7htabhmi1g" path="res://game/assets/textures/gradient.png" id="5_irp2y"]
 [ext_resource type="Script" path="res://game/scripts/terrain/marker_right.gd" id="6_ntfmj"]
 [ext_resource type="Script" path="res://game/scripts/terrain/marker_left.gd" id="7_g7qw3"]
+
+[sub_resource type="Animation" id="Animation_wkyea"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Boss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -90)]
+}
 
 [sub_resource type="Animation" id="Animation_4sban"]
 resource_name = "a"
@@ -23,21 +42,6 @@ tracks/0/keys = {
 "values": [Vector2(0, -90), Vector2(0, -90), Vector2(0, -384)]
 }
 
-[sub_resource type="Animation" id="Animation_wkyea"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%Boss:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -90)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5oyg3"]
 _data = {
 "RESET": SubResource("Animation_wkyea"),
@@ -45,6 +49,22 @@ _data = {
 }
 
 [node name="BossLevel" instance=ExtResource("1_nlakt")]
+
+[node name="Light" parent="Background" index="6" instance=ExtResource("2_jds17")]
+rotation = 0.0
+
+[node name="BackgroundTilemap" parent="Background" index="7" instance=ExtResource("3_lwku2")]
+tile_map_data = PackedByteArray("AAD0/5r/AAADAAEAAAD1/5r/AAADAAEAAAD2/5r/AAADAAEAAAD3/5r/AAADAAEAAAD4/5r/AAADAAEAAAD8/5r/AAADAAEAAAD9/5r/AAADAAEAAAD+/5r/AAADAAEAAAD//5r/AAADAAEAAAABAJr/AAADAAEAAAACAJr/AAADAAEAAAADAJr/AAADAAEAAAAEAJr/AAADAAEAAAAFAJr/AAADAAEAAAAKAJr/AAADAAEAAAAHAJr/AAADAAEAAAD6/5r/AAADAAEAAAAJAJr/AAADAAEAAAAIAJr/AAADAAEAAAAJAP7/AAACAAIAAAAJAP//AAACAAIAAAAKAP//AAACAAIAAAAKAP7/AAACAAIAAAD5//7/AAACAAIAAAD4//7/AAACAAIAAAD4////AAACAAIAAAD5////AAACAAIAAAD1/wQAAAACAAMAAAD2/wQAAAACAAMAAAD3/wQAAAACAAMAAAD4/wQAAAACAAMAAAD5/wQAAAABAAMAAAD6/wQAAAACAAMAAAD8/wQAAAACAAMAAAD9/wQAAAACAAMAAAD+/wQAAAACAAMAAAD//wQAAAACAAMAAAAAAAQAAAACAAMAAAABAAQAAAACAAMAAAACAAQAAAACAAMAAAADAAQAAAACAAMAAAAEAAQAAAACAAMAAAAFAAQAAAACAAMAAAAGAAQAAAABAAMAAAAHAAQAAAACAAMAAAAIAAQAAAACAAMAAAAJAAQAAAACAAMAAAAKAAQAAAACAAMAAAALAAQAAAACAAMAAAD7/wQAAAACAAMAAAA=")
+
+[node name="Dust" parent="Background" index="8" instance=ExtResource("4_81ppg")]
+position = Vector2(0, -355)
+amount = 64
+emission_rect_extents = Vector2(195.595, 564.855)
+
+[node name="Gradient" type="Sprite2D" parent="Background" index="9"]
+position = Vector2(3, -1071.5)
+scale = Vector2(884, 1.23833)
+texture = ExtResource("5_irp2y")
 
 [node name="ForegroundTilemap" parent="." index="5"]
 unique_name_in_owner = true

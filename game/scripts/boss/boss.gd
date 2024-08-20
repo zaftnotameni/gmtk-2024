@@ -126,6 +126,7 @@ func die():
 	print_verbose('tween finished')
 	animator.play("die")
 	await animator.animation_finished
+	AudioManager.bgm_levels_dynamic.stop()
 	print_verbose('die finished')
 	animating = false
 	queue_free()
