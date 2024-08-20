@@ -15,7 +15,7 @@ script = ExtResource("1_jvbny")
 shape = SubResource("CircleShape2D_t5kv8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(3, 3, 3, 1)
+modulate = Color(2, 2, 3, 1)
 texture = ExtResource("2_mvrfb")
 hframes = 4
 vframes = 4
@@ -23,7 +23,6 @@ frame = 4
 
 [node name="Dust" parent="." instance=ExtResource("3_0d4vg")]
 amount = 8
-speed_scale = 1.0
 emission_shape = 2
 emission_sphere_radius = 20.75
 radial_accel_min = -2.0

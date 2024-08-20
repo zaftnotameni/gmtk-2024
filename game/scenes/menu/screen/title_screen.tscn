@@ -317,6 +317,6 @@ scale_amount_curve = SubResource("Curve_2ksvd")
 color = Color(1, 1, 1, 0.328)
 
 [node name="ForegroundTilemap" parent="." instance=ExtResource("20_yjrsw")]
-modulate = Color(0.333, 0.333, 0.333, 1)
+modulate = Color(0.5, 0.5, 0.5, 1)
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray(0, 0, 4, 0, 6, 0, 1, 0, 0, 0, 0, 0, 2, 0, 16, 0, 4, 0, 1, 0, 0, 0, 0, 0, 2, 0)

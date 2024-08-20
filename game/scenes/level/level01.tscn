@@ -28,21 +28,16 @@ tile_map_data = PackedByteArray("AADo/7j/AAABAAAAAADo/7n/AAABAAAAAADo/7r/AAABAAA
 position = Vector2(-120, -381)
 rotation = -0.0322303
 amount = 64
-speed_scale = 1.0
 emission_rect_extents = Vector2(52.53, 483.685)
 
 [node name="Dust2" parent="Background" index="9" instance=ExtResource("4_rxy6y")]
 position = Vector2(24, -384)
 rotation = -0.0322303
-amount = 32
-speed_scale = 1.0
 emission_rect_extents = Vector2(28.435, 483.685)
 
 [node name="Dust3" parent="Background" index="10" instance=ExtResource("4_rxy6y")]
 position = Vector2(158, -384)
 rotation = -0.0322303
-amount = 32
-speed_scale = 1.0
 emission_rect_extents = Vector2(28.435, 483.685)
 
 [node name="ForegroundTilemap" parent="." index="5"]
