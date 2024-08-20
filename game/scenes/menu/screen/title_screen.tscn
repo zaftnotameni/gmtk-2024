@@ -1,7 +1,7 @@
 [gd_scene load_steps=40 format=3 uid="uid://be7tyglgcy5eo"]
 
 [ext_resource type="Script" path="res://addons/game_manager/in/title.gd" id="1_3h6ar"]
-[ext_resource type="PackedScene" uid="uid://b1yi0feutffi" path="res://game/scenes/background/background.tscn" id="1_aawh1"]
+[ext_resource type="Texture2D" uid="uid://c65kyxxb7pbh5" path="res://game/assets/textures/Untitled.png" id="1_k652n"]
 [ext_resource type="Script" path="res://game/scripts/audio/player_menu_music.gd" id="1_rtw35"]
 [ext_resource type="Script" path="res://addons/game_manager/pause/unpauses.gd" id="2_c1xnr"]
 [ext_resource type="Script" path="res://game/scripts/menu/shows_options_screen.gd" id="2_vkjj4"]
@@ -158,8 +158,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" parent="." instance=ExtResource("1_aawh1")]
-position = Vector2(672, 432)
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 2
+offset_left = -536.0
+offset_top = -208.0
+offset_right = 1985.0
+offset_bottom = 1205.0
+texture = ExtResource("1_k652n")
 
 [node name="PlaysMenuMusic" type="Node" parent="."]
 script = ExtResource("1_rtw35")
@@ -318,3 +326,6 @@ color = Color(1, 1, 1, 0.328)
 modulate = Color(0.5, 0.5, 0.5, 1)
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray(0, 0, 4, 0, 6, 0, 1, 0, 0, 0, 0, 0, 2, 0, 16, 0, 4, 0, 1, 0, 0, 0, 0, 0, 2, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(720, 448)
