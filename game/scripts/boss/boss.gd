@@ -31,6 +31,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _ready() -> void:
 	weakpoint.sig_weakpoint_hit.connect(on_weakpoint_hit)
 	timer.timeout.connect(timeout)
+	await timer.timeout
 	spawn_drone()
 
 func _physics_process(delta: float) -> void:
