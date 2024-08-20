@@ -32,9 +32,12 @@ func on_body_entered(body:Node2D):
 	if body is Player: activate()
 
 func activate():
+	if $Light.visible: return
 	for cp:Checkpoint in all():
 		if cp != self: cp.deactivate()
 	active = true
+	$Light.visible = true
+	$Woophm.play()
 
 func spawn():
 	for p:CharacterBody2D in Player.all():
@@ -61,6 +64,7 @@ func spawn():
 
 func deactivate():
 	active = false
+	$Light.visible = false
 
 static func tree() -> SceneTree: return Engine.get_main_loop()
 

@@ -5,11 +5,11 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.141221, 0.969811), -0.523418, 
 point_count = 3
 
 [node name="Dust" type="CPUParticles2D"]
-position = Vector2(245, 241)
-rotation = -0.161108
-amount = 32
+amount = 6000
 lifetime = 6.0
-preprocess = 176.25
+preprocess = 180.0
+speed_scale = 64.0
+lifetime_randomness = 0.5
 emission_shape = 3
 emission_rect_extents = Vector2(52.53, 219.905)
 spread = 180.0
