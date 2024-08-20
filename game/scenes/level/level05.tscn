@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_hxvnh"]
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="2_6tx8w"]
 [ext_resource type="PackedScene" uid="uid://bnx4srks6vtah" path="res://game/scenes/terrain/roamer.tscn" id="2_7s5nd"]
-[ext_resource type="PackedScene" uid="uid://bnukpjg2s3d7m" path="res://game/scenes/level/boss_level.tscn" id="3_hpgmy"]
+[ext_resource type="PackedScene" uid="uid://b7bwhin6cus2k" path="res://game/scenes/level/level06.tscn" id="3_xw7iu"]
 
 [node name="Level05" instance=ExtResource("1_hxvnh")]
 
@@ -15,7 +15,7 @@ position = Vector2(144, -352)
 
 [node name="LevelGoal" parent="." index="8"]
 position = Vector2(0, -576)
-next_level = ExtResource("3_hpgmy")
+next_level = ExtResource("3_xw7iu")
 
 [node name="LevelTitle" parent="." index="9"]
 text = "Level 05: Up and Down"
