@@ -34,6 +34,7 @@ AudioManager="*res://addons/audio_manager/./audio_manager.tscn"
 Layers="*res://addons/game_manager/./layers.tscn"
 State="*res://addons/game_manager/./state.gd"
 Config="*res://addons/smart_config/./config.gd"
+Bus="*res://game/scripts/player/bus.gd"
 
 [debug]
 

@@ -32,6 +32,10 @@ func setup_for_custom():
 func _ready() -> void:
 	if roaming_mode == RoamerMode.CUSTOM: setup_for_custom()
 	initial_position = global_position
+	Bus.sig_player_exited.connect(ungrapple)
+	Bus.sig_spawner_spawned.connect(ungrapple)
+	Bus.sig_player_died.connect(ungrapple)
+	Bus.sig_restarted_with_r.connect(ungrapple)
 
 func physics_custom(_delta:float):
 	push_error('physics_custom is not implemented, pick horizontal/vertical/circular %s' % get_path())

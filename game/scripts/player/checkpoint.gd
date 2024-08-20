@@ -14,7 +14,9 @@ const GROUP := 'checkpoints'
 func _unhandled_input(event: InputEvent) -> void:
 	if not active: return
 	if animator.is_playing(): return
-	if PlayerInput.is_respawn(event): await spawn()
+	if PlayerInput.is_respawn(event):
+		await spawn()
+		Bus.sig_restarted_with_r.emit()
 
 func _enter_tree() -> void:
 	process_mode = Node.ProcessMode.PROCESS_MODE_ALWAYS
@@ -55,6 +57,7 @@ func spawn():
 	p.show()
 	p.process_mode = Node.PROCESS_MODE_INHERIT
 	sig_spawn_animation_finished.emit()
+	Bus.sig_spawner_spawned.emit()
 
 func deactivate():
 	active = false
