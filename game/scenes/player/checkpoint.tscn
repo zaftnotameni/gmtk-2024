@@ -1,10 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://disdj2vlloaq6"]
+[gd_scene load_steps=16 format=3 uid="uid://disdj2vlloaq6"]
 
 [ext_resource type="Script" path="res://game/scripts/player/checkpoint.gd" id="1_ph418"]
-[ext_resource type="Texture2D" uid="uid://igt2w30du1dq" path="res://game/assets/textures/grappler/grappler_spawner.png" id="2_dv5hl"]
+[ext_resource type="Texture2D" uid="uid://bsdp0tktyfvsk" path="res://game/assets/textures/grappler/grappler_spawner_off.png" id="2_w8qc4"]
+[ext_resource type="Texture2D" uid="uid://dklnxd4dnoiim" path="res://game/assets/textures/grappler/grappler_spawner_lights.png" id="3_88umg"]
 [ext_resource type="Texture2D" uid="uid://n6ffhdeohh4" path="res://game/assets/textures/grappler/grappler_idle.png" id="3_lpfjv"]
+[ext_resource type="PackedScene" uid="uid://uebfv1gm6b5h" path="res://game/resources/world/dust.tscn" id="4_t3xqs"]
 [ext_resource type="AudioStream" uid="uid://driuviinjymyy" path="res://game/resources/audio/sfx/waaaaaaaaaaaahhhhhhhhh.wav" id="4_wba4j"]
 [ext_resource type="AudioStream" uid="uid://iq2b1otjbqxv" path="res://game/resources/audio/sfx/Chomp.wav" id="5_nups7"]
+[ext_resource type="AudioStream" uid="uid://d4bccbm5mw2f4" path="res://game/assets/audio/sfx/go_inside.ogg" id="7_ssehy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7eft6"]
 size = Vector2(32, 32)
@@ -282,7 +285,20 @@ script = ExtResource("1_ph418")
 animator = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_dv5hl")
+texture = ExtResource("2_w8qc4")
+
+[node name="Light" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(2, 2, 2, 1)
+texture = ExtResource("3_88umg")
+
+[node name="Dust" parent="Light" instance=ExtResource("4_t3xqs")]
+position = Vector2(0, -9)
+amount = 4
+speed_scale = 1.0
+emission_shape = 2
+emission_sphere_radius = 15.0
+radial_accel_min = -2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -302,11 +318,13 @@ hframes = 4
 
 [node name="Flash" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
+self_modulate = Color(3, 3, 3, 1)
 position = Vector2(2, 7)
 scale = Vector2(1, 18)
 texture = SubResource("GradientTexture1D_b1a6f")
 
 [node name="MinecraftNetherPortalEffect" type="CPUParticles2D" parent="."]
+self_modulate = Color(3, 3, 3, 1)
 position = Vector2(1, 7)
 emitting = false
 amount = 16
@@ -319,6 +337,7 @@ radial_accel_min = -10.0
 radial_accel_max = -2.0
 
 [node name="Boom" type="CPUParticles2D" parent="."]
+self_modulate = Color(3, 3, 3, 1)
 position = Vector2(1, 7)
 emitting = false
 lifetime = 2.5
@@ -345,3 +364,7 @@ pitch_scale = 2.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 5)
+
+[node name="Woophm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ssehy")
+volume_db = -10.0

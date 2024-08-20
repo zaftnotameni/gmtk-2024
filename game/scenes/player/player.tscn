@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d2w4hrolcacf"]
+[gd_scene load_steps=49 format=3 uid="uid://d2w4hrolcacf"]
 
 [ext_resource type="Texture2D" uid="uid://n6ffhdeohh4" path="res://game/assets/textures/grappler/grappler_idle.png" id="1_4dmup"]
 [ext_resource type="Texture2D" uid="uid://df7451l8rb2cc" path="res://game/assets/textures/grappler/grappler_hook.png" id="1_qef4r"]
@@ -8,8 +8,11 @@
 [ext_resource type="Script" path="res://game/scripts/player/camera_2d.gd" id="2_dr3j4"]
 [ext_resource type="Texture2D" uid="uid://34bbfee1bkjl" path="res://game/assets/textures/grappler/grappler_fall.png" id="2_mqwrg"]
 [ext_resource type="Texture2D" uid="uid://dlfm4ljs8m0dt" path="res://game/assets/textures/grappler/grappler_wire.png" id="4_o4j1t"]
+[ext_resource type="Texture2D" uid="uid://586b0gyps3r2" path="res://game/assets/textures/grappler/grappler_hook_light.png" id="7_0sifq"]
 [ext_resource type="Texture2D" uid="uid://dvj43ml301lyq" path="res://game/assets/textures/grappler/grappling_hook_tip.png" id="7_h6kno"]
+[ext_resource type="Texture2D" uid="uid://iloi3pnx3lap" path="res://game/assets/textures/grappler/grappler_idle_light.png" id="8_ik212"]
 [ext_resource type="Script" path="res://game/scenes/player/hook_stunner.gd" id="8_ore8h"]
+[ext_resource type="Texture2D" uid="uid://bl0y6jj2aeqy6" path="res://game/assets/textures/grappler/grappler_run_light.png" id="9_rhq3e"]
 [ext_resource type="AudioStream" uid="uid://bukyy7per5rpv" path="res://game/assets/audio/sfx/kiewing.wav" id="10_s67i5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bh1qo"]
@@ -116,6 +119,124 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ehs0r")
+}],
+"loop": true,
+"name": &"run",
+"speed": 16.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_n8hvl"]
+script/source = "extends AnimatedSprite2D
+
+
+func _play(anim_name: StringName = &\"\", custom_speed: float = 1.0, from_end: bool = false):
+	$Light.play(anim_name, custom_speed, from_end)
+	
+func _stop():
+	$Light.stop()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uav0y"]
+atlas = ExtResource("7_0sifq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h58jv"]
+atlas = ExtResource("7_0sifq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye1mb"]
+atlas = ExtResource("8_ik212")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3euk"]
+atlas = ExtResource("8_ik212")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4ixv"]
+atlas = ExtResource("8_ik212")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rh1ib"]
+atlas = ExtResource("8_ik212")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oavr5"]
+atlas = ExtResource("9_rhq3e")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hucpv"]
+atlas = ExtResource("9_rhq3e")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh3wg"]
+atlas = ExtResource("9_rhq3e")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26g7h"]
+atlas = ExtResource("9_rhq3e")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgptt"]
+atlas = ExtResource("9_rhq3e")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1hgd"]
+atlas = ExtResource("9_rhq3e")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t15mg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uav0y")
+}],
+"loop": true,
+"name": &"air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h58jv")
+}],
+"loop": true,
+"name": &"hook",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye1mb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3euk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4ixv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rh1ib")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oavr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hucpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh3wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26g7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgptt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1hgd")
 }],
 "loop": true,
 "name": &"run",
@@ -456,6 +577,16 @@ script = ExtResource("2_dr3j4")
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_ad2fn")
 animation = &"idle"
+script = SubResource("GDScript_n8hvl")
+
+[node name="Light" type="AnimatedSprite2D" parent="Visual/Sprite"]
+unique_name_in_owner = true
+modulate = Color(3, 3, 3, 1)
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_t15mg")
+animation = &"idle"
+frame = 2
+frame_progress = 0.234209
 
 [node name="PointLight2D" type="PointLight2D" parent="Visual"]
 

@@ -34,6 +34,7 @@ static var combo_label_scene := load('res://game/scenes/combo/combo_label.tscn')
 @export var rope : Line2D
 @export var cast : RayCast2D
 @export var sprite : AnimatedSprite2D
+@export var lightsprite : AnimatedSprite2D
 @export var hook : Sprite2D
 @export var stun : Area2D
 
@@ -62,6 +63,7 @@ func _ready() -> void:
 	if not rope: rope = %Rope
 	if not cast: cast = %Cast
 	if not sprite: sprite = %Sprite
+	if not lightsprite: lightsprite = %Light
 	if not hook: hook = %Hook
 	if not stun: stun = %HookStunner
 	initial_mask = character.collision_mask
@@ -85,12 +87,15 @@ func default_physics(delta:float) -> void:
 		player_state = PlayerState.GROUNDED
 		if abs(input.x) > 0.1:
 			sprite.play('run')
+			lightsprite.play('run')
 		else:
 			sprite.play('idle')
+			lightsprite.play('idle')
 
 	if not character.is_on_floor():
 		player_state = PlayerState.AIRBORNE
 		sprite.play('air')
+		lightsprite.play('air')
 
 func hook_impulse_physics(delta:float) -> void:
 	var input := PlayerInput.xy_normalized()
@@ -164,6 +169,7 @@ func grapple_firing_physics(delta:float) -> void:
 	stun.monitorable = true
 
 	sprite.play('hook')
+	lightsprite.play('hook')
 	grapple_cooldown_elapsed = 0.0
 	rope.points[-1].y -= rope_impulse * delta
 	hook.global_position = rope.to_global(rope.points[-1])
@@ -214,6 +220,7 @@ func grapple_hit_physics(_delta:float) -> void:
 
 	grapple_cooldown_elapsed = 0.0
 	sprite.play('hook')
+	lightsprite.play('hook')
 	character.velocity.x = 0
 	if grapple_target is OneWayPlatform:
 		character.velocity.y = -grapple_impulse_platform
@@ -246,8 +253,10 @@ func _physics_process(delta: float) -> void:
 	var input := PlayerInput.xy_normalized()
 	if input.x > 0.1:
 		sprite.flip_h = false
+		lightsprite.flip_h = false
 	if input.x < -0.1:
 		sprite.flip_h = true
+		lightsprite.flip_h = true
 	match grapple_state:
 		GrappleState.COOLDOWN:
 			grapple_cooldown_physics(delta)
