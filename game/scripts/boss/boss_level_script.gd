@@ -26,4 +26,4 @@ func on_boss_dead():
 func _ready() -> void:
 	AudioManager.bgm_levels_dynamic.stop()
 	boss.tree_exited.connect(on_boss_dead)
-	$Music.play()
+	$AnimationPlayer.play("a")

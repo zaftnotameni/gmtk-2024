@@ -394,7 +394,7 @@ tracks/9/keys = {
 }
 tracks/10/type = "value"
 tracks/10/imported = false
-tracks/10/enabled = false
+tracks/10/enabled = true
 tracks/10/path = NodePath("WeakPoint:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
