@@ -73,7 +73,7 @@ func on_weakpoint_hit() -> void:
 	for p:PlayerControllerSnappy in PlayerControllerSnappy.all():
 		p.change_grapple_state_to(PlayerControllerSnappy.GrappleState.COOLDOWN)
 		p.character.velocity.y = 64
-
+	
 	match boss_phase:
 		BossPhases.CHILL:
 			boss_phase = BossPhases.MID

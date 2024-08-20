@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://bafxkpww0jhmy"]
+[gd_scene load_steps=5 format=4 uid="uid://cgqe8t5nsosam"]
 
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_hxvnh"]
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="2_6tx8w"]
-[ext_resource type="PackedScene" uid="uid://c1m311wf6sxnl" path="res://game/scenes/terrain/roamer.tscn" id="2_7s5nd"]
+[ext_resource type="PackedScene" uid="uid://bnx4srks6vtah" path="res://game/scenes/terrain/roamer.tscn" id="2_7s5nd"]
 [ext_resource type="PackedScene" uid="uid://bnukpjg2s3d7m" path="res://game/scenes/level/boss_level.tscn" id="3_hpgmy"]
 
 [node name="Level05" instance=ExtResource("1_hxvnh")]
