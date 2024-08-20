@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://bnukpjg2s3d7m"]
+[gd_scene load_steps=8 format=4 uid="uid://bnukpjg2s3d7m"]
 
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_nlakt"]
 [ext_resource type="PackedScene" uid="uid://3vcgnxxngx6m" path="res://game/scenes/menu/screen/victory_screen.tscn" id="2_csv4n"]
 [ext_resource type="PackedScene" uid="uid://djlqyg7hr1oru" path="res://game/scenes/boss/boss.tscn" id="2_txtjf"]
 [ext_resource type="Script" path="res://game/scripts/boss/boss_level_script.gd" id="4_6h2h5"]
 [ext_resource type="AudioStream" uid="uid://b2g1ug566pfus" path="res://game/assets/audio/bgm/scientific_shenanigans.mp3" id="5_s8prv"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_right.gd" id="6_ntfmj"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_left.gd" id="7_g7qw3"]
 
 [node name="BossLevel" instance=ExtResource("1_nlakt")]
 
@@ -179,3 +181,11 @@ playback_type = 1
 offset_left = -128.0
 offset_right = 128.0
 text = "Final Level: Challenge the Assembler"
+
+[node name="MarkerRight" type="Marker2D" parent="." index="12"]
+position = Vector2(224, 0)
+script = ExtResource("6_ntfmj")
+
+[node name="MarkerLeft" type="Marker2D" parent="." index="13"]
+position = Vector2(-232, 0)
+script = ExtResource("7_g7qw3")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=4 uid="uid://c5uf2anbxafq"]
+[gd_scene load_steps=6 format=4 uid="uid://c5uf2anbxafq"]
 
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_qn2ys"]
 [ext_resource type="PackedScene" uid="uid://bafxkpww0jhmy" path="res://game/scenes/level/level05.tscn" id="2_dmgc0"]
 [ext_resource type="PackedScene" uid="uid://c1m311wf6sxnl" path="res://game/scenes/terrain/roamer.tscn" id="2_urj5y"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_right.gd" id="4_s5tiq"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_left.gd" id="5_0kt5d"]
 
 [node name="Level04" instance=ExtResource("1_qn2ys")]
 
@@ -30,3 +32,11 @@ roaming_mode = 1
 position = Vector2(0, -376)
 roaming_mode = 1
 direction = -1.0
+
+[node name="MarkerRight" type="Marker2D" parent="." index="12"]
+position = Vector2(224, 0)
+script = ExtResource("4_s5tiq")
+
+[node name="MarkerLeft" type="Marker2D" parent="." index="13"]
+position = Vector2(-232, 0)
+script = ExtResource("5_0kt5d")

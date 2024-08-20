@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://d4fdaksp5aot0"]
+[gd_scene load_steps=13 format=4 uid="uid://d4fdaksp5aot0"]
 
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_cbvda"]
 [ext_resource type="PackedScene" uid="uid://b2jswhit1rsnj" path="res://game/resources/world/light.tscn" id="2_h35au"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="4_8bvmy"]
 [ext_resource type="PackedScene" uid="uid://uebfv1gm6b5h" path="res://game/resources/world/dust.tscn" id="4_rxy6y"]
 [ext_resource type="Script" path="res://game/scripts/behaviors/path_auto_follow.gd" id="5_0wvm2"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_left.gd" id="10_4d70j"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_right.gd" id="11_uexjg"]
 
 [sub_resource type="Curve2D" id="Curve2D_3aao7"]
 _data = {
@@ -28,21 +30,16 @@ tile_map_data = PackedByteArray("AADo/7j/AAABAAAAAADo/7n/AAABAAAAAADo/7r/AAABAAA
 position = Vector2(-120, -381)
 rotation = -0.0322303
 amount = 64
-speed_scale = 1.0
 emission_rect_extents = Vector2(52.53, 483.685)
 
 [node name="Dust2" parent="Background" index="9" instance=ExtResource("4_rxy6y")]
 position = Vector2(24, -384)
 rotation = -0.0322303
-amount = 32
-speed_scale = 1.0
 emission_rect_extents = Vector2(28.435, 483.685)
 
 [node name="Dust3" parent="Background" index="10" instance=ExtResource("4_rxy6y")]
 position = Vector2(158, -384)
 rotation = -0.0322303
-amount = 32
-speed_scale = 1.0
 emission_rect_extents = Vector2(28.435, 483.685)
 
 [node name="ForegroundTilemap" parent="." index="5"]
@@ -121,3 +118,11 @@ speed = 0.1
 reverse = true
 
 [node name="MovingPlatform" parent="Path2D3/PathAutoFollow" index="0" instance=ExtResource("2_v6fkc")]
+
+[node name="MarkerRight" type="Marker2D" parent="." index="14"]
+position = Vector2(224, 0)
+script = ExtResource("11_uexjg")
+
+[node name="MarkerLeft" type="Marker2D" parent="." index="15"]
+position = Vector2(-232, 0)
+script = ExtResource("10_4d70j")

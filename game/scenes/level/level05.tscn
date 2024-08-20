@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://cgqe8t5nsosam"]
+[gd_scene load_steps=7 format=4 uid="uid://bafxkpww0jhmy"]
 
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_hxvnh"]
 [ext_resource type="PackedScene" uid="uid://disdj2vlloaq6" path="res://game/scenes/player/checkpoint.tscn" id="2_6tx8w"]
-[ext_resource type="PackedScene" uid="uid://bnx4srks6vtah" path="res://game/scenes/terrain/roamer.tscn" id="2_7s5nd"]
-[ext_resource type="PackedScene" uid="uid://b7bwhin6cus2k" path="res://game/scenes/level/level06.tscn" id="3_xw7iu"]
+[ext_resource type="PackedScene" uid="uid://c1m311wf6sxnl" path="res://game/scenes/terrain/roamer.tscn" id="2_7s5nd"]
+[ext_resource type="PackedScene" uid="uid://bf0xdf6prym2e" path="res://game/scenes/level/level06.tscn" id="3_xw7iu"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_right.gd" id="5_dq21y"]
+[ext_resource type="Script" path="res://game/scripts/terrain/marker_left.gd" id="6_5eudp"]
 
 [node name="Level05" instance=ExtResource("1_hxvnh")]
 
@@ -50,3 +52,11 @@ direction = -1.0
 [node name="Roamer7" parent="." index="16" instance=ExtResource("2_7s5nd")]
 position = Vector2(-136, -376)
 roaming_mode = 2
+
+[node name="MarkerRight" type="Marker2D" parent="." index="17"]
+position = Vector2(224, 0)
+script = ExtResource("5_dq21y")
+
+[node name="MarkerLeft" type="Marker2D" parent="." index="18"]
+position = Vector2(-232, 0)
+script = ExtResource("6_5eudp")
