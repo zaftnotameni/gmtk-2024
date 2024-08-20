@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://cmn53vxuncar6"]
 
 [ext_resource type="PackedScene" uid="uid://dkwbvigna7p05" path="res://game/scenes/level/base_level.tscn" id="1_qn2ys"]
-[ext_resource type="PackedScene" uid="uid://bnukpjg2s3d7m" path="res://game/scenes/level/boss_level.tscn" id="2_ixmib"]
+[ext_resource type="PackedScene" uid="uid://cgqe8t5nsosam" path="res://game/scenes/level/level05.tscn" id="2_dmgc0"]
 [ext_resource type="PackedScene" uid="uid://bnx4srks6vtah" path="res://game/scenes/terrain/roamer.tscn" id="2_urj5y"]
 
 [node name="Level04" instance=ExtResource("1_qn2ys")]
@@ -11,7 +11,7 @@ tile_map_data = PackedByteArray("AAD//wAAAAADAAAAAAAAAAAAAAADAAAAAAD+/wAAAAADAAA
 
 [node name="LevelGoal" parent="." index="7"]
 position = Vector2(0, -480)
-next_level = ExtResource("2_ixmib")
+next_level = ExtResource("2_dmgc0")
 
 [node name="LevelTitle" parent="." index="8"]
 offset_left = -112.0
