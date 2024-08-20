@@ -23,6 +23,7 @@ frame = 4
 
 [node name="Dust" parent="." instance=ExtResource("3_0d4vg")]
 amount = 8
+speed_scale = 1.0
 emission_shape = 2
 emission_sphere_radius = 20.75
 radial_accel_min = -2.0
