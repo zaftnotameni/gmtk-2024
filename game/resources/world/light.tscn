@@ -2,10 +2,11 @@
 
 [node name="Light" type="DirectionalLight2D"]
 rotation = -0.12487
-energy = 3.5
-blend_mode = 2
+color = Color(0.370703, 0.276113, 0.225008, 1)
+blend_mode = 1
 shadow_enabled = true
-shadow_color = Color(1, 1, 1, 0)
+shadow_filter = 1
+shadow_filter_smooth = 0.2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.732602, 0.75789, 0.768684, 1)
+color = Color(0.831761, 0.831761, 0.831761, 1)
