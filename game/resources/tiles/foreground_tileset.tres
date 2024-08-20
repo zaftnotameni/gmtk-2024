@@ -1,8 +1,14 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://cdbtydialsg3l"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://cdbtydialsg3l"]
 
 [ext_resource type="Texture2D" uid="uid://b8rrmdpmp8a4o" path="res://game/assets/textures/tileset/tiles.png" id="1_8bapq"]
-[ext_resource type="PackedScene" path="res://game/scenes/terrain/spike.tscn" id="2_pku44"]
-[ext_resource type="PackedScene" path="res://game/scenes/terrain/diamond.tscn" id="3_cyxuv"]
+[ext_resource type="PackedScene" uid="uid://c5xs08u5daqko" path="res://game/scenes/terrain/spike.tscn" id="2_pku44"]
+[ext_resource type="PackedScene" uid="uid://cavuj74tj36pi" path="res://game/scenes/terrain/diamond.tscn" id="3_cyxuv"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5lx4u"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k5bo7"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r6oyk"]
 polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
@@ -10,8 +16,10 @@ polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qu2gi"]
 texture = ExtResource("1_8bapq")
 0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_5lx4u")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_k5bo7")
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:2/0 = 0
 1:2/0 = 0
@@ -34,6 +42,7 @@ texture = ExtResource("1_8bapq")
 2:3/0 = 0
 3:3/0 = 0
 2:2/0 = 0
+3:2/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mxkaf"]
 resource_name = "Interactives"
